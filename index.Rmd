@@ -1,0 +1,15 @@
+---
+title: "Home"
+---
+
+Hi, and welcome to [dev.jamovi.org](https://dev.jamovi.org), the developer hub for [jamovi](https://www.jamovi.org).
+
+Here you will find resources that cover the development of analyses for jamovi (and R). It's still a work in progress, and we'll be adding to it over time, but the current tutorial series has everything you need to get up and running.
+
+There are forums available at [forum.jamovi.org](https://forum.jamovi.org), so if you have questions about developing modules for jamovi, or feedback on how we can improve the developer hub, we're keen to hear from you there.
+
+contact \<at\> jamovi.org
+
+For those interested in the jamovi platform, it is hosted on GitHub [here](https://github.com/jamovi/jamovi). Don't forget to 'star' us!
+
+Tutorial: [Getting Started](tuts0101-getting-started.html)
