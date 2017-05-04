@@ -1,0 +1,35 @@
+---
+title: "Basic UI Design"
+output: html_document
+---
+
+A simple UI for an analysis is very easy to create. In fact, it is so easy that the compiler will do it for you. In previous the previous tutorials you would have seen how to create the a.yaml file for your analysis. The a.yaml file describes the options that you need for your analysis. This same file is all you need for the jamovi compiler to create your basic UI! 
+The jamovi compiler uses this file to first generate a basic layout and then populate it with appropriate controls for the options you have chosen. The compiler then writes this information to a u.yaml file that can be found in the jamovi directory of your module. If you make any changes to your a.yaml file in future iterations, the u.yaml will be overwritten and those changes will automatically appear in your UI after you compile. It's as simple as that. Quick, easy and hassle free.
+
+
+## Auto generation
+
+The generated file is constructed using the information provided in the a.yaml file. The a.yaml file describes the options required by your analyses and is described in more detail here. Using this information, the compiler creates a u.yaml file and fills it with appropriate controls for each option. Finding appropriate controls for simple options like a Boolean or Integer option is easy,
+
+```{yaml}
+- name: mean
+  title: Mean
+  type: Bool
+  default: true
+```
+
+however, the compiler can have more difficulty with more complicated custom options such as embedded arrays or groups.
+
+```{yaml}
+- name: cov
+  title: Covariates
+  type: Array
+  default: [[]]
+  template:
+      type: Variables
+```
+
+The order of the controls in a generated ui file is also determined by the a.yaml file and therefore may not always be appropriate.
+
+
+Next: [Advanced UI Design](ui-advanced-design.html)

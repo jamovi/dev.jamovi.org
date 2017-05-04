@@ -1,0 +1,350 @@
+---
+title: "Advanced UI Design"
+output: html_document
+---
+
+A well-polished UI can be the difference between an analysis that is powerful and effective and one that is complicated and confusing. Here at jamovi we strive to create analyses that make the lives of those that use them less complicated, so they can concentrate on what's important to them. This means that sometimes the auto generated UI is not good enough for our purposes and we want to create a refined version for ourselves.
+When the jamovi compiler auto-generates the UI, it creates a u.yaml file in the jamovi directory of you analysis. This new file works in tandem with the a.yaml file in creating the options panel for your analyses. The a.yaml describes the options and the u.yaml describes the controls and the layout to use. As discussed previously, for basic UI design interacting with the a.yaml is all that is needed, however, for more complicated design solutions, such as a custom layout or alternate control selections, we will need to modify the u.yaml file.
+
+## compilerMode Property
+
+The first and most important step in creating a custom UI is to change the value of the 'compilerMode' property in your u.yaml file. This property is initially set to 'aggressive' which means that the compiler will overwrite the whole file and recreate it from the a.yaml each time the analyses is compiled. This is obviously problematic when we are trying to create our own u.yaml file. By changing this property to 'tame' we are telling the compiler that we would like it to leave the layout and control setup alone and only add new options from the a.yaml or remove controls that are invalid because of a.yaml changes.
+
+## Modifing the UI YAML
+
+The UI YAML is pretty straight forward. It follows a tree structure that defines the child/parent relationship between the controls.
+The top level or root control is the first thing that is described by the YAML. The root control can be understood as the whole options panel. Below are the properties of the root control:
+
+Property      | Description                               | Form                 |
+------------- | ------------------------------------------| -------------------- |
+*name*  | The name of the analysis. | Unique string
+*title*  | Sets the title to be displayed at the top of the option panel. | string
+*jus*  | Defines the syntax version used by the u.yaml file. | string of form 'number.number' 
+*stage*  | Sets the stage display filter. | 0 - Released\
+1 - In development\
+2 - Proposed
+*compilerMode*  | Sets the compiler interaction mode. | *enum*: tame, aggressive
+*children*  | Sets the child control definitions. | Array of valid control definitions.
+
+```YAML
+name:  descriptives
+title: Descriptives
+jus:   '2.0'
+stage: 0
+compilerMode: tame
+children:
+      #array of child definitions
+```
+
+The root control is a [`ParentControl`](ui-parentcontrol.html) and as the name suggests serves as a parent to child controls. All parent controls contain the property `children` which defines an array of control definitions to be embedded. All UI design happens within the `children` node of the root control. Control definitions are added here in the form we design.
+
+When controls are added to the root control they are added in a list form, from top to bottom of the options panel.
+
+## Controls
+
+There are many different controls that can be used within the jamovi options ui panel. Each control has been designed for a specific option type(s). For example, a checkbox is designed around a `Bool` option type, where as a combobox control displays and writes the data of a `List`. Jamovi provides a solid array of basic controls to cover all the current option types. Controls will continue to be developed as jamovi grows but the current list covers most use cases.
+
+When adding child controls to a `ParentControl`, at the very least the `type` property needs to be specified (as well as the minimum requirements for that control).
+
+```YAML
+name:  descriptives
+title: Descriptives
+jus:   '2.0'
+stage: 0
+compilerMode: tame
+children:
+  - type: LayoutBox
+    margin: large
+    children:
+    - type: Label
+      label: jamovi is great?
+    - type: Label
+      label: Of cause it is!
+
+```
+ 
+Now we can add, move or adjust any control to meet our needs. Here is a list of controls that can make that possible:
+
+- [`LayoutBox`](ui-layoutbox.html)
+- [`CollapseBox`](ui-collapsebox.html)
+- [`TextBox`](ui-textbox.html)
+- [`CheckBox`](ui-checkbox.html)
+- [`RadioButton`](ui-radiobutton.html)
+- [`ComboBox`](ui-combobox.html)
+- [`Label`](ui-label.html)
+- [`ListBox`](ui-listbox.html)
+- [`Supplier`](ui-supplier.html)
+- [`VariableSupplier`](ui-variablesupplier.html)
+- [`TargetLayoutBox`](ui-targetlayoutbox.html)
+- [`VariableLabel`](ui-variablelabel.html)
+- [`TermLabel`](ui-termlabel.html)
+
+---------------
+
+Below is a helpful list for determining which option types are supported by which control types. This will help in determining what controls are need to display your data.
+
+The examples included are the **minimum required** properties for the control to be correctly configured for the specific option type, so they may need further modifying to meet your needs.
+
+### `Bool`
+
+**You can use** : [`CheckBox`](ui-checkbox.html)
+
+```{yaml }
+- type: CheckBox
+  name: #optionName
+```
+
+**Or you can use** : [`Label`](ui-label.html)
+
+This control is read only.
+
+```{yaml }
+- type: Label
+  name: #optionName
+  format: bool
+```
+
+-----------------
+
+### `NMXList`
+
+**You can use** : [`CheckBox`](ui-checkbox.html)
+
+Use multiple CheckBox's linked to the different sub-options.
+
+```{yaml }
+- type: CheckBox
+  name: #uniqueName_1
+  optionName: #optionName
+  optionPart: #optionPartName_1
+  
+- type: CheckBox
+  name: #uniqueName_2
+  optionName: #optionName
+  optionPart: #optionPartName_2
+  
+  
+  
+- type: CheckBox
+  name: #uniqueName_N
+  optionName: #optionName
+  optionPart: #optionPartName_N
+  
+```
+
+----------------
+
+### `List`
+
+**You can use** : [`ComboBox`](ui-combobox.html)
+
+```{yaml }
+- type: ComboBox
+  name: #optionName
+```
+
+**Or you can use** : [`RadioButton`](ui-radiobutton.html)
+
+Use multiple `RadioButton`'s linked to the different sub-options.
+
+```{yaml }
+- type: RadioButton
+  name: #uniqueName_1
+  optionName: #optionName
+  optionPart: #optionPartName_1
+  
+- type: RadioButton
+  name: #uniqueName_2
+  optionName: #optionName
+  optionPart: #optionPartName_2
+  
+
+  
+- type: RadioButton
+  name: #uniqueName_N
+  optionName: #optionName
+  optionPart: #optionPartName_N
+  
+```
+
+----------------
+
+### `Integer`
+
+**You can use** : [`TextBox`](ui-textbox.html)
+
+Allows for the value to be edited.
+
+```{yaml }
+- type: TextBox
+  name: #optionName
+  format: number
+```
+
+**Or you can use** : [`Label`](ui-label.html)
+
+This control is read only.
+
+```{yaml }
+- type: Label
+  name: #optionName
+  format: number
+```
+
+---------------
+
+### `Number`
+
+**You can use** : [`TextBox`](ui-textbox.html)
+
+Allows for the value to be edited.
+
+```{yaml }
+- type: TextBox
+  name: #optionName
+  format: number
+```
+
+**Or you can use** : [`Label`](ui-label.html)
+
+This control is read only.
+
+```{yaml }
+- type: Label
+  name: #optionName
+  format: number
+```
+
+----------------
+
+### `String`
+
+**You can use** : [`TextBox`](ui-textbox.html)
+
+Allows for the value to be edited.
+
+```{yaml }
+- type: TextBox
+  name: #optionName
+```
+
+**Or you can use** : [`Label`](ui-label.html)
+
+This control is read only.
+
+```{yaml }
+- type: Label
+  name: #optionName
+```
+
+------------------
+
+### `Variable`
+
+**You can use** : [`VariablesListBox`](ui-variableslistbox.html) 
+
+```{yaml }
+- type: VariableListBox
+  name: #optionName
+  isTarget: true
+  maxItemCount: 1
+```
+
+**Or you can use** : [`ListBox`](ui-listbox.html) 
+
+```{yaml }
+- type: ListBox
+  name: #optionName
+  isTarget: true
+  maxItemCount: 1
+  template:
+    type: VariableLabel
+```
+
+-----------------
+
+### `Variables`
+
+**You can use** : [`VariablesListBox`](ui-variableslistbox.html)
+
+```{yaml }
+- type: VariableListBox
+  isTarget: true
+  name: #optionName
+```
+
+**Or you can use** : [`ListBox`](ui-listbox.html) 
+
+```{yaml }
+- type: ListBox
+  name: #optionName
+  isTarget: true
+  template:
+    type: VariableLabel
+```
+
+------------------
+
+### `Terms`
+
+**You can use** : [`ListBox`](ui-listbox.html) 
+
+```{yaml }
+- type: ListBox
+  name: #optionName
+  isTarget: true
+  template:
+    type: TermLabel
+```
+
+------------------
+
+### `Pairs`
+
+**You can use** : [`VariablesListBox`](ui-variableslistbox.html)
+
+```{yaml }
+  - type: VariablesListBox
+    name: #optionName
+    isTarget: true
+    columns:
+      - name: i1
+        template:
+          type: VariableLabel
+      - name: i2
+        template:
+          type: VariableLabel
+```
+
+**Or you can use** : [`ListBox`](ui-listbox.html)
+
+```{yaml }
+  - type: ListBox
+    name: #optionName
+    isTarget: true
+    columns:
+      - name: i1
+        template:
+          type: VariableLabel
+      - name: i2
+        template:
+          type: VariableLabel
+```
+
+------------------
+
+### `Array`
+
+
+**You can use** : [`ListBox`](ui-listbox.html) 
+
+```{yaml }
+- type: ListBox
+  name: #optionName
+  template:
+    type: #depends on the option
+```
+
+This is jamovi's most complicated control. The setup of it's UI definition depends heavily on the way the option is setup. A more detailed explanation can be found [here](ui-listbox.html).
+
+------------------

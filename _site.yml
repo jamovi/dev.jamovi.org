@@ -31,6 +31,11 @@ navbar:
           href: tuts0201-dynamic-tables.html
         - text: 2 - Handling Data
           href: tuts0202-handling-data.html
+        - text: User Interface
+        - text: 1 - Basic UI Design
+          href: ui-basic-design.html
+        - text: 2 - Advanced UI Design
+          href: ui-advanced-design.html
     - text: API
       menu:
         - text: yaml
@@ -42,6 +47,35 @@ navbar:
           href: api_results-definition.html
         - text: User Interface Definition (.u.yaml)
           href: api_ui-definition.html
+        - text: UI Controls
+        - text: BaseControl (abstract)
+          href: ui-basecontrol.html
+        - text: Layout Controls
+        - text: ParentControl (abstract)
+          href: ui-parentcontrol.html
+        - text: LayoutBox
+          href: ui-layoutbox.html
+        - text: CollapseBox
+          href: ui-collapsebox.html
+        - text: Supplier
+          href: ui-supplier.html
+        - text: VariableSupplier
+          href: ui-variablesupplier.html
+        - text: TargetLayoutBox
+          href: ui-targetlayout.html
+        - text: Option Controls
+        - text: OptionControl (abstract)
+          href: ui-optioncontrol.html
+        - text: CheckBox
+          href: ui-checkbox.html
+        - text: TextBox
+          href: ui-textbox.html
+        - text: ComboBox
+          href: ui-combobox.html
+        - text: RadioButton
+          href: ui-radiobutton.html
+        - text: List
+          href: ui-list.html
         - text: R
         - text: Table
           href: api_table.html
