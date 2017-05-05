@@ -16,7 +16,7 @@ In order to provide rich results, we need to add some entries into the results d
 ---
 name:  ttest
 title: Independent Samples T-Test
-jrs:   "1.0"
+jrs:   '1.1'
 
 items:
     - name:  text
@@ -29,7 +29,7 @@ This is pretty similar to the `ttest.a.yaml` file; there's a name, a title, and 
 At present, the results contains a single `Preformatted` results item called `text` with the title `Independent Samples T-Test`. If you think back to the [previous section](tuts0104-implementing-an-analysis.html), we accessed a results object with the following:
 
 ```{r eval=FALSE}
-resultsText <- self$results$text
+self$results$text
 ```
 
 Now you can see where this seemingly arbitrary name `text` came from. This is how different results items are accessed.
@@ -44,7 +44,7 @@ Modify `ttest.r.yaml` so it reads:
 ---
 name:  ttest
 title: Independent Samples T-Test
-jrs:   "1.1"
+jrs:   '1.1'
 
 items:
     - name:  text

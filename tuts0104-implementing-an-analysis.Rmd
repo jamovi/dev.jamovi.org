@@ -76,13 +76,12 @@ ttestClass <- R6::R6Class("ttestClass",
         
             results <- t.test(formula, self$data, var.equal=self$options$varEq)
         
-            textResults <- self$results$text
-            textResults$content <- results
+            self$results$text$setContent(results)
         })
 )
 ```
 
-In this new function, we extract a results element called `text` from `self$results`, and assign the results object as its content. We'll cover results elements in greater depth in the next section, but for now this is all you need to know.
+In this new function, we get the results element called `text` from `self$results`, and call `setContent()` with the results from the t-test. We'll cover results elements in greater depth in the next section, but for now this is all you need to know.
 
 So now our analysis is implemented, it's time to install it and try it out. Install the module with the usual:
 
@@ -151,8 +150,7 @@ ttestISClass <- R6Class("ttestISClass",
         
             results <- t.test(formula, self$data)
         
-            textResults <- self$results$text
-            textResults$content <- results
+            self$results$text$setContent(results)
         })
 )
 ```

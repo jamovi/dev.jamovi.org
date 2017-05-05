@@ -48,7 +48,7 @@ file          | contains                               | api |
 ------------- | ---------------------------------------| --- |
 ttest.a.yaml  | The *analysis definition* contains all the meta information about the analysis, describes the arguments and ui options it receives, etc. We'll cover this in the tutorial next. | [API](api_analysis-definition.html)
 ttest.r.yaml  | The *results definition* contains all the information about the way the results for the analysis are displayed. | [API](api_results-definition.html)
-ttest.u.yaml  | The *ui definition* is automatically generated from the `.a.yaml` file. For many analyses this will produce a good result, and won't need further editing. **HOWEVER** at present, the automatic generation doesn't do a good job when *updating* an *existing* `.u.yaml` file. When you make changes to the `.a.yaml` file, you may want to delete the `.u.yaml`, and let `jmvtools` create it from scratch (`jmvtools::install()` will create one if it is missing). | [API](api_ui-definition.html)
+ttest.u.yaml  | The *ui definition* is automatically generated from the `.a.yaml` file. For many analyses this will produce a good result, and won't need further editing. | [API](api_ui-definition.html)
 ttest.h.R     | The *header file* is automatically generated from the `.a.yaml` and `.r.yaml` files above, and makes writing your analysis a lot easier. You don't ever need to look at this file, and you certainly shouldn't edit it. |
 ttest.b.R     | The *analysis implementation* is where you'll write your analysis, and where you'll spend most of your time when developing jamovi analyses. As we'll see, this is an empty template waiting for an implementation. |
 
@@ -81,10 +81,13 @@ options:
       title: Alternative hypothesis
       type: List
       options:
-        - not equal
-        - one greater
-        - two greater
-      default: not equal
+        - name: notEqual
+          title: Not equal
+        - name: oneGreater
+          title: One greater
+        - name: twoGreater
+          title: Two greater
+      default: notEqual
 
     - name: varEq
       title: Assume equal variances
@@ -98,7 +101,7 @@ At the top of the file is information about the analysis:
 ---
 name:  ttest
 title: Independent Samples T-Test
-jas:     "1.0"
+jas:     "1.1"
 version: "1.0.0"
 ...
 ```
@@ -156,10 +159,13 @@ Turning to the option `alt`:
       title: Alternative hypothesis
       type: List
       options:
-        - not equal
-        - one greater
-        - two greater
-      default: not equal
+        - name: notEqual
+          title: Not equal
+        - name: oneGreater
+          title: One greater
+        - name: twoGreater
+          title: Two greater
+      default: notEqual
 ...
 ```
 

@@ -8,7 +8,7 @@ In this section, we'll add a plot to the t-test analysis we've been developing i
 ---
 name:  ttest
 title: Independent Samples T-Test
-jrs:   "1.0"
+jrs:   '1.1'
 
 items:
     - name:  ttest
@@ -38,7 +38,6 @@ items:
 Same as before, we define an item with a `name`, `title` and a `type`; in this case the type is `Image`. Additionally, we define `renderFun` which is the name of the function responsible for rendering the image. Whatever we specify as the render function, we must add as a *private member function* to `ttestClass` in `ttest.b.R`:
 
 ```{r eval=FALSE }
-#' @rdname jamovi
 #' @export
 ttestClass <- R6::R6Class(
     "ttestClass",
@@ -134,7 +133,6 @@ The final statement is `TRUE` which is the return value. Don't forget this! Retu
 So this is our final `ttest.b.R` file:
 
 ```{r eval=FALSE }
-#' @rdname jamovi
 #' @export
 ttestClass <- R6::R6Class(
     "ttestClass",
