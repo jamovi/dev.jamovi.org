@@ -60,7 +60,7 @@ property           | default | description
 -------------------|---------|---------------------------------------
 columns            |         | an array of columns objects, see below
 rows               | `0`     | an integer specifying the number of rows, or a data-binding where one row is created per element of the bound value
-swapRowsAndColumns | `false` | whether the rows and columns should be swapped
+swapRowsColumns    | `false` | whether the rows and columns should be swapped
 notes              | `[ ]`   | an array of strings which appear as additional notes in the footnotes of the table.
 
 #### Column
