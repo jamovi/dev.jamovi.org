@@ -3,13 +3,13 @@ title: "CheckBox"
 output: html_document
 ---
 
-**Inherits from `OptionControl`, `ParentControl`**
+**Inherits from [`OptionControl`](ui-optioncontrol.html), [`ParentControl`](ui-parentcontrol.html)**
 
 ## Properties
 
-There are no `CheckBox` specific properties. All behavior can be achieved using the inherited properties of [`OptionControl`](ui-optioncontrol.html) and [`OptionControl`](ui-optioncontrol.html).
+There are no `CheckBox` specific properties. All behavior can be achieved using the inherited properties of `OptionControl` and `ParentControl`.
 
-## Supported Option Types ##
+## Supported Option Types
 
 - `Bool`
 - `NMXList`

@@ -3,7 +3,7 @@ title: "LayoutBox"
 output: html_document
 ---
 
-**Inherits from `BaseControl`, `ParentControl`**
+**Inherits from [`BaseControl`](ui-basecontrol.html), [`ParentControl`](ui-parentcontrol.html)**
 
 A `LayoutBox` allows a designer to control the layout of its child controls. A `LayoutBox` does not display anything itself but purely serves as a frame for placing other controls. It can be used as a list (default), inline list, or grid.
 
@@ -13,9 +13,9 @@ In addition to any inherited properties, a `LayoutBox` supports:
 
 Property      | Description                               | Form                 |
 ------------- | ------------------------------------------| -------------------- |
-*style*  | Determines how the automatic layout behaviour of the control. | *enum*: list, inline
+`style`  | Determines how the automatic layout behaviour of the control. | *enum*: list, inline
 
-###Details
+###Further Details
 
 ####`style`
 

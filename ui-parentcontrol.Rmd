@@ -11,31 +11,39 @@ A control that inherits from a `ParentControl` supports the embedding of child c
 
 Property      | Description                               | Form                 |
 ------------- | ------------------------------------------| -------------------- |
-*children*  | An array of control definitions that are to be embedded into the parent control. | Array of valid Controls
+`children`  | An array of control definitions that are to be embedded into the parent control. | Array of valid Controls
 
 If the control is also a Display Control (e.i. `RadioButton` or `CheckBox`) another property is avaliable.
 
 Property      | Description                               | Form                 |
 ------------- | ------------------------------------------| -------------------- |
-*style*  | Sets the layout position of child controls relative the parent  | enum: list, inline, list-inline, inline-list
+`style`  | Sets the layout position of child controls relative the parent  | enum: list, inline, list-inline, inline-list
 
-###Details
+###Further Details
 
 ####`style`
 
-- list: Children are placed below the parent in a vertical list.
-- inline: Children are placed to the right of the parent in a horizontal list.
-- list-inline: Children are placed below the parent in a horizontal list.
-- inline-list: Children are placed to the right of the parent in a vertical list.
+- `list`: Children are placed below the parent in a vertical list.
+- `inline`: Children are placed to the right of the parent in a horizontal list.
+- `list-inline`: Children are placed below the parent in a horizontal list.
+- `inline-list`: Children are placed to the right of the parent in a vertical list.
 
-##UI Controls
+##Controls
 
-The following controls are examples of parent controls.
+Below is a list of controls that inherit from `ParentControl`.
 
-- `LayoutBox`
-- `CollapseBox`
-- `Label`
-- `CheckBox`
-- `RadioButton`
+###Layout Controls
+
+- [LayoutBox](ui-layoutbox.html)
+- [CollapseBox](ui-collapsebox.html)
+- [Supplier](ui-supplier.html)
+- [VariableSupplier](ui-variablesupplier.html)
+- [TargetLayoutBox](ui-targetlayoutbox.html)
+
+####Parent Controls
+
+- [CheckBox](ui-checkbox.html)
+- [RadioButton](ui-radiobutton.html)
+- [Label](ui-label.html)
 
 -------------------------------------
