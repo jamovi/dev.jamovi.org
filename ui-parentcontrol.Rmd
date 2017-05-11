@@ -13,11 +13,11 @@ Property      | Description                               | Form                
 ------------- | ------------------------------------------| -------------------- |
 `children`  | An array of control definitions that are to be embedded into the parent control. | Array of valid Controls
 
-If the control is also a Display Control (e.i. `RadioButton` or `CheckBox`) another property is avaliable.
+If the control is also a Display Control (e.i. `RadioButton` or `CheckBox`) another property is available.
 
 Property      | Description                               | Form                 |
 ------------- | ------------------------------------------| -------------------- |
-`style`  | Sets the layout position of child controls relative the parent  | enum: list, inline, list-inline, inline-list
+`style`  | Sets the layout position of child controls relative the parent  | *enum*: list, inline, list-inline, inline-list
 
 ###Further Details
 

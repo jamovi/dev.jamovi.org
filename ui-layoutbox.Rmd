@@ -13,7 +13,7 @@ In addition to any inherited properties, a `LayoutBox` supports:
 
 Property      | Description                               | Form                 |
 ------------- | ------------------------------------------| -------------------- |
-`style`  | Determines how the automatic layout behaviour of the control. | *enum*: list, inline
+`style`  | Determines how the automatic layout behavior of the control. | *enum*: list, inline
 
 ###Further Details
 

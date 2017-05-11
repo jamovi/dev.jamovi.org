@@ -15,7 +15,7 @@ In addition to any inherited properties, an `OptionControl` supports:
 Property      | Description                               | Form                 |
 ------------- | ------------------------------------------| -------------------- |
 `name`  | Sets the unique name for the control. If `optionName` is not defined `name` will be used to data-bind to an option. | Unique string (or option name)
-`optionName`  | Sets the name of the option to which the control is to be data bound. If this property is ommitted and `name` property is used instead. | defined option name
+`optionName`  | Sets the name of the option to which the control is to be data bound. If this property is omitted and `name` property is used instead. | defined option name
 `optionPart`  | Sets the name of the sub-option to which the control is to be data bound. Some controls don't bind to a whole option but only to part. For example, a `RadioButton` binds to a sub-option of the underlying `List` option. See [here](ui-radiobutton.html) for an example.  | defined option part name
 `label`  | Sets the text to be displayed by the control's label. NOTE: not all controls have labels. In the circumstance that a control does not have a label, a defined `label` property is ignored. | string
 `enable`  | Sets the a data-binding string to control the enable state of the control.  | string
@@ -73,8 +73,8 @@ The `label` property of an `OptionControl` serves only to override the `title` p
 
 Event      | Description                               | 
 ------------- | ------------------------------------------|
-*change*  | Fires whent the value of the control has changed.
-*changing*  | Fires whent the value of the control is about to change.
+*change*  | Fires when the value of the control has changed.
+*changing*  | Fires when the value of the control is about to change.
 
 
 ##Controls

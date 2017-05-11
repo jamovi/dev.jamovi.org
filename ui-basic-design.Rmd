@@ -29,7 +29,7 @@ however, the compiler can have more difficulty with more complicated custom opti
       type: Variables
 ```
 
-The order of the controls in a generated ui file is also determined by the a.yaml file and therefore may not always be appropriate.
+The order of the controls in a generated UI file is also determined by the a.yaml file and therefore may not always be appropriate.
 
 
 Next: [Advanced UI Design](ui-advanced-design.html)
