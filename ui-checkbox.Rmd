@@ -21,7 +21,7 @@ When `CheckBox` is bound to a `Bool` option type the behavior is very simple. Wh
 Below is an example of a simple `Bool` option and a `CheckBox` that has been associated with it.
 
 *Option Definition*
-```YAML
+```{yaml}
 - name: descStats
   title: Descriptive statistics
   type: Bool
@@ -32,7 +32,7 @@ Below is an example of a simple `Bool` option and a `CheckBox` that has been ass
 ```
 
 *UI Control Definition*
-```YAML
+```{yaml}
 - type: CheckBox
   name: descStats
 ```
@@ -52,7 +52,7 @@ The below example shows an option with the name `effectSize`. This option has a 
 Now a `CheckBox` can be used to manipulate an 'NMXList' option by adding or removing a specified sub-option from the underlying array.
 
 *Option Definition*
-```YAML
+```{yaml}
 - name: effectSize
   type: NMXList
   title: Effect Size
@@ -70,7 +70,7 @@ To achieve this two properties will need to be added to the `CheckBox` definitio
 Now binding solely to an `NMXList` is not a valid configuration for a `CheckBox` as it requires a boolean data type to operate correctly. To overcome this, the `CheckBox` definition will need to not *just* bind to the `NMXList` but also to one of the sub-options. This is achieved using the `optionPart` property. By assigning the name of the desired sub-option to this property, the `CheckBox` will operate base on that sub-options existence in the underlying array.
 
 *UI Control Definition*
-```YAML
+```{yaml}
 - type: CheckBox
   name: effectSize_eta
   optionName: effectSize

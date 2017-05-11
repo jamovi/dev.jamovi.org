@@ -17,12 +17,12 @@ There are no `CheckBox` specific properties. All behavior can be achieved using 
 
 When the option binding is to a `List` a few properties are needed for it to work.
 
-The below example shows an option with the name `plotError`. This option has a property called `options` which describes three mutually exclusive sub-options that are possible for the options output. A `List` returns the name of one of these sub-options as a string.
+The below example shows an option with the name `plotError`. This option has a property called `options` which describes three mutually exclusive sub-options that are possible values for the options output. A `List` returns the name of one of these sub-options as a string.
 
-Now a `RadioButton` can be used to manipulate an 'List' option by changing its value to a specified sub-option name.
+Now a `RadioButton` can be used to manipulate a 'List' option by changing its value to a specified sub-option name.
 
 *Option Definition*
-```YAML
+```{yaml}
 - name: plotError
   title: Error Bar Definition
   type: List
@@ -46,7 +46,7 @@ To achieve this two properties will need to be added to the `RadioButton` defini
 Now binding solely to a `List` is not a valid configuration for a `RadioButton` as it requires a boolean data type to operate correctly. To overcome this, the `RadioButton` definition will need to not *just* bind to the `List` but also to one of the sub-options. This is achieved using the `optionPart` property. By assigning the name of the desired sub-option to this property, the `RadioButton` will operate base on that sub-options name.
 
 *UI Control Definition*
-```YAML
+```{yaml}
 - type: RadioButton
   name: plotError_none
   optionName: plotError

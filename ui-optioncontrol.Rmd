@@ -26,7 +26,7 @@ Property      | Description                               | Form                
 
 This property is what's called a 'data-binding'. Data-binding is where the value of a particular property is bound to the value of another UI control. When the value of the control changes, so does the respective property value. For example we may want to bind to the value of a `CheckBox` (TRUE/FALSE) to the enabling/disabling feature of a `TextBox`. This would be achieved by specifying the name of the control to which you would like to bind inside of parentheses (or brackets).
 
-```YAML
+```{yaml}
 - type: CheckBox
   name: pcEqGr
   label: Cut points for
@@ -51,7 +51,7 @@ In the above example, the `TextBox` named `pcNEqGr` would enable when the `Check
 The `label` property of an `OptionControl` serves only to override the `title` property of the underlying option. If the `label` property is not defined, the control will use the `title` property of the underlying option. This results in the UI control definition being minimal, only describing information when necessary.
 
 *Option Definition*
-```YAML
+```{yaml}
 - name: descStats
   title: Descriptive statistics
   type: Bool
@@ -62,7 +62,7 @@ The `label` property of an `OptionControl` serves only to override the `title` p
 ```
 
 *UI Control Definition*
-```YAML
+```{yaml}
 - type: CheckBox
   name: descStats
 ```

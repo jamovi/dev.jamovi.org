@@ -7,13 +7,6 @@ output: html_document
 
 A textbox allows for the displaying and editing of the value of an option in text form.
 
-## Supported Option Types ##
-
-- `String`
-- `Integer`
-- `Number`
-- Any format that has both toString() and parsing capabilities.
-
 ##Properties
 
 In addition to any inherited properties, a `TextBox` supports:
@@ -26,6 +19,13 @@ or a [custom format](ui-custom-format.html) include
 `inputPattern` | Sets the input string filter for determining valid inputs. For example, a number `TextBox` would have `inputPattern: '[0-9]+'`   | regular expression string
 `alignText`  | Set the horizontal alignment of the text within the `TextBox`. | enum: left, center, right
 `borderless`  | Toggles whether the control has a visible border or not. This is mainly used when a `TextBox` is add to the `template` of a `ListBox`. | bool
+
+## Supported Option Types ##
+
+- `String`
+- `Integer`
+- `Number`
+- Any format that has both toString() and parsing capabilities.
 
 ##Example
 
