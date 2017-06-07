@@ -6,10 +6,6 @@ title: "Additional Notes"
 
 `jmvtools::install()` also downloads all your packages dependencies (listed in `DESCRIPTION`), and bundles them into your module. This ensures that the module has everything it needs, and also that a module will always use predictable dependency versions. This results in larger module file sizes, but arguably is a small price to pay for reproducibility given how inexpensive disk space is.
 
-This scheme works well, with one exception: dependencies that require compilation under macOS. The native code (`NeedsCompilation: yes`) packages distributed by CRAN for macOS are unfortunately not suitable for use outside of the usual `/Library/Frameworks/R.framework` path, and they require some minor patches in order to work in other software.
-
-We are gradually building a library of patched native macOS packages in the jamovi repo (`https://repo.jamovi.org`), and `jmvtools::install()` tries to install dependencies from here *before* installing from CRAN. If you are developing on macOS, and would like a patched version of a package, do get in touch with us (through the forums would be best), and we'll make one available from the jamovi repo.
-
 ## Namespaces
 
 We recommend you minimise import statements in your `NAMESPACE` file. These can lead to substantial delays when your package is loading, as *all* listed imports in the `NAMESPACE` file are loaded whether they are required or not.
