@@ -16,9 +16,15 @@ Tutorial: [Getting Started](tuts0101-getting-started.html)
 
 ## News
 
+### 09-06-2017
+
+We've added a new document to our tutorial series describing how jamovi analyses can use *state*. State is used with longer running analyses, and allows the analysis to re-use results that were calculated previously. This can lead to much faster analyses, and a much nicer user experience.
+
+Read more about *state* [here](tuts0203-state.html).
+
 ### 20-04-2017 Changes to dev tools for jamovi 0.7.3
 
-We've just released a beta of jamovi 0.7.3 (available from [here](https://www.jamovi.org/download.html)), which brings some significant improvements, and minor changes to developing jamovi modules. In order to continue developing, we encourage you to download and begin using the new jamovi beta, and the latest version of jmvtools.
+We've just released a beta of jamovi 0.7.3 (available from [here](https://www.jamovi.org/download.html)), which brings some significant improvements, and minor changes to developing jamovi modules.
 
 #### Changes to dependency resolution
 

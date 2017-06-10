@@ -28,15 +28,19 @@ a string specifying the title of the table
 
 ### visible
 
-TRUE/FALSE, whether the table is visible or not
+`TRUE` or `FALSE`, whether the table is visible or not
 
 ### status
 
-a string, one of 'complete', 'error', 'inited', 'running'
+a string, one of `'complete'`, `'error'`, `'inited'`, `'running'`
 
 ### rowKeys
 
 a list of 'keys'
+
+### state
+
+the state
 
 ## Methods
 
@@ -55,6 +59,10 @@ sets the table's title
 ### setError(message)
 
 sets the table's status to 'error', and assigns the error message
+
+### setState(object)
+
+sets the state object on the table
 
 ### addColumn(name, ...)
 

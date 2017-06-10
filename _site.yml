@@ -31,6 +31,8 @@ navbar:
           href: tuts0201-dynamic-tables.html
         - text: 2 - Handling Data
           href: tuts0202-handling-data.html
+        - text: 3 - State
+          href: tuts0203-state.html
     - text: API
       menu:
         - text: yaml
@@ -43,18 +45,10 @@ navbar:
         - text: User Interface Definition (.u.yaml)
           href: api_ui-definition.html
         - text: R
+        - text: Results Elements
+          href: api_results-elements.html
         - text: Table
           href: api_table.html
-        - text: Image
-          href: '#'
-        - text: Group
-          href: '#'
-        - text: Array
-          href: '#'
-        - text: Preformatted
-          href: '#'
-        - text: Html
-          href: '#'
     - text: "Misc"
       menu:
         - text: "Project Structure"
