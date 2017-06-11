@@ -33,6 +33,11 @@ navbar:
           href: tuts0202-handling-data.html
         - text: 3 - State
           href: tuts0203-state.html
+        - text: User Interface
+        - text: 1 - Basic UI Design
+          href: ui-basic-design.html
+        - text: 2 - Advanced UI Design
+          href: ui-advanced-design.html
     - text: API
       menu:
         - text: yaml
