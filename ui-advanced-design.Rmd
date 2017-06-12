@@ -3,39 +3,21 @@ title: "Advanced UI Design"
 output: html_document
 ---
 
-A well-polished UI can be the difference between an analysis that is powerful and effective and one that is complicated and confusing. Here at jamovi we strive to create analyses that make the lives of those that use them less complicated, so they can concentrate on what's important to them. This means that sometimes the auto generated UI is not good enough for our purposes and we want to create a refined version for ourselves.
-When the jamovi compiler auto-generates the UI, it creates a u.yaml file in the jamovi directory of you analysis. This new file works in tandem with the a.yaml file in creating the options panel for your analyses. The a.yaml describes the options and the u.yaml describes the controls and the layout to use. As discussed previously, for basic UI design interacting with the a.yaml is all that is needed, however, for more complicated design solutions, such as a custom layout or alternate control selections, we will need to modify the u.yaml file.
-
-## compilerMode Property
-
-The first and most important step in creating a custom UI is to change the value of the 'compilerMode' property in your u.yaml file. This property is initially set to 'aggressive' which means that the compiler will overwrite the whole file and recreate it from the a.yaml each time the analyses is compiled. This is obviously problematic when we are trying to create our own u.yaml file. By changing this property to 'tame' we are telling the compiler that we would like it to leave the layout and control setup alone and only add new options from the a.yaml or remove controls that are invalid because of a.yaml changes.
-
-## Modifing the UI YAML
-
-The [UI YAML](api_ui-definition.html) is pretty straight forward. It follows a tree structure that defines the child/parent relationship between the controls.
-The top level or root control is the first thing that is described by the YAML. The root control can be understood as the whole options panel.
-
-```YAML
-name:  descriptives
-title: Descriptives
-jus:   '2.0'
-stage: 0
-compilerMode: tame
-children:
-      #array of child definitions
-```
-
-The root control is a [`ParentControl`](ui-parentcontrol.html) and as the name suggests serves as a parent to child controls. All parent controls contain the property `children` which defines an array of control definitions to be embedded. All UI design happens within the `children` node of the root control. Control definitions are added here in the form we design.
-
-When [controls](api_ui-definition.html) are added to the root control they are added in a list form, from top to bottom of the options panel.
-
 ## Controls
 
-There are three different categories of controls, [Layout Controls](api_ui-definition.html), [Option Controls](api_ui-definition.html), and [Display Controls](api_ui-definition.html). As the names suggest, layout controls are used to 'layout' child controls in the UI, option controls allow for option values to be displayed and modified, while display controls are for presenting static information such as a `Label`. 
+There are three different categories of controls:
 
-For help with option controls, below is a list for guidance in determining which option types are supported by which control types. This will help in determining what controls are need to display your data.
+ - [Layout Controls](api_ui-definition.html)
+ - [Option Controls](api_ui-definition.html)
+ - [Display Controls](api_ui-definition.html)
+ 
+Layout controls are used to control the layout child controls in the UI. Option controls allow the user to change the values of options for analyses. We've already seen some of these; the `CheckBox`, the `ComboBox`, etc. Display controls are for presenting static information such as labels.
 
-The examples included are the **minimum required** properties for the control to be correctly configured for the specific option type, so they may need further modifying to meet your needs.
+### Option Controls
+
+As already seen earlier in this tutorial series, different option controls are 'bound' to different analysis options. The name of the option control typically needs to match the name of the option it is bound to. Changing the option control leads to changes to the underlying option, resulting in changes to the analysis.
+
+Not all controls can be bound to *any* option. It wouldn't be meaningful to bind a checkbox to a `List` option for example. The following lists the different option types, and the control types that can be bound to each:
 
 ### `Bool`
 
@@ -56,70 +38,7 @@ This control is read only.
   format: bool
 ```
 
------------------
-
-### `NMXList`
-
-**You can use** : [`CheckBox`](ui-checkbox.html)
-
-Use multiple CheckBox's linked to the different sub-options.
-
-```{yaml }
-- type: CheckBox
-  name: #uniqueName_1
-  optionName: #optionName
-  optionPart: #optionPartName_1
-  
-- type: CheckBox
-  name: #uniqueName_2
-  optionName: #optionName
-  optionPart: #optionPartName_2
-  
-  
-  
-- type: CheckBox
-  name: #uniqueName_N
-  optionName: #optionName
-  optionPart: #optionPartName_N
-  
-```
-
-----------------
-
-### `List`
-
-**You can use** : [`ComboBox`](ui-combobox.html)
-
-```{yaml }
-- type: ComboBox
-  name: #optionName
-```
-
-**Or you can use** : [`RadioButton`](ui-radiobutton.html)
-
-Use multiple `RadioButton`'s linked to the different sub-options.
-
-```{yaml }
-- type: RadioButton
-  name: #uniqueName_1
-  optionName: #optionName
-  optionPart: #optionPartName_1
-  
-- type: RadioButton
-  name: #uniqueName_2
-  optionName: #optionName
-  optionPart: #optionPartName_2
-  
-
-  
-- type: RadioButton
-  name: #uniqueName_N
-  optionName: #optionName
-  optionPart: #optionPartName_N
-  
-```
-
-----------------
+------------------
 
 ### `Integer`
 
@@ -189,7 +108,71 @@ This control is read only.
   name: #optionName
 ```
 
-------------------
+-----------------
+
+### `List`
+
+**You can use** : [`ComboBox`](ui-combobox.html)
+
+```{yaml }
+- type: ComboBox
+  name: #optionName
+```
+
+**Or you can use** : [`RadioButton`](ui-radiobutton.html)
+
+Use multiple `RadioButton`'s linked to the different sub-options.
+
+```{yaml }
+- type: RadioButton
+  name: #uniqueName_1
+  optionName: #optionName
+  optionPart: #optionPartName_1
+  
+- type: RadioButton
+  name: #uniqueName_2
+  optionName: #optionName
+  optionPart: #optionPartName_2
+  
+
+  
+- type: RadioButton
+  name: #uniqueName_N
+  optionName: #optionName
+  optionPart: #optionPartName_N
+  
+```
+
+----------------
+
+### `NMXList`
+
+**You can use** : [`CheckBox`](ui-checkbox.html)
+
+Use multiple CheckBox's linked to the different sub-options.
+
+```{yaml }
+- type: CheckBox
+  name: #uniqueName_1
+  optionName: #optionName
+  optionPart: #optionPartName_1
+  
+- type: CheckBox
+  name: #uniqueName_2
+  optionName: #optionName
+  optionPart: #optionPartName_2
+  
+  
+  
+- type: CheckBox
+  name: #uniqueName_N
+  optionName: #optionName
+  optionPart: #optionPartName_N
+  
+```
+
+----------------
+
 
 ### `Variable`
 
