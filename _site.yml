@@ -38,6 +38,8 @@ navbar:
           href: ui-basic-design.html
         - text: 2 - Advanced UI Design
           href: ui-advanced-design.html
+        - text: 3 - Advanced Customisation
+          href: ui-advanced-customisation.html
     - text: API
       menu:
         - text: yaml

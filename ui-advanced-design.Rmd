@@ -10,7 +10,7 @@ There are three different categories of controls:
  - [Layout Controls](api_ui-definition.html)
  - [Option Controls](api_ui-definition.html)
  - [Display Controls](api_ui-definition.html)
- 
+
 Layout controls are used to control the layout child controls in the UI. Option controls allow the user to change the values of options for analyses. We've already seen some of these; the `CheckBox`, the `ComboBox`, etc. Display controls are for presenting static information such as labels.
 
 ### Option Controls
@@ -128,19 +128,19 @@ Use multiple `RadioButton`'s linked to the different sub-options.
   name: #uniqueName_1
   optionName: #optionName
   optionPart: #optionPartName_1
-  
+
 - type: RadioButton
   name: #uniqueName_2
   optionName: #optionName
   optionPart: #optionPartName_2
-  
 
-  
+
+
 - type: RadioButton
   name: #uniqueName_N
   optionName: #optionName
   optionPart: #optionPartName_N
-  
+
 ```
 
 ----------------
@@ -156,19 +156,19 @@ Use multiple CheckBox's linked to the different sub-options.
   name: #uniqueName_1
   optionName: #optionName
   optionPart: #optionPartName_1
-  
+
 - type: CheckBox
   name: #uniqueName_2
   optionName: #optionName
   optionPart: #optionPartName_2
-  
-  
-  
+
+
+
 - type: CheckBox
   name: #uniqueName_N
   optionName: #optionName
   optionPart: #optionPartName_N
-  
+
 ```
 
 ----------------
@@ -176,7 +176,7 @@ Use multiple CheckBox's linked to the different sub-options.
 
 ### `Variable`
 
-**You can use** : [`VariablesListBox`](ui-variableslistbox.html) 
+**You can use** : [`VariablesListBox`](ui-variableslistbox.html)
 
 ```{yaml }
 - type: VariableListBox
@@ -185,7 +185,7 @@ Use multiple CheckBox's linked to the different sub-options.
   maxItemCount: 1
 ```
 
-**Or you can use** : [`ListBox`](ui-listbox.html) 
+**Or you can use** : [`ListBox`](ui-listbox.html)
 
 ```{yaml }
 - type: ListBox
@@ -208,7 +208,7 @@ Use multiple CheckBox's linked to the different sub-options.
   name: #optionName
 ```
 
-**Or you can use** : [`ListBox`](ui-listbox.html) 
+**Or you can use** : [`ListBox`](ui-listbox.html)
 
 ```{yaml }
 - type: ListBox
@@ -222,7 +222,7 @@ Use multiple CheckBox's linked to the different sub-options.
 
 ### `Terms`
 
-**You can use** : [`ListBox`](ui-listbox.html) 
+**You can use** : [`ListBox`](ui-listbox.html)
 
 ```{yaml }
 - type: ListBox
@@ -271,7 +271,7 @@ Use multiple CheckBox's linked to the different sub-options.
 ### `Array`
 
 
-**You can use** : [`ListBox`](ui-listbox.html) 
+**You can use** : [`ListBox`](ui-listbox.html)
 
 ```{yaml }
 - type: ListBox
@@ -283,3 +283,5 @@ Use multiple CheckBox's linked to the different sub-options.
 This is jamovi's most complicated control. The setup of it's UI definition depends heavily on the way the option is setup. A more detailed explanation can be found [here](ui-listbox.html).
 
 ------------------
+
+Next: [Advanced customisation of the options UI](ui-advanced-customisation.html)

@@ -16,6 +16,10 @@ Tutorial: [Getting Started](tuts0101-getting-started.html)
 
 ## News
 
+### 08-07-2019
+
+We've refined the advanced UI customization in jamovi 1.0.4 and newer. This is not backwards compatible, so we discourage its use in existing modules for the time being (Until the 1.0.4+ is is in broader use). People developing or releasing modules for the first time are encouraged to make use of it. More info [here](ui-advanced-customisation.html).
+
 ### 09-06-2017
 
 We've added a new document to our tutorial series describing how jamovi analyses can use *state*. State is used with longer running analyses, and allows the analysis to re-use results that were calculated previously. This can lead to much faster analyses, and a much nicer user experience.
