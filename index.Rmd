@@ -16,6 +16,16 @@ Tutorial: [Getting Started](tuts0101-getting-started.html)
 
 ## News
 
+### 28-02-2020
+
+Versions 1.2.5 and newer of jamovi on macOS are notarized (This is a requirement Apple have introduced. Without notarization, the user is presented with an error message, and encouraged to move jamovi to the bin! Apple are jerks). Unfortunately, notarized versions of jamovi do not work with `jmvtools`, and it looks like getting them to work together won't be possible.
+
+For development, use an unsigned version of jamovi [available here](https://www.jamovi.org/downloads/jamovi-unsigned.zip).
+
+When starting this version on macOS catalina and newer, the first time you try and start it it will present the nasty error. Hit cancel. Then right-click (cmd-click) on jamovi, select 'Open' from the menu, and then it will give you the option to run it. Once jamovi has been run once, it will start in the usual way from then on.
+
+Apologies for the inconvenience and that Apple are jerks.
+
 ### 08-07-2019
 
 We've refined the advanced UI customization in jamovi 1.0.4 and newer. This is not backwards compatible, so we discourage its use in existing modules for the time being (Until the 1.0.4+ is is in broader use). People developing or releasing modules for the first time are encouraged to make use of it. More info [here](ui-advanced-customisation.html).
