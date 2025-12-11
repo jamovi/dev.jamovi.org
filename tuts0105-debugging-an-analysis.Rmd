@@ -2,7 +2,7 @@
 title: "Debugging an Analysis"
 ---
 
-Hopefully you got throw the last section without encountering any errors in your analysis. In this section, we'll explore how to debug an analysis which is going wrong. For example, if we change our `.run()` function to produce an error:
+Hopefully you got through the last section without encountering any errors in your analysis. In this section, we'll explore how to debug an analysis which is going wrong. For example, if we change our `.run()` function to produce an error:
 
 ```
 ttestISClass <- R6Class("ttestISClass",
