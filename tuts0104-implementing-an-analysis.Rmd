@@ -145,7 +145,7 @@ ttestISClass <- R6Class("ttestISClass",
     private=list(
         .run=function() {
 
-            formula <- constructFormula(self$options$dep, self$options$group)
+            formula <- jmvcore::constructFormula(self$options$dep, self$options$group) 
             formula <- as.formula(formula)
         
             results <- t.test(formula, self$data)
