@@ -14,14 +14,14 @@ In order to provide rich results, we need to add some entries into the results d
 
 ```{yaml }
 ---
-name:  ttest
+  name:  ttest
 title: Independent Samples T-Test
 jrs:   '1.1'
 
 items:
-    - name:  text
-      title: Independent Samples T-Test
-      type:  Preformatted
+  - name:  text
+title: Independent Samples T-Test
+type:  Preformatted
 ```
 
 This is pretty similar to the `ttest.a.yaml` file; there's a name, a title, and a jamovi results spec (`jrs`) (note, this is different to the `jas` in the `.a.yaml` file). `items` comes next, and it describes all the items that make up the results. For example, the results could be made up of two tables and a plot. Each item in the results is listed here.
@@ -42,30 +42,30 @@ Modify `ttest.r.yaml` so it reads:
 
 ```{yaml }
 ---
-name:  ttest
+  name:  ttest
 title: Independent Samples T-Test
 jrs:   '1.1'
 
 items:
-    - name:  text
-      title: Independent Samples T-Test
-      type:  Preformatted
+  - name:  text
+title: Independent Samples T-Test
+type:  Preformatted
 
-    - name:  ttest
-      title: Independent Samples T-Test
-      type: Table
-      rows:  1
-      columns:
-        - name: var
-          title: ''
-          type: text
-        - name: t
-          type: number
-        - name: df
-          type: integer
-        - name: p
-          type: number
-          format: zto,pvalue
+- name:  ttest
+title: Independent Samples T-Test
+type: Table
+rows:  1
+columns:
+  - name: var
+title: ''
+type: text
+- name: t
+type: number
+- name: df
+type: integer
+- name: p
+type: number
+format: zto,pvalue
 ```
 
 With these modifications, we've added a new table called `ttest` with the title `Independent Samples T-Test`. We've also specified that it is to have 1 row, and that it has four columns; `var`, `t`, `df` and `p`. Notice that we've specified an empty string for the title of column `var`. If a title isn't specified the column name is used instead.
@@ -109,10 +109,10 @@ We can assign each of these values to the row in our table with the `setRow()` f
 ```{r eval=FALSE}
 table <- self$results$ttest
 table$setRow(rowNo=1, values=list(
-    var=self$options$dep,
-    t=results$statistic,
-    df=results$parameter,
-    p=results$p.value
+  var=self$options$dep,
+  t=results$statistic,
+  df=results$parameter,
+  p=results$p.value
 ))
 ```
 
@@ -129,25 +129,31 @@ Our results in jamovi should look something like this:
 Now we have everything working, let's remove the text results:
 
 ```{r eval=FALSE}
-ttestISClass <- R6Class("ttestISClass",
-    inherit=ttestISBase,
-    private=list(
-        .run=function() {
-
-            formula <- constructFormula(self$options$dep, self$options$group)
-            formula <- as.formula(formula)
+ttestClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
+  "ttestClass",
+  inherit = ttestBase,
+  private = list(
+    .run = function() {
+      
+      if (length(self$options$dep) == 0 || length(self$options$group) == 0) {
+        return()
+      }
+      
+      formula <- jmvcore::constructFormula(self$options$dep, self$options$group) 
+      formula <- as.formula(formula)
+      
+      results <- t.test(formula, self$data, var.equal=self$options$varEq)
+      
+      table <- self$results$ttest
+      
+      table$setRow(rowNo=1, values=list(
+        var=self$options$dep,
+        t=results$statistic,
+        df=results$parameter,
+        p=results$p.value
         
-            results <- t.test(formula, self$data)
-        
-            table <- self$results$ttest
-            
-            table$setRow(rowNo=1, values=list(
-                var=self$options$dep,
-                t=results$statistic,
-                df=results$parameter,
-                p=results$p.value
-            ))
-        })
+      )) 
+    })
 )
 ```
 
@@ -170,14 +176,14 @@ ttest(ToothGrowth, dep='len', group='supp')
 ```
 
 ```
- Independent Samples T-Test
+Independent Samples T-Test
 
- Independent Samples T-Test     
- ────────────────────────────── 
-          t       df    p       
- ────────────────────────────── 
-   len    1.92    55    0.061   
- ────────────────────────────── 
+Independent Samples T-Test     
+────────────────────────────── 
+t       df    p       
+────────────────────────────── 
+len    1.92    55    0.061   
+────────────────────────────── 
 ```
 
 As can be seen, a nicely formatted table has been generated in R as well. Everything is maintained, right down to the number of decimal places. In this way jamovi can make R packages --- even if you have no intention of publishing as jamovi modules --- more attractive, easier to read, and more consistent too.
