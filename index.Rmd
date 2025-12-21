@@ -4,7 +4,7 @@ title: "Home"
 
 Hi, and welcome to [dev.jamovi.org](https://dev.jamovi.org), the developer hub for [jamovi](https://www.jamovi.org).
 
-Here you will find resources that cover the development of analyses for jamovi (and R). It's still a work in progress, and we'll be adding to it over time, but the current tutorial series has everything you need to get up and running.
+Here you will find resources that cover the development of analyses for jamovi (and R).
 
 There are forums available at [forum.jamovi.org](https://forum.jamovi.org), so if you have questions about developing modules for jamovi, or feedback on how we can improve the developer hub, we're keen to hear from you there.
 
@@ -16,15 +16,23 @@ Tutorial: [Getting Started](tuts0101-getting-started.html)
 
 ## News
 
-### 28-02-2020
+### 11-11-2025
 
-Versions 1.2.5 and newer of jamovi on macOS are notarized (This is a requirement Apple have introduced. Without notarization, the user is presented with an error message, and encouraged to move jamovi to the bin! Apple are jerks). Unfortunately, notarized versions of jamovi do not work with `jmvtools`, and it looks like getting them to work together won't be possible.
+The 2.7.12 version of jamovi introduces the new analysis action system
 
-For development, use an unsigned version of jamovi [available here](https://www.jamovi.org/downloads/jamovi-unsigned.zip).
+[Analysis actions](api_actions.html)
 
-When starting this version on macOS catalina and newer, the first time you try and start it it will present the nasty error. Hit cancel. Then right-click (cmd-click) on jamovi, select 'Open' from the menu, and then it will give you the option to run it. Once jamovi has been run once, it will start in the usual way from then on.
+### 08-03-2024
 
-Apologies for the inconvenience and that Apple are jerks.
+The 2.5 series of jamovi is out. This updates the R version to 4.3.2, and moves the snapshot forward to 2024-01-09.
+
+The 2.5 series improves support for computers using ARM CPUs such as Chromebooks and the new "Apple Silicon" Macs. Note that modules are (typically) not portable between operating systems or architectures, so separate modules will need to be built for each.
+
+You'll need to update your jmvtools to build against the 2.5 series:
+
+```
+install.packages('jmvtools', repos=c('https://repo.jamovi.org', 'https://cran.r-project.org'))
+```
 
 ### 08-07-2019
 

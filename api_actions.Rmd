@@ -1,0 +1,66 @@
+---
+title: Actions
+---
+
+Actions allow an analysis to open a new data set in a new jamovi window (or tab in the browser). The following requires jamovi 2.7.12 or newer.
+
+Action are defined in the .a.yaml file as follows:
+
+```
+    - name: open
+      title: Open
+      type: Action
+      action: open
+```
+
+Presently, the only action supported is of type `open` (visible as `action: open` in the .a.yaml snippet above).
+
+This in turn places a button in the analysis UI, with the text taken from `title`. If the user clicks the action button, the analysis is run, and the value of the option will be set to TRUE. i.e.
+
+```
+    if (self$options$open) {
+        # if we're here, the user clicked the open button
+    }
+```
+
+In order to *perform* an action -- in this case open a file -- we perform the following steps.
+
+```
+    if (self$options$open) {
+        
+        # 1. retrieve the option
+        option <- self$options$option('open')
+        
+        # 2. (optional) check that this version of jamovi supports actions
+        if (is.null(option$perform))
+            return()  # not support!
+        
+        # 3. call $perform() on the option, passing a callback
+        option$perform(function(action) {
+            
+            # 4. do stuff
+            
+            # 5a. if producing a data frame, return a result as follows
+            list(
+                data = ToothGrowth,
+                title = 'the fish was delish')
+            
+            # 5b. if writing to a file, return a result as follows
+            
+            # write the file to action$params$fullPath
+            write.csv(ToothGrowth, file=action$params$fullPath, row.names=FALSE)
+
+            # return a result object using action$params$path (not $fullPath)
+            list(
+                path = action$params$path,
+                title = 'the fish was delish',
+                ext = 'csv'
+            )
+            
+            # 5c. throw an error
+            
+            stop("Conditions are not satisfied")
+        })
+        
+    }
+```

@@ -56,8 +56,14 @@ navbar:
           href: api_results-elements.html
         - text: Table
           href: api_table.html
+        - text: Notices
+          href: api_notices.html
+        - text: Actions
+          href: api_actions.html
     - text: "Misc"
       menu:
+        - text: "Submitting to the jamovi Library"
+          href: misc-library.html
         - text: "Project Structure"
           href: info_project-structure.html
 output:
