@@ -4,7 +4,7 @@ title: "Creating Rich Results"
 
 In this section, we will add rich results to our analysis; a nice APA formatted table like this:
 
-![](tuts0105-creating-rich-results-apa.png){ width=337px }
+![](tuts0105-creating-rich-results-apa.png){width="337px"}
 
 Rich results are visually appealing, and make it easier for users of your module to 'parse' and understand the results your module produces. A lot of people find statistics challenging, so we might as well make them as accessible and easy to read as possible.
 
@@ -84,7 +84,7 @@ jmvtools::install()
 
 If you return to jamovi now, you'll see that the installed module has been updated and our earlier analysis has been rerun. The table we added is now visible in the results. This is pretty handy: whenever you reinstall a module, it is updated immediately. Your results should now look as follows:
 
-![](tuts0105-creating-rich-results-blank-table.png){ width=509px }
+![](tuts0105-creating-rich-results-blank-table.png){width="509px"}
 
 ## Populating a Table
 
@@ -124,23 +124,24 @@ jmvtools::install()
 
 Our results in jamovi should look something like this:
 
-![](tuts0105-creating-rich-results-filled-table.png){ width=509px }
+![](tuts0105-creating-rich-results-filled-table.png){width="509px"}
 
 Now we have everything working, let's remove the text results:
 
 ```{r eval=FALSE}
-ttestISClass <- R6Class("ttestISClass",
+ttestClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
+    "ttestISClass",
     inherit=ttestISBase,
     private=list(
         .run=function() {
 
             formula <- constructFormula(self$options$dep, self$options$group)
             formula <- as.formula(formula)
-        
+
             results <- t.test(formula, self$data)
-        
+
             table <- self$results$ttest
-            
+
             table$setRow(rowNo=1, values=list(
                 var=self$options$dep,
                 t=results$statistic,
@@ -153,7 +154,7 @@ ttestISClass <- R6Class("ttestISClass",
 
 then perform a reinstall with `jmvtools::install()`. Now we have a nice, attractive, minimalist t-test.
 
-![](tuts0105-creating-rich-results-final-table.png){ width=287px }
+![](tuts0105-creating-rich-results-final-table.png){width="287px"}
 
 Let's also take a look at running this analysis in an R session. We can install the package into R with:
 

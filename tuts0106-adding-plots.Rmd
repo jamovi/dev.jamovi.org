@@ -67,7 +67,7 @@ ttestClass <- R6::R6Class(
 
 We're going to use `ggplot2` for plotting, so make sure you have that installed. To use ggplot2 in this package/module, we need to add some entries into the DESCRIPTION and NAMESPACE files. We add ggplot2 to the imports line in the DESCRIPTION, so it reads:
 
-```
+```         
 Imports: jmvcore, R6, ggplot2
 ```
 
@@ -95,7 +95,8 @@ For the t-test, we're going to plot a mean for each of the groups, and the stand
     levels <- base::levels(self$data[[self$options$group]])
     plotData <- data.frame(level=levels, mean=means, sel=sel, seu=seu)
 ```
-```
+
+```         
 ##   level     mean      sel      seu
 ## 1    OJ 20.66333 19.45733 21.86934
 ## 2    VC 16.96333 15.45417 18.47250
@@ -176,6 +177,6 @@ ttestClass <- R6::R6Class(
 
 And these are our final results, including the plot:
 
-![](tuts0106-adding-plots-final.png){width=441px}
+![](tuts0106-adding-plots-final.png){width="441px"}
 
 Next: [Distributing Modules](tuts0107-distributing-modules.html)
