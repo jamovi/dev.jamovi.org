@@ -11,28 +11,28 @@ title: Independent Samples T-Test
 jrs:   '1.1'
 
 items:
-  - name:  ttest
-title: Independent Samples T-Test
-type: Table
-rows:  1
-columns:
-  - name: var
-title: ''
-type: text
-- name: t
-type: number
-- name: df
-type: integer
-- name: p
-type: number
-format: zto,pvalue
-
-- name: plot
-title: Descriptives Plot
-type: Image
-width:  400
-height: 300
-renderFun: .plot
+    - name:  ttest
+      title: Independent Samples T-Test
+      type: Table
+      rows:  1
+      columns:
+        - name: var
+          title: ''
+          type: text
+        - name: t
+          type: number
+        - name: df
+          type: integer
+        - name: p
+          type: number
+          format: zto,pvalue
+    
+    - name: plot
+      title: Descriptives Plot
+      type: Image
+      width:  400
+      height: 300
+      renderFun: .plot
 ```
 
 Same as before, we define an item with a `name`, `title` and a `type`; in this case the type is `Image`. Additionally, we define `renderFun` which is the name of the function responsible for rendering the image. Whatever we specify as the render function, we must add as a *private member function* to `ttestClass` in `ttest.b.R`:
@@ -66,8 +66,8 @@ ttestClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
       
       means  <- aggregate(formula, self$data, mean)[,2]
       ses    <- aggregate(formula, self$data, function(x) sd(x)/sqrt(length(x)))[,2]
-      sel    <- means - ses  # standard error lower bound
-      seu    <- means + ses  # standard error upper bound
+      sel    <- means - ses  
+      seu    <- means + ses  
       levels <- base::levels(self$data[[self$options$group]])
       plotData <- data.frame(level=levels, mean=means, sel=sel, seu=seu)
       
@@ -106,12 +106,12 @@ In jamovi modules, plotting occurs in two stages; first the data for the plot is
 For the t-test, we're going to plot a mean for each of the groups, and the standard errors. In `ggplot2`, we're required to assemble these 'plot points' into a data frame, which we will do as follows:
 
 ```{r eval=FALSE}
-means  <- aggregate(formula, self$data, mean)[,2]
-ses    <- aggregate(formula, self$data, function(x) sd(x)/sqrt(length(x)))[,2]
-sel    <- means - ses  # standard error lower bound
-seu    <- means + ses  # standard error upper bound
-levels <- base::levels(self$data[[self$options$group]])
-plotData <- data.frame(level=levels, mean=means, sel=sel, seu=seu)
+    means  <- aggregate(formula, self$data, mean)[,2]
+    ses    <- aggregate(formula, self$data, function(x) sd(x)/sqrt(length(x)))[,2]
+    sel    <- means - ses  # standard error lower bound
+    seu    <- means + ses  # standard error upper bound
+    levels <- base::levels(self$data[[self$options$group]])
+    plotData <- data.frame(level=levels, mean=means, sel=sel, seu=seu)
 ```
 
 ```         
@@ -123,22 +123,22 @@ plotData <- data.frame(level=levels, mean=means, sel=sel, seu=seu)
 This plot data we assign to the image using the `setState()` function:
 
 ```{r eval=FALSE}
-image <- self$results$plot
-image$setState(plotData)
+    image <- self$results$plot
+    image$setState(plotData)
 ```
 
 Next, we'll add the plotting code into the `.plot()` function we created:
 
 ```{r eval=FALSE}
-.plot=function(image, ...) {
-  plotData <- image$state
-  plot <- ggplot(plotData, aes(x=level, y=mean)) +
-    geom_errorbar(aes(ymin=sel, ymax=seu, width=.1)) +
-    geom_point(aes(x=level, y=mean)) +
-    labs(title=self$options$dep)
-  print(plot)
-  TRUE
-}
+    .plot=function(image, ...) {
+        plotData <- image$state
+        plot <- ggplot(plotData, aes(x=level, y=mean)) +
+            geom_errorbar(aes(ymin=sel, ymax=seu, width=.1)) +
+            geom_point(aes(x=level, y=mean)) +
+            labs(title=self$options$dep)
+        print(plot)
+        TRUE
+    }
 ```
 
 The plot function accepts an argument `image`, which corresponds to the image object we called `setState()` on. We can retrieve the state object from this image with `image$state`, which we can see is being assigned to `plotData`.

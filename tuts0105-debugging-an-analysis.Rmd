@@ -4,11 +4,13 @@ title: "Debugging an Analysis"
 
 Hopefully you got through the last section without encountering any errors in your analysis. In this section, we'll explore how to debug an analysis. First, we’ll walk through a common scenario where required user input is missing. Then, we’ll switch to the developer view to troubleshoot analysis-specific errors.
 
-First, we will show a common scenario in which an error message is presented due to a users lack of inputs. Start by removing both `len` from the `Dependent Variable` and also remove `supp` from the `Grouping Variable`. The variables should be removed from these sections and look like this:
+We will start with the common scenario in which an error message is presented due to a user's lack of inputs. Start by removing both `len` from the `Dependent Variable` and also remove `supp` from the `Grouping Variable`. The variables should be removed from these sections and look like this:
 
 ![](tuts0105-debugging-an-analysis-move-vars.png){width="400"}
 
-Now, you will see an error message where the output previously appeared: ![](tuts0105-debugging-an-analysis-user-end-error-message.png){width="600"}
+Now, you will see an error message where the output previously appeared:
+
+![](tuts0105-debugging-an-analysis-user-end-error-message.png){width="600"}
 
 This error message tells us that the data passed through has a length of 0 because the user hasn’t selected any variables yet. It’s best practice to avoid showing user-error messages in these initial steps when the issue isn’t true user error, but simply missing required inputs. To prevent this, we’re going to add a short guard clause to our `ttest.b.R` file:
 
@@ -47,10 +49,11 @@ So now, if the user hasn’t selected both a `Dependent Variable` and a `Groupin
 For this next step we are going to show how to debug an analysis that has gone wrong using the dev mode. Lets change our `.run()` function in the `ttest.b.R` to produce an error:
 
 ```         
-ttestISClass <- R6Class("ttestISClass",
-    inherit=ttestISBase,
-    private=list(
-        .run=function() {
+ttestClass <- if (requireNamespace('jmvcore', quietly=TRUE)) R6::R6Class(
+    "ttestClass",
+    inherit = ttestBase,
+    private = list(
+        .run = function() {
 
             t.test(c(Inf, 3))  # <-- produces an error!
         })
