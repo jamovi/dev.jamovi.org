@@ -6,7 +6,7 @@ Hi, and welcome to [dev.jamovi.org](https://dev.jamovi.org), the developer hub f
 
 Here you will find resources that cover the development of analyses for jamovi (and R).
 
-There are forums available at [forum.jamovi.org](https://forum.jamovi.org), so if you have questions about developing modules for jamovi, or feedback on how we can improve the developer hub, we're keen to hear from you there.
+There are forums available at [forum.jamovi.org](https://forum.jamovi.org), so if you have questions about developing modules for jamovi, we're keen to hear from you there.
 
 contact \<at\> jamovi.org
 
@@ -15,6 +15,12 @@ For those interested in the jamovi platform, it is hosted on GitHub [here](https
 Tutorial: [Getting Started](tuts0101-getting-started.html)
 
 ## News
+
+### 31-12-2025
+
+The 2.7.16 version of jamovi introduces image sizing
+
+[Image sizing](api_image-sizing.html)
 
 ### 11-11-2025
 
