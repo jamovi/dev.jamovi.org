@@ -27,7 +27,7 @@ self$results$imageName$setSize2(500, 500, 100, 100)
 
 # or for backward compatibility (recommended!)
 
-if (is.null(self$results$imageName$setSize2)) {
+if (is.null(self$results$imageName[["setSize2"]])) {
     self$results$imageName$setSize(600, 600)
 } else {
     self$results$imageName$setSize2(500, 500, 100, 100)
