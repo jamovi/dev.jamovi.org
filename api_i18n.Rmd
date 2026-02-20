@@ -1,0 +1,105 @@
+---
+title: Translation of Modules
+---
+
+jamovi supports the translation of modules. Although R does provide a rudimentary translation system, it's unfortunately limited in several significant ways. Perhaps the most significant limitation is that an R process cannot change the language it is using 'on the fly'. As a result, jamovi has had to provide its own translation system.
+
+## Enabling translations
+
+By default, all strings in the .a.yaml, .r.yaml, and .u.yaml are available to be translated, and don't require any special treatment by module developers. As such, the main task for module developers in enabling translation in modules is to ensure strings used in .R source files can be translated accordingly. The most common strings that need to be translated typically error messages and warnings.
+
+Strings are marked as translateable using the `.()` function from jmvcore. In order to use this without the `jmvcore::` prefix (i.e. allowing the more terse `.('Too few samples')`, rather than having to write `jmvcore::.('Too few samples')`), it's necessary to include the relevant import in the modules NAMESPACE file as follows:
+
+```
+importFrom(jmvcore,.)
+```
+
+This done, it's simply a matter of wrapping strings that need to be translated in calls to `.()`. Wrapping strings with `.()` performs two roles, the first is to indicate to the `jamovi-compiler` or `jmvtools` that the surrounded string needs translating. This allows the compiler (or jmvtools) to extract the string and place it in a 'database' of strings to translate. The second role of the `.()` function is to perform the translation at runtime. The `.()` function looks up a database of translated strings at runtime, and if it finds one suitable for the present language, it will return that to the calling function.
+
+### Recommendations
+
+1. Translatable strings should not have trailing or leading spaces.
+
+(Translators might not understand why, and trim them off).
+
+```
+resids <- format(.('{}Residuals), ifelse(std, .('Standardized '), ''))
+```
+
+Good:
+
+```
+if (std) {
+    resids <- .('Standardized Residuals')
+} else {
+    resids <- .('Residuals')
+}
+```
+
+### Limitations
+
+The `.()` function requires access to the analysis object (i.e. the `self` in `self$results$...`). In order to access the current analysis the `.()` function, when called, looks for the variable `self` in the calling function. i.e.
+
+```
+# R6 Class
+.run=function() {
+    if (self$options$doStuff) {
+        message <- .('The fish was delish')
+    }
+}
+```
+
+In this case, the `.()` goes looking for a variable called `self` in the `.run()` function. As `.run()` is a member of the Analysis R6 class, there's a `self` object defined and it will make use of it.
+
+For the most part, this simply happens transparently and module developers don't have to worry about it. The exception is where the analysis calls auxiliary functions which are not members of the analysis R6 class. i.e. a utility function as follows:
+
+```
+# BAD
+
+makeSSString <- function(sstype) {
+    if (sstype == 1) {
+        return .('Type 1 Sum of Squares is not suitable for this data set')
+    }
+    NULL
+}
+
+# R6 Class
+.run=function() {
+    message <- makeSSString(sstype)
+}
+```
+
+In this case, `makeSSString()` has no `self` defined, and the call to `.()` will fail. The solution is to pass `self` into `makeSSString()` as follows:
+
+```
+# GOOD
+
+makeSSString <- function(sstype, self) {
+    if (sstype == 1) {
+        return .('Type 1 Sum of Squares is not suitable for this data set')
+    }
+    NULL
+}
+
+# R6 Class
+.run=function() {
+    message <- makeSSString(sstype, self)
+}
+```
+
+### Creating catalog.pot and .po files
+
+catalog.pot and language .po files can be created with:
+
+```
+jmvtools::i18nCreate('catalog')  # catalog.pot
+jmvtools::i18nCreate('de')       # de for german
+```
+
+and updated with:
+
+```
+jmvtools::i18nUpdate()
+```
+
+Having said that, the jamovi library is actually able to take care of this side of things for you. Reach out to us to participate.

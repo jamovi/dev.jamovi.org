@@ -62,6 +62,8 @@ navbar:
           href: api_actions.html
         - text: Image Sizing
           href: api_image-sizing.html
+        - text: Module Translation
+          href: api_i18n.html
     - text: "Misc"
       menu:
         - text: "Submitting to the jamovi Library"
