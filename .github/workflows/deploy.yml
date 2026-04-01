@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: Deploy to Bunny.net
-        uses: ayeressian/bunnycdn-storage-deploy@v2.4.5
+        uses: ayeressian/bunnycdn-storage-deploy@251c77f4b9e7e683ad00086de2bef5770c3386b2
         with:
           source: "dist"
           storageZoneName: "${{ secrets.BUNNY_STORAGE_ZONE }}"
