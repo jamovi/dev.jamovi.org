@@ -3,14 +3,24 @@ export function setupCopyButtons() {
   
   codeBlocks.forEach((block) => {
     if (block.querySelector('.code-copy-btn')) return;
-    (block as HTMLElement).style.position = 'relative';
+    if (block.parentElement?.classList.contains('code-block-wrapper')) return;
+
+    (block as HTMLElement).style.position = '';
 
     const copyButton = document.createElement('button');
     copyButton.className = 'code-copy-btn';
     copyButton.innerHTML = `<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="copy-icon"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg><svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="check-icon" style="display:none;"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
     copyButton.setAttribute('aria-label', 'Copy code to clipboard');
     
-    block.appendChild(copyButton);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'code-block-wrapper';
+    
+    // Move block inside wrapper
+    block.parentNode?.insertBefore(wrapper, block);
+    wrapper.appendChild(block);
+
+    // Append button to wrapper
+    wrapper.appendChild(copyButton);
 
     copyButton.addEventListener('click', async () => {
       const codeEl = block.querySelector('code');

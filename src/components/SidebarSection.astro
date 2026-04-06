@@ -7,13 +7,14 @@ interface Props {
   currentSection: string;
   items: { text: string; href: string }[];
   currentPath: string;
+  isFirstInSectionGroup?: boolean;
 }
 
-const { category, section, currentSection, items, currentPath } = Astro.props;
+const { category, section, currentSection, items, currentPath, isFirstInSectionGroup = false } = Astro.props;
 const isVisibleOnDesktop = section === currentSection;
 ---
 <div 
-  class={`sidebar-section active ${isVisibleOnDesktop ? 'desktop-visible' : 'desktop-hidden'}`} 
+  class={`sidebar-section active ${isVisibleOnDesktop ? 'desktop-visible' : 'desktop-hidden'} ${isFirstInSectionGroup ? 'first-in-section' : ''}`} 
   data-category={category}
   data-section={section}
 >
@@ -54,7 +55,7 @@ const isVisibleOnDesktop = section === currentSection;
     margin: 1.5rem -0.75rem 0.6rem -0.75rem;
   }
   .sidebar-section:first-child .section-header,
-  .desktop-visible:first-of-type .section-header {
+  .first-in-section .section-header {
     margin-top: 0;
   }
   .section-title {

@@ -21,15 +21,19 @@ const isMobileOnly = currentPath === '/' || currentPath === '';
   <MobileSectionSwitcher currentSection={currentSection} />
 
   <nav class="sidebar-nav">
-    {menu.map(section => (
-      <SidebarSection 
-        category={section.category}
-        section={section.section}
-        currentSection={currentSection}
-        items={section.items}
-        currentPath={currentPath}
-      />
-    ))}
+    {menu.map((section, index) => {
+      const isFirstInSectionGroup = menu.findIndex(s => s.section === section.section) === index;
+      return (
+        <SidebarSection 
+          category={section.category}
+          section={section.section}
+          currentSection={currentSection}
+          items={section.items}
+          currentPath={currentPath}
+          isFirstInSectionGroup={isFirstInSectionGroup}
+        />
+      );
+    })}
   </nav>
 </aside>
 
