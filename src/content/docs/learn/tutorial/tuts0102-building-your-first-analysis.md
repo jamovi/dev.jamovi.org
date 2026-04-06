@@ -46,7 +46,7 @@ This command generates five files for your analysis. While it may seem like a lo
 | :--- | :--- | :--- |
 | `ttest.a.yaml` | **Contract** | Defines the options (UI) and the "jas" (jamovi analysis spec). |
 | `ttest.r.yaml` | **Results** | Defines the "jrs" (jamovi results spec) and the layout of tables and plots. |
-| `ttest.u.yaml` | **UI** | Automatically generated file that handles the layout of the sidebar. You rarely need to touch this. |
+| `ttest.u.yaml` | **UI** | Automatically generated file that handles the layout of the sidebar. You can edit this file to create a custom, polished UI experience. |
 | `ttest.h.R` | **Header** | Automatically generated R code that bridges the UI to your logic. **Never edit this file.** |
 | `ttest.b.R` | **Body** | This is your workspace. This is where you write the actual R logic. |
 
@@ -67,6 +67,31 @@ version: "1.0.0"
 options:
     - name: data
       type: Data
+
+    - name: dep
+      title: Dependent Variable
+      type: Variable
+
+    - name: group
+      title: Grouping Variable
+      type: Variable
+
+    - name: alt
+      title: Hypothesis
+      type: List
+      options:
+        - name: notEqual
+          title: Not equal
+        - name: greater
+          title: Greater
+        - name: less
+          title: Less
+      default: notEqual
+
+    - name: varEq
+      title: Assume equal variances
+      type: Bool
+      default: true
 ...
 ```
 
