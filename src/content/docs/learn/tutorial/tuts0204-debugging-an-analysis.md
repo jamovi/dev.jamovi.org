@@ -15,7 +15,7 @@ By default, jamovi tries to run your analysis as soon as it's selected. If the u
 ### The Problem
 Try removing both `len` and `supp` from your analysis in jamovi.
 
-![Removing variables](../../../../assets/tuts0106-debugging-an-analysis-move-vars.png)
+![Removing variables](../../../../assets/tuts0204-debugging-an-analysis-move-vars.png)
 
 You will see an error message (like `length 0`) in the results panel. This isn't a "bug"—it's just that the analysis is trying to run without data. This creates a "flickering" or laggy feel for the user.
 
@@ -66,12 +66,12 @@ In jamovi, the default view hides complex technical details. To see more:
 1.  Click the **App Menu** (three dots in the top-right corner).
 2.  Toggle **Developer Mode** to **On**.
 
-![Toggling Dev Mode](../../../../assets/tuts0106-debugging-an-analysis-dev-mode.png)
+![Toggling Dev Mode](../../../../assets/tuts0204-debugging-an-analysis-dev-mode.png)
 
 ### Step 2: Inspect the Stack Trace
 With Dev Mode on, any R error will display a full stack trace. This allows you to trace the error back through your functions to find the bug.
 
-![Stack Trace example](../../../../assets/tuts0106-debugging-an-analysis-stack.png)
+![Stack Trace example](../../../../assets/tuts0204-debugging-an-analysis-stack.png)
 
 > [!TIP]
 > **Keep it on!** 
@@ -79,10 +79,10 @@ With Dev Mode on, any R error will display a full stack trace. This allows you t
 
 If there is an error in your code, jamovi will show an error message in the results panel:
 
-![error message](../../../../assets/tuts0106-debugging-an-analysis-error.png)
+![error message](../../../../assets/tuts0204-debugging-an-analysis-error.png)
 
 And for the user, it will look like this:
 
-![user end error message](../../../../assets/tuts0106-debugging-an-analysis-user-end-error-message.png)
+![user end error message](../../../../assets/tuts0204-debugging-an-analysis-user-end-error-message.png)
 
-**Next Step:** Now that you can troubleshoot your code, let's [add plots](/tutorial/tuts0107-adding-plots) to make your results even more insightful.
+**Next Step:** You've mastered the Intermediate tier! Now it's time to make your analyses shine by learning about plotting in **[Image State Performance](/tutorial/tuts0301-image-state-performance)**.
