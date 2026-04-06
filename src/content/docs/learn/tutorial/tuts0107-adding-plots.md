@@ -20,9 +20,8 @@ Plots are items in your results, so we need to add an `Image` entry to `jamovi/t
       renderFun: .plot
 ```
 
-> [!NOTE]
-> **The Dot Prefix:**
-> Notice the `renderFun: .plot`. In jamovi, the dot prefix indicates that the rendering function is a **private** method of your R6 class. This keeps your public API clean while allowing the jamovi framework to call the method internally.
+*   **width & height:** These set the *initial* dimensions of the plot in pixels. Because jamovi plots are vector graphics, the user can stretch and resize them later. These values simply define the default aspect ratio.
+*   **renderFun: .plot:** This critically links your YAML blueprint to your R code. It tells jamovi exactly which function to call to draw this image. You can name this whatever you like (e.g., `.renderMyPlot`), as long as it perfectly matches the function name you'll soon write in your R file.
 
 ## 2. Configure Dependencies
 
@@ -32,10 +31,11 @@ To use `ggplot2`, your module must declare it as a dependency in two files locat
     ```text
     Imports: jmvcore, R6, ggplot2
     ```
-2.  **`NAMESPACE`**: Add an import statement so the functions are available to your module.
+2.  **`NAMESPACE`**: Add an import statement for `ggplot2`:
     ```text
     import(ggplot2)
     ```
+    Unlike the previous tutorial where we explicitly had to type `stats::t.test()`, adding this import statement loads all of `ggplot2`'s functions directly into your module's memory. This means you can type clean code like `ggplot()` or `geom_point()` without having to attach the clunky `ggplot2::` prefix to every single command.
 
 ## 3. The Plotting Model: State vs. Render
 
@@ -56,19 +56,28 @@ ttestClass <- R6::R6Class("ttestClass",
     inherit = ttestBase,
     private = list(
         .run = function() {
-            # ... (existing calculation)
-
-            dep     <- self$options$dep
-            group   <- self$options$group
-            formula <- jmvcore::constructFormula(dep, group)
+            # -- 1. Existing Analysis & Table Logic --
+            formula <- jmvcore::constructFormula(self$options$dep, self$options$group)
             formula <- as.formula(formula)
 
+            results <- stats::t.test(formula, self$data, var.equal=self$options$varEq)
+
+            table <- self$results$ttest
+            table$setRow(rowNo=1, values=list(
+                var = self$options$dep,
+                t   = results$statistic,
+                df  = results$parameter,
+                p   = results$p.value
+            ))
+
+            # -- 2. NEW: Prepare Plot Data (State) --
+            # Calculate means and standard errors for our plot
             means <- aggregate(formula, self$data, mean)[, 2]
             ses   <- aggregate(formula, self$data, function(x) sd(x) / sqrt(length(x)))[, 2]
-
+            
             sel <- means - ses
             seu <- means + ses
-            levels <- base::levels(self$data[[group]])
+            levels <- base::levels(self$data[[self$options$group]])
 
             plotData <- data.frame(
                 level = levels,
@@ -77,6 +86,7 @@ ttestClass <- R6::R6Class("ttestClass",
                 seu   = seu
             )
 
+            # Save the data to the image state
             image <- self$results$plot
             image$setState(plotData)
         },
@@ -101,6 +111,10 @@ ttestClass <- R6::R6Class("ttestClass",
 )
 ```
 
+> [!NOTE]
+> **The Dot Prefix:**
+> Why did we name our function `.plot` instead of just `plot`? In jamovi, the dot prefix indicates that a method is **private** to your R6 class. You'll notice that both `.run` and `.plot` sit inside the `private = list(...)` block. This keeps your public API clean while allowing the jamovi framework to safely call these methods internally.
+
 ### Why return the plot object?
 
 *   **`return(p)` (Returning the Object)**: Unlike in an interactive R session where plots appear automatically, jamovi's rendering system expects your `.plot` function to return the `ggplot2` object (or a `base` R plot). jamovi then handles the printing to the appropriate graphics device.
@@ -121,4 +135,7 @@ And the result will look like this:
 > - **[Plot Themes](/tutorial/tuts0302-plot-themes):** Deep-dive into jamovi's color palettes and styling.
 > - **[Responsive Image Sizing](/tutorial/tuts0303-responsive-image-sizing):** Make your plots adapt to different container sizes.
 
-**Next Step:** Your basic analysis is complete! Now let's explore more advanced topics, starting with the **[Analysis Lifecycle](/tutorial/tuts0200-analysis-lifecycle)**.
+**Next Steps:** Congratulations, your basic analysis is now complete and fully functional! From here, you can dive into several different sections depending on your goals:
+- **[The Intermediate Series](/tutorial/tuts0200-analysis-lifecycle):** Ready to build dynamic tables that grow based on user input? Start here.
+- **[Advanced & Distribution](/tutorial/tuts0108-unit-testing):** Want to ensure your R logic is bulletproof and learn how to publish your module to the jamovi library? Start here.
+- **[UI Design](/ui/basic-design):** Want to customize checkboxes, layout targets, or advanced controls? Dive into the UI docs.
