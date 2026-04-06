@@ -4,12 +4,20 @@ title: "Getting Started"
 description: "Learn how to set up your environment and install your first jamovi module using jmvtools."
 ---
 
-Before we begin, analyses in jamovi are written in the **R programming language**. This tutorial assumes you have a basic understanding of R and some experience with R packages.
+## What Are We Building?
 
-In this guide, you will:
-1.  **Install** `jmvtools` for module development.
-2.  **Connect** `jmvtools` to your jamovi installation.
-3.  **Build and install** an example module from source.
+Throughout this "Getting Started" series, you are going to build a fully functional **Independent Samples T-Test** module from scratch. By the end of the next few pages, you will have created a beautiful, interactive analysis that includes a responsive UI, robust data handling, an APA-formatted table, and dynamic plots:
+
+![Final T-Test Module Result](../../../../assets/tuts0101-end-result.png)
+
+> [!IMPORTANT]
+> **Prerequisites**
+> 
+> To follow this tutorial and build the module, you will need:
+> - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/download.html) installed.
+> - **R**: You need [R installed](https://cloud.r-project.org/) on your system.
+> - **R knowledge**: Analyses in jamovi are written in the **R programming language**. This tutorial assumes you have a basic understanding of R logic.
+> - **An IDE**: We highly recommend using [RStudio](https://posit.co/download/rstudio-desktop/) (or VS Code) for writing your R code.
 
 ## 1. Install `jmvtools`
 
@@ -29,7 +37,7 @@ Once installed, verify that `jmvtools` can locate your jamovi application. Run:
 jmvtools::check()
 ```
 
-`jmvtools` automatically searches standard locations (the **source tree** or file system) such as:
+`jmvtools` automatically searches standard installation locations such as:
 *   **macOS:** `/Applications`
 *   **Linux:** `/usr/lib/jamovi`
 *   **Windows:** `C:\Program Files`
@@ -48,9 +56,9 @@ jmvtools::check()
 > options(jamovi_home='C:\\Path\\To\\Your\\jamovi')
 > ```
 
-## 3. Install your first Module
+## 3. Install an Example Module
 
-Now that your environment is ready, let's install the [Base R](https://github.com/jamovi/jmvbaseR) module. 
+Now that your environment is ready, let's test it by installing the [Base R](https://github.com/jamovi/jmvbaseR) module. 
 
 1.  **Download** the source code: [Download .zip](https://github.com/jamovi/jmvbaseR/archive/master.zip)
 2.  **Unzip** the directory and open the `jmvbaseR.Rproj` file in RStudio.
@@ -66,4 +74,6 @@ Switch to your open jamovi window. You should see a new **'Base R'** menu on the
 
 ![Base R menu in jamovi](../../../../assets/tuts0101-getting-started-baseR.png)
 
-The ability to update analyses directly from R is the core of the jamovi development workflow. In the next section, we'll see how making a change in R is immediately reflected in the jamovi UI. Let's [build your first analysis](/tutorial/tuts0102-building-your-first-analysis).
+The appearance of this menu proves that `jmvtools` successfully compiled the module's source code and injected it directly into your running jamovi instance. 
+
+With your environment perfectly configured, we are ready to move on to the fun part. Let's create a brand new module from scratch and **[build your first analysis](/tutorial/tuts0102-building-your-first-analysis)**.
