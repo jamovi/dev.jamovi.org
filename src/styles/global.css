@@ -379,19 +379,6 @@ html.dark .astro-code span {
   border: 1px solid var(--border-color);
 }
 
-/* Specific image width constraints (restored from legacy inline HTML widths) */
-.markdown-content img[src*="tuts0101-getting-started-baseR"] { max-width: min(100%, 551px); border: none; box-shadow: none; margin: 1.5rem 0; }
-.markdown-content img[src*="tuts0103-creating-an-analysis-menu"] { max-width: min(100%, 407px); }
-.markdown-content img[src*="tuts0103-creating-an-analysis-ui"] { max-width: min(100%, 400px); }
-.markdown-content img[src*="tuts0105-creating-rich-results-blank-table"] { max-width: min(100%, 509px); }
-.markdown-content img[src*="tuts0105-creating-rich-results-filled-table"] { max-width: min(100%, 509px); }
-.markdown-content img[src*="tuts0105-creating-rich-results-final-table"] { max-width: min(100%, 287px); }
-.markdown-content img[src*="tuts0105-debugging-an-analysis-move-vars"] { max-width: min(100%, 400px); }
-.markdown-content img[src*="tuts0105-debugging-an-analysis-user-end-error-message"] { max-width: min(100%, 600px); }
-.markdown-content img[src*="tuts0105-debugging-an-analysis-error"] { max-width: min(100%, 290px); }
-.markdown-content img[src*="tuts0105-debugging-an-analysis-dev-mode"] { max-width: min(100%, 294px); }
-.markdown-content img[src*="tuts0105-debugging-an-analysis-stack"] { max-width: min(100%, 356px); }
-.markdown-content img[src*="tuts0106-adding-plots-final"] { max-width: 441px; }
 
 /* Layout container */
 .layout-container {

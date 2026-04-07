@@ -30,7 +30,7 @@ In practice however, the number of rows in the table often isn't fixed. They may
 
 In the previous tutorial series, we created a t-test analysis. It allowed the user to specify a single dependent variable, and a single grouping variable. However, we could make this analysis more convenient by allowing people to specify *multiple* dependent variables. For example, a data set might contain the columns 'gender', 'height' and 'weight'. By allowing multiple dependent variables, the user could specify 'height' and 'weight' as the dependent variables, and 'gender' as the grouping variable. Our analysis could then perform multiple t-tests (one for each dependent variable). The resulting analysis might look something like this:
 
-![Jamovi screenshot](../../../../assets/tuts0201-dynamic-tables-final.png)
+![Jamovi screenshot](@assets/tuts0201-dynamic-tables-final.png)
 
 The first thing we need to do is change the dependent variable in the .a.yaml file, from `Variable` to `Variables`.
 
@@ -63,7 +63,7 @@ As we have changed the name and type of the `dep` variable, our t-test will no l
 
 Having performed these modifications, your t-test UI should look something like:
 
-![Jamovi screenshot](../../../../assets/tuts0201-dynamic-tables-ui.png)
+![Jamovi screenshot](@assets/tuts0201-dynamic-tables-ui.png)
 
 As can be seen, multiple dependent variables can now be specified.
 
@@ -93,7 +93,7 @@ The way we do this, is with what's called 'data-binding'. Data-binding is where 
 
 When bound in this way, the number of rows in the table always matches the number of variables specified by the user. Let's reinstall our module and see this in action:
 
-![Jamovi screenshot](../../../../assets/tuts0201-dynamic-tables-blank.png)
+![Jamovi screenshot](@assets/tuts0201-dynamic-tables-blank.png)
 
 As can be seen, our table grows and shrinks accordingly. But we can do one better. The first column should contain the variable name, and although we can add this using the Table's `setRow()` function, there is a better way to do this. We can specify the `content` of the column in the .r.yaml file.
 
@@ -114,7 +114,7 @@ items:
 
 `$key` is a special value which maps to the row's key. Make this change, and reinstall the module with `jmvtools::install()`. As can be seen the first column is now filled in appropriately.
 
-![Jamovi screenshot](../../../../assets/tuts0201-dynamic-tables-bound.png)
+![Jamovi screenshot](@assets/tuts0201-dynamic-tables-bound.png)
 
 Data-binding is nice, because it often leads to much simpler code. The .yaml files are able to take care of a lot of aspects of the results objects, and allows the R code (in the .b.R files) to be much simpler, and focused on performing the calculations. In computer science, this is called *[separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns)*.
 
@@ -148,7 +148,7 @@ We can now reinstall the module using `jmvtools::install()`.
 
 You should have something like the following:
 
-![Jamovi screenshot](../../../../assets/tuts0201-dynamic-tables-final.png)
+![Jamovi screenshot](@assets/tuts0201-dynamic-tables-final.png)
 
 **Next Step:** YAML data-binding is powerful, but sometimes you need more control. Let's explore [Advanced Table Techniques](/tutorial/tuts0201a-advanced-table-techniques).
 

@@ -20,7 +20,7 @@ To create plots that scale intelligently, you must distinguish between space tha
 > The relationship between these two is:
 > **Total Dimension = M + B**
 
-![Fixed vs Stretchable](../../../../assets/api_image-sizing-plot-a-annotated.png)
+![Fixed vs Stretchable](@assets/api_image-sizing-plot-a-annotated.png)
 
 In the image above:
 - The **blue** areas are **Fixed**. They take up the same number of pixels regardless of the total image size.

@@ -85,6 +85,6 @@ SuperAwesome::ttest(data=ToothGrowth, dep='len', group='supp')
 
 ### Results
 
-![t-test results](../../../../assets/tuts0104-implementing-an-analysis.png)
+![t-test results](@assets/tuts0104-implementing-an-analysis.png)
 
 **Next Step:** The raw text output is functional, but jamovi users expect beautiful, interactive tables. Let's understand [how jamovi results work](/tutorial/tuts0104-results-mental-model).

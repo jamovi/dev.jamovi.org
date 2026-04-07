@@ -126,7 +126,7 @@ Run `jmvtools::install()` in your R console. Open jamovi, select your analysis, 
 
 And the result will look like this:
 
-![final plot](../../../../assets/tuts0107-adding-plots-final.png)
+![final plot | 441](@assets/tuts0107-adding-plots-final.png)
 
 > [!TIP]
 > **Going Further:**

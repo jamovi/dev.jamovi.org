@@ -33,7 +33,7 @@ As we've seen earlier in this tutorial series with our t-test example, each opti
 
 Let's take a look at UI, and the .u.yaml file which is responsible for it:
 
-![Jamovi screenshot](../../../../assets/ui-basic-design.png)
+![Jamovi screenshot](@assets/ui-basic-design.png)
 
 ```yaml
 title: Independent Samples T-Test

@@ -8,7 +8,7 @@ description: "Learn how to set up your environment and install your first jamovi
 
 Throughout this "Getting Started" series, you are going to build a fully functional **Independent Samples T-Test** module from scratch. By the end of the next few pages, you will have created a beautiful, interactive analysis that includes a responsive UI, robust data handling, an APA-formatted table, and dynamic plots:
 
-![Final T-Test Module Result](../../../../assets/tuts0101-end-result.png)
+![Final T-Test Module Result](@assets/tuts0101-end-result.png)
 
 > [!IMPORTANT]
 > **Prerequisites**
@@ -72,7 +72,7 @@ jmvtools::install()
 ### What happens next?
 Switch to your open jamovi window. You should see a new **'Base R'** menu on the ribbon. 
 
-![Base R menu in jamovi](../../../../assets/tuts0101-getting-started-baseR.png)
+![Base R menu in jamovi | 551 | no-border](@assets/tuts0101-getting-started-baseR.png)
 
 The appearance of this menu proves that `jmvtools` successfully compiled the module's source code and injected it directly into your running jamovi instance. 
 
