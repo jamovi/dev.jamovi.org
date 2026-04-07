@@ -28,7 +28,7 @@ property     | function
 -------------|-----------------------------------------
 name         | the name of the analysis. camel case. underscores are discouraged, dots are verboten.
 title        | the title of the analysis in title case.
-version      | the version of the analysis. should make use of [semantic versioning](http://semver.org).
+version      | the version of the analysis. should make use of [semantic versioning](https://semver.org/).
 jas          | the `jamovi analysis spec`. should be '1.0'. must be wrapped in quotes to prevent it being interpretted as a number.
 menuGroup    | the name of the top level menu where the analysis should appear.
 menuSubgroup | (optional) places the menu entry under a subheading.

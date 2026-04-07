@@ -33,7 +33,7 @@ For example, a file built on an Intel Mac will not work on a Windows machine or 
 
 ### Submission Checklist:
 -   **Documentation:** Ensure your analyses have clear titles and descriptions.
--   **Stability:** Verify that your module doesn't crash on empty datasets (using [Input Checks](/tutorial/tuts0106-debugging-an-analysis)).
+-   **Stability:** Verify that your module doesn't crash on empty datasets (using [Input Checks](/tutorial/tuts0204-debugging-an-analysis)).
 -   **Metadata:** Check your `DESCRIPTION` file for a summary and author info.
 -   **Clean Repository:** Do **not** commit **build artifacts** (files generated during the build process, like `build/`, `dist/`, or `.jmo` files) to your Git repository. Use a `.gitignore` file to keep your source code clean:
 

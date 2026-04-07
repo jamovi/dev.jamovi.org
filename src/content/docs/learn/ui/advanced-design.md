@@ -180,7 +180,7 @@ Use multiple CheckBox's linked to the different sub-options.
 
 ### `Variable`
 
-**You can use** : [`VariablesListBox`](ui-variableslistbox)
+**You can use** : `VariablesListBox`
 
 ```yaml
 - type: VariableListBox
@@ -204,7 +204,7 @@ Use multiple CheckBox's linked to the different sub-options.
 
 ### `Variables`
 
-**You can use** : [`VariablesListBox`](ui-variableslistbox)
+**You can use** : `VariablesListBox`
 
 ```yaml
 - type: VariableListBox
@@ -240,7 +240,7 @@ Use multiple CheckBox's linked to the different sub-options.
 
 ### `Pairs`
 
-**You can use** : [`VariablesListBox`](ui-variableslistbox)
+**You can use** : `VariablesListBox`
 
 ```yaml
   - type: VariablesListBox

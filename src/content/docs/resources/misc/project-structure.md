@@ -52,7 +52,7 @@ after building each of these subprojects, the results of the builds are assemble
 
 ## `bin/`
 
-the electron executable is the entry point for jamovi. it represents a combined web browser interface and nodejs interpreter. in constructing the `bin/` folder, its contents are simply taken from electron release archives (available from https://electron.atom.io), with three exceptions:
+the electron executable is the entry point for jamovi. it represents a combined web browser interface and nodejs interpreter. in constructing the `bin/` folder, its contents are simply taken from electron release archives (available from https://www.electronjs.org/), with three exceptions:
 
 - the `jamovi` executable
 - resources/default_app.asar

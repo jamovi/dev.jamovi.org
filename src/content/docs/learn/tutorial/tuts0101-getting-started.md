@@ -14,7 +14,7 @@ Throughout this "Getting Started" series, you are going to build a fully functio
 > **Prerequisites**
 > 
 > To follow this tutorial and build the module, you will need:
-> - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/download.html) installed.
+> - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/) installed.
 > - **R**: You need [R installed](https://cloud.r-project.org/) on your system.
 > - **R knowledge**: Analyses in jamovi are written in the **R programming language**. This tutorial assumes you have a basic understanding of R logic.
 > - **An IDE**: We highly recommend using [RStudio](https://posit.co/download/rstudio-desktop/) (or VS Code) for writing your R code.
@@ -60,7 +60,7 @@ jmvtools::check()
 
 Now that your environment is ready, let's test it by installing the [Base R](https://github.com/jamovi/jmvbaseR) module. 
 
-1.  **Download** the source code: [Download .zip](https://github.com/jamovi/jmvbaseR/archive/master.zip)
+1.  **Download** the source code: [Download .zip](https://codeload.github.com/jamovi/jmvbaseR/zip/refs/heads/master)
 2.  **Unzip** the directory and open the `jmvbaseR.Rproj` file in RStudio.
 3.  **Start jamovi** (ensure it's running before the next step).
 4.  **Install** the module by running:
