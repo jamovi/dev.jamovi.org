@@ -1,0 +1,47 @@
+---
+interface Props {
+  currentSection: string;
+}
+
+const { currentSection } = Astro.props;
+---
+<nav class="mobile-section-switcher mobile-only">
+  <button class={`mobile-section-tab ${currentSection === 'learn' ? 'active' : ''}`} data-section-tab="learn">Learn</button>
+  <button class={`mobile-section-tab ${currentSection === 'reference' ? 'active' : ''}`} data-section-tab="reference">Reference</button>
+  <button class={`mobile-section-tab ${currentSection === 'resources' ? 'active' : ''}`} data-section-tab="resources">Resources</button>
+</nav>
+
+<style>
+  .mobile-section-switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.25rem;
+    padding: 1.5rem 1rem 1.25rem;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  .mobile-section-tab {
+    display: block;
+    flex: 1;
+    text-align: center;
+    padding: 0.6rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .mobile-section-tab.active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+  }
+  @media (min-width: 769px) {
+    .mobile-section-switcher {
+      display: none;
+    }
+  }
+</style>

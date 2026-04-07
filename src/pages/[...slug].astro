@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map(entry => {
+    // Strip the top-level section folder (learn/, reference/, resources/) from the slug
+    // to keep original URLs like /tutorial/..., /api/..., /ui/..., /misc/...
+    const slug = entry.id.replace(/^(learn|reference|resources)\//, '');
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const section = entry.id.split('/')[0];
+---
+
+<BaseLayout frontmatter={entry.data} headings={headings} section={section}>
+  <Content />
+</BaseLayout>

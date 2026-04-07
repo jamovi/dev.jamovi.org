@@ -1,0 +1,310 @@
+---
+interface Props {
+  variant?: 'box' | 'icon' | 'none';
+  includeDialog?: boolean;
+}
+
+const { variant = 'box', includeDialog = false } = Astro.props;
+---
+
+{variant !== 'none' && (
+  <div class={`search-wrapper variant-${variant}`}>
+    <button class="search-trigger" aria-label="Search documentation" title="Search documentation (/)">
+      <span class="search-trigger-content">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="search-placeholder">Search</span>
+      </span>
+      <span class="search-shortcut">
+        <kbd>/</kbd>
+      </span>
+    </button>
+  </div>
+)}
+
+{includeDialog && (
+<dialog id="search-dialog" class="search-dialog">
+  <div class="search-dialog-inner">
+    <div class="search-header">
+      <form class="search-form">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon-active">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          id="search-input" 
+          class="search-input" 
+          placeholder="Search docs..." 
+          aria-label="Search documentation"
+          autocomplete="off"
+        />
+        <button type="button" id="search-close" class="search-close" aria-label="Close search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
+    
+    <div id="search-results" class="search-results">
+      <div class="search-empty-state">
+        <p>Type to start searching...</p>
+      </div>
+    </div>
+    
+    <div class="search-footer">
+      <div class="search-commands">
+        <span class="command"><kbd>↓</kbd><kbd>↑</kbd> to navigate</span>
+        <span class="command"><kbd>Enter</kbd> to select</span>
+        <span class="command"><kbd>ESC</kbd> to close</span>
+      </div>
+    </div>
+  </div>
+</dialog>
+)}
+
+<script>
+  import { setupSearch } from '../scripts/search';
+  document.addEventListener('astro:page-load', setupSearch);
+</script>
+
+<style is:global>
+  .search-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .search-wrapper.variant-icon {
+    width: auto;
+  }
+
+  .search-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.45rem 0.75rem;
+    background-color: var(--code-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .search-trigger:hover {
+    background-color: var(--bg-color-alt);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+  }
+
+  .search-trigger-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .search-shortcut {
+    display: flex;
+    gap: 0.2rem;
+    opacity: 0.7;
+  }
+
+  .search-shortcut kbd {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.1rem 0.3rem;
+    font-family: inherit;
+    font-size: 0.75rem;
+  }
+
+  .variant-icon .search-placeholder,
+  .variant-icon .search-shortcut {
+    display: none;
+  }
+  .variant-icon .search-trigger {
+    width: auto;
+    background: transparent;
+    border-color: transparent;
+    padding: 0.5rem;
+  }
+  .variant-icon .search-trigger:hover {
+    background-color: rgba(148, 163, 184, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    .variant-box { display: none !important; }
+    .variant-icon { 
+      display: flex !important; 
+    }
+  }
+  @media (min-width: 769px) {
+    .variant-icon { display: none !important; }
+  }
+
+  /* Dialog Styles */
+  .search-dialog {
+    width: 100%;
+    max-width: 600px;
+    margin: 10vh auto auto;
+    padding: 0;
+    background: transparent;
+    border: none;
+    overflow: visible;
+    z-index: 9999;
+  }
+
+  .search-dialog::backdrop {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+  }
+
+  .search-dialog-inner {
+    background-color: var(--bg-color-alt);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow: hidden;
+  }
+
+  .search-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .search-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    outline: none;
+    font-family: inherit;
+  }
+
+  .search-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-results {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 1rem;
+    min-height: 100px;
+  }
+
+  .search-result-list {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .search-result-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.15rem 1.4rem;
+    border-radius: 12px;
+    text-decoration: none !important;
+    background-color: var(--card-bg, #ffffff);
+    color: var(--text-color);
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  }
+
+  .search-result-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .search-result-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--primary-color);
+  }
+
+  .search-result-excerpt {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .search-result-excerpt mark {
+    background: rgba(59, 130, 246, 0.12);
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .search-footer {
+    padding: 0.75rem 1.25rem;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-color-alt);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .search-commands {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .command kbd {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.1rem 0.3rem;
+    margin-right: 0.25rem;
+    font-family: inherit;
+  }
+
+  @media (max-width: 768px) {
+    .search-dialog {
+      margin: 0;
+      max-width: 100%;
+      height: 100vh;
+      max-height: 100vh;
+    }
+    .search-dialog-inner {
+      border-radius: 0;
+      border: none;
+      height: 100vh;
+      max-height: 100vh;
+    }
+  }
+</style>

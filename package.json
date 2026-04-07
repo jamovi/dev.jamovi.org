@@ -1,0 +1,25 @@
+{
+  "name": "dev.jamovi.org",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "dev:search": "npx pagefind --site dist --output-path public/pagefind",
+    "dev:all": "npm run build && concurrently \"npm run dev\" \"npm run dev:search\"",
+    "start": "astro dev",
+    "build": "astro build && npx pagefind --site dist --root-selector body",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
+    "astro": "^6.0.2",
+    "remark-github-alerts": "^0.1.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "concurrently": "^9.2.1",
+    "pagefind": "^1.4.0",
+    "typescript": "^5.9.3"
+  }
+}

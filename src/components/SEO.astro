@@ -1,0 +1,89 @@
+---
+import { getSectionFromPath } from '../utils/navigation';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: URL;
+  type?: string;
+  frontmatter?: any;
+}
+
+const { 
+  title: propTitle, 
+  description: propDescription, 
+  image = '/assets/header-logo.svg', 
+  canonicalURL: propCanonical,
+  type = 'website',
+  frontmatter
+} = Astro.props;
+
+const siteTitle = "dev.jamovi.org";
+const pageTitle = frontmatter?.title || propTitle || siteTitle;
+const description = frontmatter?.description || propDescription || "Documentation for jamovi developers. Learn how to create modules, analyses, and rich results for jamovi.";
+const canonicalURL = frontmatter?.canonicalURL ? new URL(frontmatter.canonicalURL) : (propCanonical || new URL(Astro.url.pathname, Astro.site));
+const keywords = frontmatter?.keywords || [];
+
+const section = getSectionFromPath(Astro.url.pathname);
+
+// Map sections to specific OG images if available in the future
+const ogImage = new URL(frontmatter?.ogImage || image, Astro.site);
+
+// JSON-LD
+const articleSchema = type === 'article' ? {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": pageTitle,
+  "description": description,
+  "image": ogImage,
+  "author": {
+    "@type": "Organization",
+    "name": "jamovi"
+  }
+} : null;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": Astro.site
+    },
+    section ? {
+      "@type": "ListItem",
+      "position": 2,
+      "name": section.charAt(0).toUpperCase() + section.slice(1),
+      "item": new URL(`/${section}`, Astro.site)
+    } : null
+  ].filter(Boolean)
+};
+---
+
+<!-- Primary Meta Tags -->
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+{keywords.length > 0 && <meta name="keywords" content={keywords.join(', ')} />}
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={pageTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbSchema)} />
+{articleSchema && <script type="application/ld+json" is:inline set:html={JSON.stringify(articleSchema)} />}

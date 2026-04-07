@@ -1,0 +1,24 @@
+---
+interface Props {
+  headings: { depth: number; slug: string; text: string }[];
+}
+
+const { headings } = Astro.props;
+const toc = headings.filter((h) => h.depth === 2);
+---
+<aside class={`toc-sidebar ${toc.length === 0 ? 'empty' : ''}`}>
+  {toc.length > 0 && (
+    <nav aria-label="Table of contents">
+      <h2 class="toc-title">On this page</h2>
+      <ul class="toc-list">
+        {toc.map((heading) => (
+          <li>
+            <a href={`#${heading.slug}`} class={`toc-link depth-${heading.depth}`}>
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )}
+</aside>

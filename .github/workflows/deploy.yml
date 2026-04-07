@@ -1,0 +1,37 @@
+name: Deploy to Bunny.net
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Deploy to Bunny.net
+        uses: ayeressian/bunnycdn-storage-deploy@251c77f4b9e7e683ad00086de2bef5770c3386b2
+        with:
+          source: "dist"
+          storageZoneName: "${{ secrets.BUNNY_STORAGE_ZONE }}"
+          storagePassword: "${{ secrets.BUNNY_STORAGE_PASSWORD }}"
+          accessKey: "${{ secrets.BUNNY_API_KEY }}"
+          pullZoneId: "${{ secrets.BUNNY_PULL_ZONE_ID }}"
+          upload: "true"
+          remove: "true"
+          purgePullZone: "true"
