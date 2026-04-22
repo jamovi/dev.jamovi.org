@@ -10,6 +10,7 @@ export const menu = [
       { text: '4 - The jamovi Results Model', href: '/tutorial/tuts0104-results-mental-model' },
       { text: '5 - Creating Rich Results', href: '/tutorial/tuts0105-creating-rich-results' },
       { text: '6 - Adding Plots', href: '/tutorial/tuts0106-adding-plots' },
+      { text: '7 - Summary & Next Steps', href: '/tutorial/tuts0107-getting-started-summary' },
     ]
   },
   {
@@ -40,7 +41,6 @@ export const menu = [
       { text: '1 - Unit Testing your Analysis', href: '/tutorial/tuts0108-unit-testing' },
       { text: '2 - Additional Notes', href: '/tutorial/tuts0110-additional-notes' },
       { text: '3 - Distributing Modules', href: '/tutorial/tuts0109-distributing-modules' },
-      { text: '4 - Summary & Next Steps', href: '/tutorial/tuts0111-summary' },
     ]
   },
   {

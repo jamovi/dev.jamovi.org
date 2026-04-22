@@ -28,6 +28,7 @@ export default defineConfig({
     '/tutorial/tuts0105-debugging-an-analysis': '/tutorial/tuts0204-debugging-an-analysis',
     '/tutorial/tuts0107-adding-plots': '/tutorial/tuts0106-adding-plots',
     '/tutorial/tuts0107-distributing-modules': '/tutorial/tuts0109-distributing-modules',
+    '/tutorial/tuts0111-summary': '/tutorial/tuts0107-getting-started-summary',
     '/tutorial/tuts0108-additional-notes': '/tutorial/tuts0110-additional-notes',
     '/tuts0201-dynamic-tables': '/tutorial/tuts0201-dynamic-tables',
     '/tuts0201-data-binding': '/tutorial/tuts0201-dynamic-tables',
