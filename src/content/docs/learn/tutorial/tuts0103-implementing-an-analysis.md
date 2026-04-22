@@ -71,7 +71,7 @@ jmvtools::install()
 
 ### Results in jamovi
 
-![t-test results](@assets/tuts0104-implementing-an-analysis.png)
+![t-test results](@assets/learn/tutorial/implementing-analysis-scaffold.png)
 
 ### Test in R
 Since jamovi modules are R packages, you can test them in your R console using `devtools`:
@@ -89,6 +89,6 @@ SuperAwesome::ttest(data=ToothGrowth, dep='len', group='supp')
 
 ### Results in R
 
-![t-test results](@assets/tuts0104-implementing-an-analysis-R-result.png)
+![t-test results](@assets/learn/tutorial/implementing-analysis-r-output.png)
 
 **Next Step:** The raw text output works, but before we build richer results, let's protect it from crashing on empty inputs: **[Input Checks](/tutorial/tuts0104-input-checks)**.

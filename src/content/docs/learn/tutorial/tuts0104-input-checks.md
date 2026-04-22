@@ -12,7 +12,7 @@ By default, jamovi runs your analysis as soon as it's opened. If the user hasn't
 
 Try removing `len` and `supp` from your analysis in jamovi. You'll see a generic error message in the results panel:
 
-![Error message](@assets/tuts0204-debugging-an-analysis-error.png)
+![Error message](@assets/learn/tutorial/input-checks-error.png)
 
 This isn't technically a bug — it just means the analysis ran before the user was ready. 
 
@@ -24,7 +24,7 @@ This isn't technically a bug — it just means the analysis ran before the user 
 > 1.  Click the **App Menu** (three dots in the top-right corner).
 > 2.  Toggle **Developer Mode** to **On**.
 >
-> ![Toggling Dev Mode](@assets/tuts0204-dev-mode.png)
+> ![Toggling Dev Mode](@assets/learn/tutorial/input-checks-dev-mode.png)
 >
 > With Developer Mode enabled, you'll see that the error is `length 0`, occurring at the `as.formula()` call because it received an empty string.
 

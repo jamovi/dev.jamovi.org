@@ -7,9 +7,9 @@ Analyses can provide the user with notices that are displayed within the results
 
 See the following examples:
 
-![Jamovi screenshot](@assets/api_notices_1.png)
+![Jamovi screenshot](@assets/reference/api/notices-example-1.png)
 
-![Jamovi screenshot](@assets/api_notices_2.png)
+![Jamovi screenshot](@assets/reference/api/notices-example-2.png)
 
 
 Notices can be constructed as per:

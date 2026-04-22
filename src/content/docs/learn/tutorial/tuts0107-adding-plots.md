@@ -131,6 +131,6 @@ Run `jmvtools::install()` in your R console. Open jamovi, select your analysis, 
 
 And the result will look like this:
 
-![final plot | 441](@assets/tuts0107-adding-plots-final.png)
+![final plot | 441](@assets/learn/tutorial/plots-final.png)
 
 **Next Step:** Wrap up your first analysis and explore where to go next in the **[Getting Started Summary](/tutorial/tuts0108-getting-started-summary)**.

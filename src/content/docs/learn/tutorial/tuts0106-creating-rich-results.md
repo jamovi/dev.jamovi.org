@@ -54,7 +54,7 @@ items:
 
 If you reinstall your module right now (`jmvtools::install()`), jamovi reads your results definition and generates the new table UI below your existing text output. However, because our R code isn't filling the table yet, it will be completely blank:
 
-![empty table | 509](@assets/tuts0105-creating-rich-results-blank-table.png)
+![empty table | 509](@assets/learn/tutorial/rich-results-blank-table.png)
 
 ## 2. Populating the Table
 
@@ -98,7 +98,7 @@ Update your `.run()` function to match the complete implementation below. Notice
 
 Now, reinstall your module with `jmvtools::install()`. Thanks to the new logic, your beautiful, formatted table is seamlessly populated in jamovi right below your raw text:
 
-![final table | 509](@assets/tuts0105-creating-rich-results-filled-table.png)
+![final table | 509](@assets/learn/tutorial/rich-results-filled-table.png)
 
 ## 3. Cleaning Up
 
@@ -110,6 +110,6 @@ As a final cleanup step:
 
 If you reinstall your module one last time, you'll have a pristine, professional results panel:
 
-![final table | 287](@assets/tuts0105-creating-rich-results-final-table.png)
+![final table | 287](@assets/learn/tutorial/rich-results-final-table.png)
 
 **Next Step:** Now that your analysis produces rich results, let's build the visual centerpiece by **[Adding Plots](/tutorial/tuts0107-adding-plots)**.

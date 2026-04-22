@@ -126,8 +126,8 @@ jmvtools::install()
 
 In jamovi, you will now see the **SuperAwesome** menu with your **Independent Samples T-Test**:
 
-![jamovi analysis menu | 407](@assets/tuts0103-creating-an-analysis-menu.png)
+![jamovi analysis menu | 407](@assets/learn/tutorial/implementing-analysis-menu.png)
 
-![Independent Samples T-Test UI | 400](@assets/tuts0103-creating-an-analysis-ui.png)
+![Independent Samples T-Test UI | 400](@assets/learn/tutorial/implementing-analysis-ui.png)
 
 **Next Step:** Your analysis has a beautiful UI, but it doesn't perform any calculations yet. Let's [implement the R logic](/tutorial/tuts0103-implementing-an-analysis).
