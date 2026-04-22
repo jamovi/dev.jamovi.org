@@ -12,14 +12,17 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/sitemap": "^3.7.2",
     "astro": "^6.0.2",
     "remark-github-alerts": "^0.1.1"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.8",
+    "@astrojs/check": "^0.9.2",
     "concurrently": "^9.2.1",
-    "pagefind": "^1.4.0",
+    "pagefind": "^1.5.2",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "yaml": "^2.8.3"
   }
 }
