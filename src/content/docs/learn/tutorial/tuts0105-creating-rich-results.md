@@ -107,4 +107,4 @@ If you reinstall your module one last time, you'll have a pristine, professional
 
 ![final table | 287](@assets/tuts0105-creating-rich-results-final-table.png)
 
-**Next Step:** Now that your analysis produces rich results, let's build the visual centerpiece by **[Adding Plots](/tutorial/tuts0107-adding-plots)**.
+**Next Step:** Now that your analysis produces rich results, let's build the visual centerpiece by **[Adding Plots](/tutorial/tuts0106-adding-plots)**.

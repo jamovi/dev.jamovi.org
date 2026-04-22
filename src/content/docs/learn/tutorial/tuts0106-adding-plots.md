@@ -126,7 +126,7 @@ Run `jmvtools::install()` in your R console. Open jamovi, select your analysis, 
 
 And the result will look like this:
 
-![final plot | 441](@assets/tuts0107-adding-plots-final.png)
+![final plot | 441](@assets/tuts0106-adding-plots-final.png)
 
 **Next Steps:** Congratulations, your basic analysis is now complete and fully functional! From here, you can dive into several different sections depending on your goals:
 - **[Advanced Plotting](/tutorial/tuts0301-image-state-performance):** Learn to optimize performance, customize themes, and make plots responsive.

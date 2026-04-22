@@ -9,7 +9,7 @@ export const menu = [
       { text: '3 - Implementing an Analysis', href: '/tutorial/tuts0103-implementing-an-analysis' },
       { text: '4 - The jamovi Results Model', href: '/tutorial/tuts0104-results-mental-model' },
       { text: '5 - Creating Rich Results', href: '/tutorial/tuts0105-creating-rich-results' },
-      { text: '6 - Adding Plots', href: '/tutorial/tuts0107-adding-plots' },
+      { text: '6 - Adding Plots', href: '/tutorial/tuts0106-adding-plots' },
     ]
   },
   {
