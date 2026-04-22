@@ -128,14 +128,8 @@ And the result will look like this:
 
 ![final plot | 441](@assets/tuts0107-adding-plots-final.png)
 
-> [!TIP]
-> **Going Further:**
-> You've just created your first plot! When you're ready for more advanced techniques, check out:
-> - **[Image State Performance](/tutorial/tuts0301-image-state-performance):** Learn how to optimize plots for large datasets.
-> - **[Plot Themes](/tutorial/tuts0302-plot-themes):** Deep-dive into jamovi's color palettes and styling.
-> - **[Responsive Image Sizing](/tutorial/tuts0303-responsive-image-sizing):** Make your plots adapt to different container sizes.
-
 **Next Steps:** Congratulations, your basic analysis is now complete and fully functional! From here, you can dive into several different sections depending on your goals:
+- **[Advanced Plotting](/tutorial/tuts0301-image-state-performance):** Learn to optimize performance, customize themes, and make plots responsive.
 - **[The Intermediate Series](/tutorial/tuts0200-analysis-lifecycle):** Ready to build dynamic tables that grow based on user input? Start here.
 - **[Advanced & Distribution](/tutorial/tuts0108-unit-testing):** Want to ensure your R logic is bulletproof and learn how to publish your module to the jamovi library? Start here.
 - **[UI Design](/ui/basic-design):** Want to customize checkboxes, layout targets, or advanced controls? Dive into the UI docs.
