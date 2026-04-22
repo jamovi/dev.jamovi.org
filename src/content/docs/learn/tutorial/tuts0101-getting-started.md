@@ -4,20 +4,21 @@ title: "Getting Started"
 description: "Learn how to set up your environment and install your first jamovi module using jmvtools."
 ---
 
-## What Are We Building?
-
-Throughout this "Getting Started" series, you are going to build a fully functional **Independent Samples T-Test** module from scratch. By the end of the next few pages, you will have created a beautiful, interactive analysis that includes a responsive UI, robust data handling, an APA-formatted table, and dynamic plots:
-
-![Final T-Test Module Result](@assets/tuts0101-end-result.png)
-
 > [!IMPORTANT]
-> **Prerequisites**
+> ### Prerequisites
 > 
 > To follow this tutorial and build the module, you will need:
 > - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/) installed.
 > - **R**: You need [R installed](https://cloud.r-project.org/) on your system.
 > - **R knowledge**: Analyses in jamovi are written in the **R programming language**. This tutorial assumes you have a basic understanding of R logic.
-> - **An IDE**: We highly recommend using [RStudio](https://posit.co/download/rstudio-desktop/) (or VS Code) for writing your R code.
+> - **An IDE**: We highly recommend using an IDE such as [RStudio](https://posit.co/download/rstudio-desktop/) or [VS Code](https://code.visualstudio.com/) for writing your R code.
+
+
+## What Are We Building?
+
+Throughout this "Getting Started" series, you are going to build a fully functional **Independent Samples T-Test** module from scratch. By the end of the next few pages, you will have created a beautiful, interactive analysis that includes a responsive UI, robust data handling, an APA-formatted table, and dynamic plots:
+
+![Final T-Test Module Result](@assets/tuts0101-end-result.png)
 
 ## 1. Install `jmvtools`
 

@@ -69,6 +69,10 @@ jmvtools::install()
 2.  Select **SuperAwesome -> Independent Samples T-Test**.
 3.  Assign `len` to **Dependent Variable** and `supp` to **Grouping Variable**.
 
+### Results in jamovi
+
+![t-test results](@assets/tuts0104-implementing-an-analysis.png)
+
 ### Test in R
 Since jamovi modules are R packages, you can test them in your R console using `devtools`:
 
@@ -83,8 +87,8 @@ data(ToothGrowth)
 SuperAwesome::ttest(data=ToothGrowth, dep='len', group='supp')
 ```
 
-### Results
+### Results in R
 
-![t-test results](@assets/tuts0104-implementing-an-analysis.png)
+![t-test results](@assets/tuts0104-implementing-an-analysis-R-result.png)
 
 **Next Step:** The raw text output is functional, but jamovi users expect beautiful, interactive tables. Let's understand [how jamovi results work](/tutorial/tuts0104-results-mental-model).
