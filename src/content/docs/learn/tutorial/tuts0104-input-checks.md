@@ -10,13 +10,9 @@ Your analysis now works — but try removing the variables from the inputs in ja
 
 By default, jamovi runs your analysis as soon as it's opened. If the user hasn't provided the required variables yet, R will throw an error while trying to construct the formula.
 
-Try removing `len` and `supp` from your analysis in jamovi:
+Try removing `len` and `supp` from your analysis in jamovi. You'll see a generic error message in the results panel:
 
-![Removing variables | 400](@assets/tuts0204-debugging-an-analysis-move-vars.png)
-
-You'll see a generic error message in the results panel:
-
-![Error message | 400](@assets/tuts0204-input-check-result-error.png)
+![Error message](@assets/tuts0204-debugging-an-analysis-error.png)
 
 This isn't technically a bug — it just means the analysis ran before the user was ready. 
 
