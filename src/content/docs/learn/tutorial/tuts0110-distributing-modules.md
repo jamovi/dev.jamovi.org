@@ -33,7 +33,7 @@ For example, a file built on an Intel Mac will not work on a Windows machine or 
 
 ### Submission Checklist:
 -   **Documentation:** Ensure your analyses have clear titles and descriptions.
--   **Stability:** Verify that your module doesn't crash on empty datasets (using [Input Checks](/tutorial/tuts0204-debugging-an-analysis)).
+-   **Stability:** Verify that your module doesn't crash on empty datasets (using [Input Checks](/tutorial/tuts0104-input-checks)).
 -   **Metadata:** Check your `DESCRIPTION` file for a summary and author info.
 -   **Clean Repository:** Do **not** commit **build artifacts** (files generated during the build process, like `build/`, `dist/`, or `.jmo` files) to your Git repository. Use a `.gitignore` file to keep your source code clean:
 
@@ -53,4 +53,4 @@ If you are satisfied that your module is ready for broader distribution, please 
 
 As you continue to improve your module, remember to update the version number in `0000.yaml` and the `DESCRIPTION` file. jamovi uses these version numbers to notify users when an update is available in the library.
 
-**Next Step:** You've completed the core tutorial series! Let's wrap up with a **[Summary & Next Steps](/tutorial/tuts0111-summary)**.
+**Next Step:** You've completed the core tutorial series! For some final technical tips, check out the **[Additional Notes](/tutorial/tuts0111-additional-notes)**.

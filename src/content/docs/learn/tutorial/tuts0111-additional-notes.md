@@ -29,4 +29,4 @@ While it's common in standard R packages to use `import()` in the `NAMESPACE` fi
 | `jmvtools` | **jamovi Bridge** | Creating modules, adding analyses, and installing into the jamovi application. |
 | `devtools` | **R Development** | Standard R package tasks like testing (`test()`) and installing into your R console. |
 
-**Next Step:** Your module is now ready for the world! Let's learn how to **[Distribute your Module](/tutorial/tuts0109-distributing-modules)**.
+**Next Step:** Your module is now ready for the world! Explore the **[Module Showcase](/showcase)** to see what others have built.

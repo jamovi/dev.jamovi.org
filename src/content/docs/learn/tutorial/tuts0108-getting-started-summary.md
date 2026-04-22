@@ -10,11 +10,12 @@ Congratulations! You have successfully built a fully functional Independent Samp
 
 Throughout this Getting Started series, you learned the core mental model of jamovi module development:
 
-1. **The 5-File Architecture:** You used `jmvtools` to scaffold the essential files: `.a.yaml` (Options), `.r.yaml` (Results), `.u.yaml` (UI layout), `.h.R` (Auto-generated R API), and `.b.R` (Your R code).
+1. **The 5-File Architecture:** You used `jmvtools` to scaffold the essential files: `.a.yaml` (analysis definition), `.r.yaml` (results definition), `.u.yaml` (UI definition), `.h.R` (auto-generated header), and `.b.R` (analysis implementation).
 2. **Options (`.a.yaml`):** You defined the inputs your analysis needs, such as variables and checkboxes.
-3. **Results (`.r.yaml`):** You laid out the visual blueprint, defining an APA-formatted Table and an Image placeholder.
-4. **The State/Render Model:** You learned how jamovi handles dynamic content by separating the heavy calculations (`.run()`) from the fast drawing logic (`.plot()`).
-5. **R Logic (`.b.R`):** You wrote an R6 class that takes user input (`self$options`), performs the `t.test()`, and populates the results (`self$results`).
+3. **Input Checks:** You used "early returns" to keep the results panel clean and prevent errors before variables are assigned.
+4. **Results Definition (`.r.yaml`):** You defined the result containers that will appear in the UI: an APA-formatted Table and an Image placeholder.
+5. **The State/Render Model:** You learned how jamovi handles dynamic content by separating the heavy calculations (`.run()`) from the fast drawing logic (`.plot()`).
+6. **R Logic (`.b.R`):** You wrote an R6 class that takes user input (`self$options`), performs the `t.test()`, and populates the results (`self$results`).
 
 ## Where to Go Next
 
@@ -24,7 +25,6 @@ Now that you have the basics down, you can choose your own adventure based on yo
 If you want to build more complex analyses, the **[Intermediate Series](/tutorial/tuts0200-analysis-lifecycle)** is your next logical step. You will learn:
 - **Dynamic Tables:** Create tables that add rows or columns automatically based on user input.
 - **Handling Data:** Manage missing values and safely work with jamovi datasets.
-- **Error Handling:** Write elegant "guard clauses" to prevent your analysis from crashing when users do unexpected things.
 
 ### 2. Advanced Plotting
 If your analysis relies heavily on visuals, jump into the **[Plotting section](/tutorial/tuts0301-image-state-performance)**. You will learn how to optimize plots for large datasets, apply beautiful jamovi color themes, and make your images responsive.

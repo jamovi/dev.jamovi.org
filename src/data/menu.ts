@@ -7,10 +7,11 @@ export const menu = [
       { text: '1 - Getting Started', href: '/tutorial/tuts0101-getting-started' },
       { text: '2 - Building Your First Analysis', href: '/tutorial/tuts0102-building-your-first-analysis' },
       { text: '3 - Implementing an Analysis', href: '/tutorial/tuts0103-implementing-an-analysis' },
-      { text: '4 - The jamovi Results Model', href: '/tutorial/tuts0104-results-mental-model' },
-      { text: '5 - Creating Rich Results', href: '/tutorial/tuts0105-creating-rich-results' },
-      { text: '6 - Adding Plots', href: '/tutorial/tuts0106-adding-plots' },
-      { text: '7 - Summary & Next Steps', href: '/tutorial/tuts0107-getting-started-summary' },
+      { text: '4 - Input Checks', href: '/tutorial/tuts0104-input-checks' },
+      { text: '5 - The jamovi Results Model', href: '/tutorial/tuts0105-results-mental-model' },
+      { text: '6 - Creating Rich Results', href: '/tutorial/tuts0106-creating-rich-results' },
+      { text: '7 - Adding Plots', href: '/tutorial/tuts0107-adding-plots' },
+      { text: '8 - Summary & Next Steps', href: '/tutorial/tuts0108-getting-started-summary' },
     ]
   },
   {
@@ -22,7 +23,6 @@ export const menu = [
       { text: '3 - Advanced Table Techniques', href: '/tutorial/tuts0201a-advanced-table-techniques' },
       { text: '4 - Handling Data', href: '/tutorial/tuts0202-handling-data' },
       { text: '5 - State', href: '/tutorial/tuts0203-state' },
-      { text: '6 - Handling Errors & Debugging', href: '/tutorial/tuts0204-debugging-an-analysis' },
     ]
   },
   {
@@ -38,9 +38,9 @@ export const menu = [
     section: 'learn',
     category: 'Advanced & Distribution',
     items: [
-      { text: '1 - Unit Testing your Analysis', href: '/tutorial/tuts0108-unit-testing' },
-      { text: '2 - Additional Notes', href: '/tutorial/tuts0110-additional-notes' },
-      { text: '3 - Distributing Modules', href: '/tutorial/tuts0109-distributing-modules' },
+      { text: '1 - Unit Testing your Analysis', href: '/tutorial/tuts0109-unit-testing' },
+      { text: '2 - Distributing Modules', href: '/tutorial/tuts0110-distributing-modules' },
+      { text: '3 - Additional Notes', href: '/tutorial/tuts0111-additional-notes' },
     ]
   },
   {
