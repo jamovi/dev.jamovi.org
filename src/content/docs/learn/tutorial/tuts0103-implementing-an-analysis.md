@@ -54,7 +54,7 @@ ttestClass <- R6::R6Class("ttestClass",
 
 1. **Construct the formula:** We use `jmvcore::constructFormula` instead of `paste()`. It automatically handles column names with spaces (e.g., `"the fish"`) by adding backticks, preventing your analysis from crashing.
 2. **Run the analysis:** We pass the formula and data to the robust `stats::t.test()`.
-3. **Populate the results:** When you ran `jmvtools::addAnalysis()` in the previous tutorial, it automatically generated a boilerplate `ttest.r.yaml` file containing a single Preformatted Text result element named `text`. We use `self$results$text$setContent(results)` to safely inject our raw R output into that ready-made container in the jamovi UI.
+3. **Populate the results:** When you ran `jmvtools::addAnalysis()` in the previous tutorial, it automatically generated a boilerplate `ttest.r.yaml` file containing a single Preformatted Text result element named `text`. We use `self$results$text$setContent(results)` to safely inject our raw R output into that result container in the jamovi UI.
 
 ## 3. Install and Test
 
@@ -91,4 +91,4 @@ SuperAwesome::ttest(data=ToothGrowth, dep='len', group='supp')
 
 ![t-test results](@assets/tuts0104-implementing-an-analysis-R-result.png)
 
-**Next Step:** The raw text output is functional, but jamovi users expect beautiful, interactive tables. Let's understand [how jamovi results work](/tutorial/tuts0104-results-mental-model).
+**Next Step:** The raw text output works, but before we build richer results, let's protect it from crashing on empty inputs: **[Input Checks](/tutorial/tuts0104-input-checks)**.

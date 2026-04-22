@@ -21,7 +21,7 @@ Plots are items in your results, so we need to add an `Image` entry to `jamovi/t
 ```
 
 *   **width & height:** These set the *initial* dimensions of the plot in pixels. Because jamovi plots are vector graphics, the user can stretch and resize them later. These values simply define the default aspect ratio.
-*   **renderFun: .plot:** This critically links your YAML blueprint to your R code. It tells jamovi exactly which function to call to draw this image. You can name this whatever you like (e.g., `.renderMyPlot`), as long as it perfectly matches the function name you'll soon write in your R file.
+*   **renderFun: .plot:** This critically links your results definition to your R code. It tells jamovi exactly which function to call to draw this image. You can name this whatever you like (e.g., `.renderMyPlot`), as long as it perfectly matches the function name you'll soon write in your R file.
 
 ## 2. Configure Dependencies
 
@@ -56,7 +56,12 @@ ttestClass <- R6::R6Class("ttestClass",
     inherit = ttestBase,
     private = list(
         .run = function() {
-            # -- 1. Existing Analysis & Table Logic --
+            # 1. Input Check: Stop quietly if inputs are missing
+            if (length(self$options$dep) == 0 || length(self$options$group) == 0) {
+                return()
+            }
+
+            # -- 2. Existing Analysis & Table Logic --
             formula <- jmvcore::constructFormula(self$options$dep, self$options$group)
             formula <- as.formula(formula)
 
@@ -70,7 +75,7 @@ ttestClass <- R6::R6Class("ttestClass",
                 p   = results$p.value
             ))
 
-            # -- 2. NEW: Prepare Plot Data (State) --
+            # -- 3. NEW: Prepare Plot Data (State) --
             # Calculate means and standard errors for our plot
             means <- aggregate(formula, self$data, mean)[, 2]
             ses   <- aggregate(formula, self$data, function(x) sd(x) / sqrt(length(x)))[, 2]
@@ -126,6 +131,6 @@ Run `jmvtools::install()` in your R console. Open jamovi, select your analysis, 
 
 And the result will look like this:
 
-![final plot | 441](@assets/tuts0106-adding-plots-final.png)
+![final plot | 441](@assets/tuts0107-adding-plots-final.png)
 
-**Next Step:** Wrap up your first analysis and explore where to go next in the **[Getting Started Summary](/tutorial/tuts0107-getting-started-summary)**.
+**Next Step:** Wrap up your first analysis and explore where to go next in the **[Getting Started Summary](/tutorial/tuts0108-getting-started-summary)**.

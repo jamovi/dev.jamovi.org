@@ -6,9 +6,9 @@ description: "Learn how to define and populate APA-formatted tables in your jamo
 
 In this section, we are going to transform our raw text output into a beautiful, professional, APA-formatted table.
 
-## 1. Upgrading the Blueprint (`.r.yaml`)
+## 1. Upgrading the Results Definition (`.r.yaml`)
 
-If you open `jamovi/ttest.r.yaml` right now, you'll see the boilerplate `text` container that `jmvtools` automatically generated for us earlier:
+If you open `jamovi/ttest.r.yaml` right now, you'll see the boilerplate `text` element that `jmvtools` automatically generated for us earlier:
 
 ```yaml
 items:
@@ -52,7 +52,7 @@ items:
 *   **type: Table:** Reserves space for a structured table.
 *   **format: zto,pvalue:** `zto` (zero-to-one) ensures consistent decimal places, and `pvalue` automatically handles small p-values (e.g., `< .001`).
 
-If you reinstall your module right now (`jmvtools::install()`), jamovi reads your blueprint and generates the new table UI below your existing text output. However, because our R code isn't filling the table yet, it will be completely blank:
+If you reinstall your module right now (`jmvtools::install()`), jamovi reads your results definition and generates the new table UI below your existing text output. However, because our R code isn't filling the table yet, it will be completely blank:
 
 ![empty table | 509](@assets/tuts0105-creating-rich-results-blank-table.png)
 
@@ -68,20 +68,25 @@ Update your `.run()` function to match the complete implementation below. Notice
 
 ```r
 .run=function() {
-    # 1. Construct the formula (e.g., "len ~ supp")
+    # 1. Input Check: Stop quietly if inputs are missing
+    if (length(self$options$dep) == 0 || length(self$options$group) == 0) {
+        return()
+    }
+
+    # 2. Construct the formula (e.g., "len ~ supp")
     formula <- jmvcore::constructFormula(self$options$dep, self$options$group)
     formula <- as.formula(formula)
 
-    # 2. Run the analysis (using the stats namespace)
+    # 3. Run the analysis (using the stats namespace)
     results <- stats::t.test(formula, self$data, var.equal=self$options$varEq)
 
-    # 3. Populate the results panel
+    # 4. Populate the results panel
     self$results$text$setContent(results)
 
-    # 4. Access the table object
+    # 5. Access the table object
     table <- self$results$ttest
 
-    # 5. Fill in the row
+    # 6. Fill in the row
     table$setRow(rowNo=1, values=list(
         var = self$options$dep,
         t   = results$statistic,
@@ -107,4 +112,4 @@ If you reinstall your module one last time, you'll have a pristine, professional
 
 ![final table | 287](@assets/tuts0105-creating-rich-results-final-table.png)
 
-**Next Step:** Now that your analysis produces rich results, let's build the visual centerpiece by **[Adding Plots](/tutorial/tuts0106-adding-plots)**.
+**Next Step:** Now that your analysis produces rich results, let's build the visual centerpiece by **[Adding Plots](/tutorial/tuts0107-adding-plots)**.

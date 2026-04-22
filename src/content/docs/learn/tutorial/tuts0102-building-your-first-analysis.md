@@ -38,17 +38,33 @@ setwd('SuperAwesome')
 jmvtools::addAnalysis(name='ttest', title='Independent Samples T-Test')
 ```
 
+This updates your module's directory structure to the following:
+
+```text
+SuperAwesome/
+├── DESCRIPTION
+├── NAMESPACE
+├── jamovi/
+│   ├── 0000.yaml
+│   ├── ttest.a.yaml       # Analysis definition
+│   ├── ttest.r.yaml       # Results definition
+│   └── ttest.u.yaml       # UI definition
+└── R/
+    ├── ttest.h.R          # Header (auto-generated)
+    └── ttest.b.R          # Analysis implementation
+```
+
 ## 3. The 5-File Structure
 
-This command generates five files for your analysis. While it may seem like a lot, this separation of concerns makes your code easier to maintain:
+These five new files each play a distinct role. While it may seem like a lot, this separation of concerns makes your code easier to maintain:
 
 | File | Type | Purpose |
 | :--- | :--- | :--- |
-| `ttest.a.yaml` | **Contract** | Defines the options (UI) and the "jas" (jamovi analysis spec). |
-| `ttest.r.yaml` | **Results** | Defines the "jrs" (jamovi results spec) and the layout of tables and plots. |
-| `ttest.u.yaml` | **UI** | Automatically generated file that handles the layout of the sidebar. You can edit this file to create a custom, polished UI experience. |
-| `ttest.h.R` | **Header** | Automatically generated R code that bridges the UI to your logic. **Never edit this file.** |
-| `ttest.b.R` | **Body** | This is your workspace. This is where you write the actual R logic. |
+| `ttest.a.yaml` | **Analysis Definition** | Contains all the meta information about the analysis: describes the options the user can set and how they map to the UI. |
+| `ttest.r.yaml` | **Results Definition** | Contains all the information about how the results are displayed (tables, plots, etc.). |
+| `ttest.u.yaml` | **UI Definition** | Automatically generated from the `.a.yaml` file. For many analyses this produces a good result and won't need further editing. |
+| `ttest.h.R` | **Header** | Automatically generated from the `.a.yaml` and `.r.yaml` files. Makes writing your analysis much easier. You don't need to look at this file, and you should **never** edit it. |
+| `ttest.b.R` | **Analysis Implementation** | Where you'll write your R code. You'll spend most of your time here when developing a jamovi analysis. |
 
 ## 4. The Analysis Definition (`.a.yaml`)
 
