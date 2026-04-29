@@ -63,6 +63,24 @@ A perfect example is an **ANOVA table**. While the columns are fixed, the number
 ### 3. `.run()` (Result-based Structure)
 Use this only when the structure depends on the **Results of the Calculation**. For example, in an Exploratory Factor Analysis where the number of columns depends on how many factors were actually extracted from the data.
 
+```r
+.run = function() {
+    table <- self$results$factorTable
+    
+    # Imagine a function that calculates the optimal number of factors
+    nFactors <- calculateOptimalFactors(self$data)
+    
+    # Dynamically add a column for each extracted factor
+    for (i in 1:nFactors) {
+        table$addColumn(
+            name = paste0("factor", i),
+            title = paste("Factor", i),
+            type = "number"
+        )
+    }
+}
+```
+
 > [!CAUTION]
 > **Avoid Level 3 whenever possible.** Using `.run()` to define table structure causes a "UI Jump." Because the `.init()` phase doesn't know the structure, it creates a generic placeholder. When `.run()` finishes, the table "jumps" as columns and rows are suddenly added. Level 1 and 2 ensure a smooth, professional-feeling UI where the table structure is visible immediately.
 
