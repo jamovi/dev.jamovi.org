@@ -43,20 +43,3 @@ Property      | Description                               | Form
 
 The above example adds a `TextBox` as a child control to a `CheckBox`.
 
-### Visual Result
-
-<div class="jamovi-demo-box" style="padding: 12px; border: 1px solid #ccc; background: #e8e8e8; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #333; border-radius: 3px;">
-  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 6px; user-select: none;">
-    <input type="checkbox" id="logOddsCheckD" checked style="margin: 0; cursor: pointer;">
-    Log odds
-  </label>
-  <div style="margin-left: 20px; display: flex; align-items: center; gap: 6px;">
-    <label for="logOddsWidthD">Interval</label>
-    <input type="number" id="logOddsWidthD" value="95" style="width: 50px; padding: 2px 4px; border: 1px solid #b2b2b2; border-radius: 2px; outline: none; font-family: inherit; font-size: inherit; background: #fff;"> %
-  </div>
-  <script>
-    document.getElementById('logOddsCheckD').addEventListener('change', (e) => {
-      document.getElementById('logOddsWidthD').disabled = !e.target.checked;
-    });
-  </script>
-</div>

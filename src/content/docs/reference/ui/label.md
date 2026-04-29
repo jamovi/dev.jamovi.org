@@ -44,14 +44,3 @@ Property      | Description                               | Form                
 
 ----------------------------------------
 
-### Visual Result
-
-<div class="jamovi-demo-box" style="padding: 12px; border: 1px solid #ccc; background: #e8e8e8; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #333; border-radius: 3px;">
-  <div style="font-weight: 600; margin-bottom: 6px;">Percentile Values</div>
-  <div style="margin-left: 8px;">
-    <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
-      <input type="checkbox" checked style="margin: 0; cursor: pointer;">
-      quart
-    </label>
-  </div>
-</div>

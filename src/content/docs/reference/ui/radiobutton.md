@@ -73,29 +73,3 @@ Now binding solely to a `List` is not a valid configuration for a `RadioButton` 
 
 Three `RadioButton`'s for the three sub-options of the option bound `List`.
 
-### Visual Result
-
-<div class="jamovi-demo-box" style="padding: 12px; border: 1px solid #ccc; background: #e8e8e8; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #333; border-radius: 3px;">
-  <div style="font-weight: 600; margin-bottom: 6px;">Error Bar Definition</div>
-  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 4px; user-select: none;">
-    <input type="radio" name="plotErrorD" value="none" style="margin: 0; cursor: pointer;"> None
-  </label>
-  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; margin-bottom: 4px; user-select: none;">
-    <input type="radio" name="plotErrorD" value="ci" checked style="margin: 0; cursor: pointer;"> Confidence interval
-  </label>
-  <div style="margin-left: 20px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
-    <label for="ciWidthD">Interval</label>
-    <input type="number" id="ciWidthD" value="95" style="width: 50px; padding: 2px 4px; border: 1px solid #b2b2b2; border-radius: 2px; outline: none; background: #fff; font-family: inherit; font-size: inherit;"> %
-  </div>
-  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
-    <input type="radio" name="plotErrorD" value="se" style="margin: 0; cursor: pointer;"> Standard Error
-  </label>
-  <script>
-    document.querySelectorAll('input[name="plotErrorD"]').forEach(rad => {
-      rad.addEventListener('change', (e) => {
-        document.getElementById('ciWidthD').disabled = (e.target.value !== 'ci');
-      });
-    });
-  </script>
-</div>
-</div>

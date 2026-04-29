@@ -44,15 +44,6 @@ There is also no need to specify the `label` property of this `OptionControl` as
 
 ---
 
-### Visual Result
-
-<div class="jamovi-demo-box" style="padding: 12px; border: 1px solid #ccc; background: #e8e8e8; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #333; border-radius: 3px;">
-  <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; user-select: none;">
-    <input type="checkbox" checked style="margin: 0; cursor: pointer;">
-    Descriptive statistics
-  </label>
-</div>
-
 ### `NMXList`
 
 When `CheckBox` is bound to an `NMXList` a few more properties are needed for it to work.

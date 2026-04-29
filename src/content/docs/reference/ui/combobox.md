@@ -54,15 +54,3 @@ A `ComboBox` can completely encapsulate a `List` option which makes its definiti
   name: ss
 ```
 
-### Visual Result
-
-<div class="jamovi-demo-box" style="padding: 12px; border: 1px solid #ccc; background: #e8e8e8; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #333; border-radius: 3px;">
-  <label style="display: flex; align-items: center; gap: 8px;">
-    Sum of squares
-    <select style="padding: 2px 4px; border: 1px solid #b2b2b2; border-radius: 2px; font-family: inherit; font-size: inherit; background: #fff; cursor: pointer; outline: none;">
-      <option value="1">Type 1</option>
-      <option value="2">Type 2</option>
-      <option value="3" selected>Type 3</option>
-    </select>
-  </label>
-</div>

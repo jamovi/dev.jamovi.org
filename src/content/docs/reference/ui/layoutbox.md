@@ -27,22 +27,3 @@ To add to a `LayoutBox` in a grid format, use the `cell` property of the child c
 
 ----------------------------------------
 
-### Visual Result
-
-<div class="jamovi-demo-box" style="padding: 12px; border: 1px solid #ccc; background: #e8e8e8; display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 13px; color: #333; border-radius: 3px; width: 350px;">
-  <div style="margin-bottom: 24px;">
-    <div style="font-size: 0.85em; color: #666; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px;">List Style (Vertical)</div>
-    <div style="display: flex; flex-direction: column; gap: 6px;">
-      <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" checked style="margin: 0; cursor: pointer;"> Option 1</label>
-      <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="checkbox" style="margin: 0; cursor: pointer;"> Option 2</label>
-    </div>
-  </div>
-  <div>
-    <div style="font-size: 0.85em; color: #666; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px;">Inline Style (Horizontal)</div>
-    <div style="display: flex; flex-direction: row; gap: 16px;">
-      <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="radio" name="ibD" checked style="margin: 0; cursor: pointer;"> A</label>
-      <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="radio" name="ibD" style="margin: 0; cursor: pointer;"> B</label>
-      <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;"><input type="radio" name="ibD" style="margin: 0; cursor: pointer;"> C</label>
-    </div>
-  </div>
-</div>
