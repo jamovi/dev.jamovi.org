@@ -107,7 +107,6 @@ export const menu = [
     section: 'resources',
     category: 'Misc',
     items: [
-      { text: 'Submitting to Library', href: '/misc/library' },
       { text: 'Project Structure', href: '/misc/project-structure' },
       { text: 'API Updates', href: '/misc/updates' },
     ]

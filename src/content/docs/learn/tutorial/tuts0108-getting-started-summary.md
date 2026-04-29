@@ -32,7 +32,13 @@ If your analysis relies heavily on visuals, jump into the **[Plotting section](/
 ### 3. UI Design
 Want to make your module's interface look spectacular? The **[User Interface section](/ui/basic-design)** covers everything from custom layouts and collapse boxes to variable suppliers and advanced controls.
 
-### 4. The API Reference (Technical Specifications)
+### 4. Advanced & Distribution
+Ready to prepare your module for the real world? The **[Advanced & Distribution section](/tutorial/tuts0109-unit-testing)** covers:
+- **Unit Testing:** Write automated tests using `testthat` to ensure your analysis remains reliable.
+- **Distributing Modules:** Learn how to compile and publish your module to the jamovi library.
+
+### 5. The API Reference (Technical Specifications)
 Do you prefer to learn by reading technical specifications instead of following guided tutorials? If you are comfortable diving straight into the deep end, head over to the **Reference API** section. It contains comprehensive documentation on:
 - **[API (yaml)](/api/module-definition):** Every property and setting available in `.a.yaml` and `.r.yaml`.
 - **[API (R)](/api/results-elements):** The classes and methods available in the `jmvcore` R package for interacting with tables, images, and other result objects.
+- **[UI Controls](/ui/basecontrol):** The properties and behaviors of every UI control available for your module's interface.
