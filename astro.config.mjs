@@ -76,7 +76,7 @@ export default defineConfig({
     '/ui-variablelabel': '/ui/variablelabel',
     '/ui-variablesupplier': '/ui/variablesupplier',
     '/api_updates': '/misc/updates',
-    '/misc-library': '/misc/library',
+    '/misc-library': '/tutorial/tuts0110-distributing-modules',
     '/info_project-structure': '/misc/project-structure',
   },
 });

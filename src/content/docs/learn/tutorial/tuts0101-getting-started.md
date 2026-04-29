@@ -11,7 +11,7 @@ description: "Learn how to set up your environment and install your first jamovi
 > - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/) installed.
 > - **R**: You need [R installed](https://cloud.r-project.org/) on your system.
 > - **R knowledge**: Analyses in jamovi are written in the **R programming language**. This tutorial assumes you have a basic understanding of R logic.
-> - **An IDE**: We highly recommend using an IDE such as [RStudio](https://posit.co/download/rstudio-desktop/) or [VS Code](https://code.visualstudio.com/) for writing your R code.
+> - **An IDE**: We highly recommend using an IDE such as [RStudio](https://posit.co/download/rstudio-desktop) or [VS Code](https://code.visualstudio.com/) for writing your R code.
 
 
 ## What Are We Building?
