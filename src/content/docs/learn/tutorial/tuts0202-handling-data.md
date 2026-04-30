@@ -10,14 +10,16 @@ When you access data in jamovi via `self$data`, you aren't just getting a standa
 
 In jamovi, variables have a **Dual Nature**: they exist as both **Factors** (labels) and **Numeric** values simultaneously.
 
-There are four primary variable types:
+There are six primary variable types:
 
 | Icon | Type | R Representation |
 | :--- | :--- | :--- |
-| <img src="/assets/variable-nominal-text.svg" width="16px"> | **Nominal Text** | Always a Factor |
-| <img src="/assets/variable-nominal.svg" width="16px"> | **Nominal** | Factor (with underlying Numeric attributes) |
-| <img src="/assets/variable-ordinal.svg" width="16px"> | **Ordinal** | Factor (with underlying Numeric attributes) |
-| <img src="/assets/variable-continuous.svg" width="16px"> | **Continuous** | Always Numeric |
+| <img src="/assets/variable-nominal.svg" width="16px"> | **Nominal (Text)** | Factor |
+| <img src="/assets/variable-nominal.svg" width="16px"> | **Nominal (Integer)** | Factor (with underlying Numeric attributes) |
+| <img src="/assets/variable-ordinal.svg" width="16px"> | **Ordinal (Text)** | Factor |
+| <img src="/assets/variable-ordinal.svg" width="16px"> | **Ordinal (Integer)** | Factor (with underlying Numeric attributes) |
+| <img src="/assets/variable-continuous.svg" width="16px"> | **Continuous** | Integer or Numeric |
+| <img src="/assets/variable-id.svg" width="16px"> | **ID** | Integer or Character |
 
 ### Why this matters
 Users often want to treat the same variable differently depending on the context. For example, a "Likert Scale" (Ordinal) might be used as a **Grouping Factor** in a t-test, but as a **Numeric Score** when calculating a mean.
@@ -25,6 +27,17 @@ Users often want to treat the same variable differently depending on the context
 ---
 
 ## 2. Best Practice: Explicit Conversion
+
+Do not infer how a variable should be treated from its data type alone. Instead, **ask the user explicitly** by providing separate input slots.
+
+jamovi follows the tradition of statistics software where measure type is only a guide — users routinely ignore it, and requiring them to set the correct type on potentially hundreds of columns before running an analysis creates unnecessary friction.
+
+For example, in an ANCOVA:
+
+- ✅ **Do this:** Provide a separate **Factors** box and a separate **Covariates** box. The user makes their intent clear by where they drag each variable.
+- ❌ **Not this:** Provide a single **Explanatory Variables** box and silently infer whether each variable is a factor or a covariate from whether it is categorical or numeric.
+
+The second approach will surprise users whose variables have the "wrong" type set, and it removes their ability to override that decision without editing their data.
 
 By default, jamovi provides `Nominal` and `Ordinal` variables as **Factors**. If you need to use them as numbers, you must explicitly convert them.
 

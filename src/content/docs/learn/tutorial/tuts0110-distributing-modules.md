@@ -13,7 +13,19 @@ Every time you run `jmvtools::install()`, it produces a file with the `.jmo` ext
 This single file **is** your module. It contains all the R code, YAML definitions, and metadata needed to run in jamovi.
 
 > [!WARNING]
-> **Platform Compatibility**: A `.jmo` file only works on the operating system and architecture it was built on. For example, a file built on an Intel Mac will not work on a Windows machine or an ARM-based Mac. There is no guarantee that a side-loaded `.jmo` file will work on a colleague's machine unless they have the exact same system!
+> **Platform Compatibility**: A `.jmo` file only works on the operating system, architecture, and jamovi series (i.e. current vs solid) it was built on. For example, a `.jmo` built on an Intel Mac will not work on a Windows machine or an ARM-based Mac. There is no guarantee that a side-loaded `.jmo` file will work on a colleague's machine unless their setup matches yours.
+>
+> The are 8 different setups:
+>  - jamovi solid on Windows
+>  - jamovi current on Windows
+>  - jamovi solid on macOS (Apple Silicon)
+>  - jamovi current on macOS (Apple Silicon)
+>  - jamovi solid on macOS (Intel Based)
+>  - jamovi current on macOS (Intel Based)
+>  - jamovi current on linux on x64
+>  - jamovi current on linux on arm
+>
+> The reason there are so many combinations is R itself: R packages that contain compiled C or Fortran code must be built separately for each R version, OS, and CPU architecture.
 
 ### How to Side-load:
 1.  Send the `.jmo` file to your colleagues or testers.
@@ -49,15 +61,17 @@ dist/
 *.jmo
 ```
 
--   **Licensing:** You must always specify a license in your `DESCRIPTION` file (e.g., MIT, Apache). Additionally, your module must comply with GPL licensing requirements if it depends on a GPL-licensed R package.
+-   **Licensing:** You must always specify a license in your `DESCRIPTION` file (e.g., GPL2, MIT, Apache). An [OSI approved open source license](https://opensource.org/licenses) is required for publication in the jamovi Library (An exception to this is AGPL3, which isn't accepted at this time). We recommend you use GPL2+ ([GPL2 or newer](https://opensource.org/licenses-old/gpl-license-html)) for maximum compatibility; your module must comply with GPL licensing requirements if it depends on a GPL-licensed R package.
 
 > [!NOTE]
 > **Why is GPL Licensing necessary?**
 > If your module uses and ships with an R package licensed under GPL (such as `lazyeval` or `ggstance`), it constitutes a "combined work." The GPL license allows this, but in return, it requires your combined work to also be released under the GPL. The easiest way to check this is to browse the R packages installed in your module's `build` folder and look for "copyleft" licenses like GPL2 or GPL3.
 
+-   **English:** module must be available in English. It can be available in other languages too, but English is a minimum.
+
 ### Step 2: The Submission & Review Process
 
-If you are satisfied that your module is ready, please send an email to the jamovi team at **[contact@jamovi.org](mailto:contact@jamovi.org)**. 
+If you are satisfied that your module is ready, please send an email to the jamovi team at **[contact@jamovi.org](mailto:contact@jamovi.org)**.
 
 **Always provide a link to your source code** (e.g., a GitHub repository). This allows us to perform the multi-platform builds. You may also attach the `.jmo` file for initial testing.
 
@@ -71,5 +85,6 @@ As you continue to improve your module, you will want to push updates to the lib
 1. **Update the Version:** Increment the version number in both your `0000.yaml` and your `DESCRIPTION` file using standard [Semantic Versioning](https://semver.org/) (e.g., change `1.0.1` to `1.0.2`). jamovi uses these version numbers to notify users when an update is available.
 2. **Push to Source Control:** Push your latest code changes to your GitHub repository (or whichever source control platform you use).
 3. **Notify the Team:** Send a quick follow-up email to the jamovi team, or drop a message in the jamovi Slack, letting them know a new version is ready to be built.
+3. **New Version is Published:** The jamovi team will update the module in the library. Updates are typically pushed once a week (i.e. Mondays).
 
 **Next Step:** You've completed the core tutorial series! For some final technical tips, check out the **[Additional Notes](/tutorial/tuts0111-additional-notes)**.

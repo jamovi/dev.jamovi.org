@@ -14,7 +14,7 @@ When you first create an analysis, jamovi manages the `.u.yaml` file for you. Th
 - **`tame`:** Think of this as "Manual Control." Once you start fine-tuning the layout (e.g., grouping checkboxes, adding custom labels, or adjusting margins), you should switch to `tame` mode. In this mode, `jmvtools` will respect your manual edits and only add new options if it can find a safe place for them.
 
 > [!TIP]
-> **Start Aggressive, Stay Tame.** 
+> **Start Aggressive, Stay Tame.**
 > Use `aggressive` mode while you are defining your analysis's core features. Switch to `tame` only when you are ready to "polish" the visual layout.
 
 ### UI Best Practices Checklist
@@ -24,8 +24,10 @@ To ensure your analysis feels like a native part of jamovi, follow these design 
 - [ ] **Group Related Options:** Use `LayoutBox` or `CollapseBox` to group related checkboxes (e.g., "Assumption Checks" or "Additional Statistics").
 - [ ] **Use Standard Margins:** Apply `margin: large` to top-level `LayoutBox` elements to give the UI room to breathe.
 - [ ] **Order by Importance:** Place the most critical inputs (like variable selection) at the top.
-- [ ] **Label Clearly:** Use sentence case for labels (e.g., "Equal variances assumed" instead of "Equal Variances Assumed").
+- [ ] **Label Clearly:** Use sentence-case for labels (e.g., "Assume equal variances" instead of "Assume Equal Variances"). Use title-case for group titles and variable boxes (i.e. Fixed Factors).
 - [ ] **Avoid Clutter:** If an analysis has many advanced options, hide them inside a `CollapseBox` that is closed by default.
+- [ ] **Avoid Verbs (except in push buttons):** Checkbox labels should describe what they enable, not what jamovi will do. Prefer ✅ *Residual plot* over ❌ *Show residual plot*.
+- [ ] **Do as jamovi does:** Try and be consistent with the analyses bundled with jamovi.
 
 ### Controls
 

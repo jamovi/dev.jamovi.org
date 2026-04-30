@@ -37,7 +37,7 @@ A quick reference for the essential components and commands used in jamovi modul
       <li><code>Continuous</code>: Scale/Interval data.</li>
       <li><code>Nominal</code>: Categorical data.</li>
       <li><code>Ordinal</code>: Ordered categorical data.</li>
-      <li><code>NominalText</code>: Text-based categorical data.</li>
+      <li><code>ID</code>: Identifiers (not usually analysed).</li>
     </ul>
   </div>
 

@@ -21,7 +21,7 @@ SuperAwesome/
 ├── DESCRIPTION          # Standard R package metadata
 ├── NAMESPACE            # Standard R package namespace
 ├── jamovi/              # jamovi-specific configuration (The "Manifest")
-│   └── 0000.yaml        
+│   └── 0000.yaml
 └── R/                   # R source code directory
 ```
 
@@ -60,18 +60,18 @@ These five new files each play a distinct role. While it may seem like a lot, th
 
 | File | Type | Purpose |
 | :--- | :--- | :--- |
-| `ttest.a.yaml` | **Analysis Definition** | Contains all the meta information about the analysis: describes the options the user can set and how they map to the UI. |
+| `ttest.a.yaml` | **Analysis Definition** | Contains all the meta information about the analysis: describes the options that the analysis uses, so they can be presented in the UI. |
 | `ttest.r.yaml` | **Results Definition** | Contains all the information about how the results are displayed (tables, plots, etc.). |
-| `ttest.u.yaml` | **UI Definition** | Automatically generated from the `.a.yaml` file. For many analyses this produces a good result and won't need further editing. |
+| `ttest.u.yaml` | **UI Definition** | Describes how the analysis options should be presented to the user; i.e. checkboxes, list boxes, etc. (For beginners, this is automatically generated from the `.a.yaml` file.) |
 | `ttest.h.R` | **Header** | Automatically generated from the `.a.yaml` and `.r.yaml` files. Makes writing your analysis much easier. You don't need to look at this file, and you should **never** edit it. |
 | `ttest.b.R` | **Analysis Implementation** | Where you'll write your R code. You'll spend most of your time here when developing a jamovi analysis. |
 
 ## 4. The Analysis Definition (`.a.yaml`)
 
-Open `jamovi/ttest.a.yaml`. This file uses **YAML**, a human-readable format for structured data. 
+Open `jamovi/ttest.a.yaml`. This file uses **YAML**, a human-readable format for structured data.
 
 > [!IMPORTANT]
-> **YAML Rule #1:** Indentation matters! Always use spaces (not tabs) for nesting items.
+> **YAML Rule #1:** Indentation matters! Always use spaces (not tabs) for nesting items. Most modern IDEs and editors will do this for you automatically, but if you're using something old-school, you'll need to make sure it's using spaces.
 
 ```yaml
 ---
@@ -130,4 +130,4 @@ In jamovi, you will now see the **SuperAwesome** menu with your **Independent Sa
 
 ![Independent Samples T-Test UI | 400](@assets/learn/tutorial/implementing-analysis-ui.png)
 
-**Next Step:** Your analysis has a beautiful UI, but it doesn't perform any calculations yet. Let's [implement the R logic](/tutorial/tuts0103-implementing-an-analysis).
+**Next Step:** Your analysis has a beautiful (?) UI, but it doesn't perform any calculations yet. Let's [implement the R logic](/tutorial/tuts0103-implementing-an-analysis).

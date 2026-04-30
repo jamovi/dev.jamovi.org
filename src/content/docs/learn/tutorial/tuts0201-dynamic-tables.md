@@ -53,12 +53,6 @@ options:
 ...
 ```
 
-> [!WARNING]
-> There is currently a bug in jmvtools, where the UI is not updated appropriately. In this scenario, jmvtools *should* update the .u.yaml file to accept multiple variables, however this does not happen. It is possible to update the .u.yaml file by hand, but it's generally easiest to simply delete the .u.yaml file, and let jmvtools create one from scratch. This is something which will be fixed in the coming weeks.
-
-> [!IMPORTANT]
-> You will have to shut jamovi down, and restart it in order to see changes to the analysis UI.
-
 As we have changed the name and type of the `dep` variable, our t-test will no longer work. For now, you should comment out or delete the content of the `.run()` function of the t-test analysis, otherwise it will produce a number of errors. We will return to it later in this tutorial.
 
 Having performed these modifications, your t-test UI should look something like:

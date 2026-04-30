@@ -112,6 +112,6 @@ Now your `.plot` function can access `self$data` directly without it being store
 - [ ] **Is my state a data frame?** Data frames are generally more efficient for `ggplot2` than complex lists.
 - [ ] **Did I filter NAs?** Don't pass missing values to the state or use them in plots if they aren't needed.
 - [ ] **Is the row count minimal?** If your plot shows 10 groups, your state should ideally have 10 rows.
-- [ ] **Are there large objects?** Avoid storing model objects (like `lm` or `lmer` outputs) in the state unless absolutely necessary. Extract the coefficients or predictions first.
+- [ ] **Are there large objects?** Avoid storing model objects (like `lm` or `lmer` outputs) in the state unless absolutely necessary (and check their size with `length(serialize(object), connection=NULL)`). Extract the coefficients or predictions instead.
 
 **Next Step:** Learn how to make your plots match the jamovi look and feel in **[Plot Themes](/tutorial/tuts0302-plot-themes)**.

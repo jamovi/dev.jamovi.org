@@ -27,6 +27,9 @@ The `jmvtools` package provides the essential tools for building and debugging j
 To install it, run the following command in your R console. Note that we are using the `repos` argument to tell R to look in the official **jamovi repository** (our private server for jamovi-specific packages) in addition to CRAN:
 
 ```r
+# slow internet? you'll need to increase the R download timeout
+option(timeout=600)  # 10 minutes
+
 install.packages('jmvtools', repos=c('https://repo.jamovi.org', 'https://cran.r-project.org'))
 ```
 
@@ -49,12 +52,12 @@ jmvtools::check()
 >
 > ```r
 > # Example for a custom path
-> jmvtools::check(home='C:\\Path\\To\\Your\\jamovi')
+> jmvtools::check(home='C:\\Program Files\\jamovi X.X.X.X')
 > ```
 >
 > To save this path for your current R session, use:
 > ```r
-> options(jamovi_home='C:\\Path\\To\\Your\\jamovi')
+> options(jamovi_home='C:\\Program Files\\jamovi X.X.X.X')
 > ```
 
 ## 3. Install an Example Module

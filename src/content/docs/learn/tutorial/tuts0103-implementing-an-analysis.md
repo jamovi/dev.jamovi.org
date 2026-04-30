@@ -32,6 +32,8 @@ ttestClass <- R6::R6Class(
 
 Let's implement the t-test. We'll start by calling the standard R `t.test()` function. Note that we access it using the **full namespace** (`stats::t.test`) instead of just typing `t.test()`. This guarantees R runs the core version without naming collisions and speeds up the module by skipping search path lookups.
 
+Never use `library()`!
+
 ```r
 ttestClass <- R6::R6Class("ttestClass",
     inherit=ttestBase,

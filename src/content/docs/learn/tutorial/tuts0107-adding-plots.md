@@ -123,7 +123,8 @@ ttestClass <- R6::R6Class("ttestClass",
 ### Why return the plot object?
 
 *   **`return(p)` (Returning the Object)**: Unlike in an interactive R session where plots appear automatically, jamovi's rendering system expects your `.plot` function to return the `ggplot2` object (or a `base` R plot). jamovi then handles the printing to the appropriate graphics device.
-*   **Success/Failure**: If you return the plot object, jamovi assumes success and renders it. If you return `FALSE` (or `NULL`), jamovi will assume the plot is empty or not yet ready and won't display anything.
+*   **`return(TRUE)` (Self-Printing Packages)**: Some R packages produce plots by calling `print()` or a similar function internally — the plot is sent directly to the active graphics device as a side effect. In this case, there is no object to return. Instead, call your plotting function (which prints the plot itself), then return `TRUE` to signal to jamovi that the plot was successfully rendered.
+*   **Success/Failure**: If you return the plot object or `TRUE`, jamovi assumes success and renders it. If you return `FALSE` (or `NULL`), jamovi will assume the plot is empty or not yet ready and won't display anything.
 
 ## 5. Test your Plot
 
