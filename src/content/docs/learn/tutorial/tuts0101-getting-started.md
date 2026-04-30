@@ -16,7 +16,7 @@ description: "Learn how to set up your environment and install your first jamovi
 
 ## What Are We Building?
 
-Throughout this "Getting Started" series, you are going to build a fully functional **Independent Samples T-Test** module from scratch. By the end of the next few pages, you will have created a beautiful, interactive analysis that includes a responsive UI, robust data handling, an APA-formatted table, and dynamic plots:
+Throughout this "Getting Started" series, you are going to build a fully functional **SuperAwesome** module from scratch. By the end of the next few pages, you will have created an interactive analysis that includes a responsive UI, robust data handling, an APA-formatted table, and dynamic plots:
 
 ![Final T-Test Module Result](@assets/learn/tutorial/getting-started-final.png)
 
