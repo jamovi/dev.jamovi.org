@@ -14,9 +14,9 @@ There are six primary variable types:
 
 | Icon | Type | R Representation |
 | :--- | :--- | :--- |
-| <img src="/assets/variable-nominal.svg" width="16px"> | **Nominal (Text)** | Factor |
+| <img src="/assets/variable-nominal-text.svg" width="16px"> | **Nominal (Text)** | Factor |
 | <img src="/assets/variable-nominal.svg" width="16px"> | **Nominal (Integer)** | Factor (with underlying Numeric attributes) |
-| <img src="/assets/variable-ordinal.svg" width="16px"> | **Ordinal (Text)** | Factor |
+| <img src="/assets/variable-ordinal-text.svg" width="16px"> | **Ordinal (Text)** | Factor |
 | <img src="/assets/variable-ordinal.svg" width="16px"> | **Ordinal (Integer)** | Factor (with underlying Numeric attributes) |
 | <img src="/assets/variable-continuous.svg" width="16px"> | **Continuous** | Integer or Numeric |
 | <img src="/assets/variable-id.svg" width="16px"> | **ID** | Integer or Character |
