@@ -1,0 +1,6 @@
+# Allow all search engines and LLM agents to crawl the site
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://dev.jamovi.org/sitemap-index.xml

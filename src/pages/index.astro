@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroAnimation from '../components/HeroAnimation.astro';
+---
+
+<BaseLayout title="dev.jamovi.org | The Official Developer Hub">
+  <div class="hero-wrapper">
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          Build modules for <span class="gradient-text">jamovi</span>
+        </h1>
+        <p class="hero-subtitle">
+          Create beautiful UIs to make advanced statistical analyses accessible to everyone. 
+          Join a growing community of developers building the next generation of statistical tools.
+        </p>
+        
+        <div class="hero-cta">
+          <a href="/tutorial/tuts0101-getting-started" class="btn btn-primary">Get Started</a>
+          <a href="/api/results-elements" class="btn btn-secondary">Explore the API</a>
+          <a href="/misc/updates" class="btn btn-secondary">See What's New</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <HeroAnimation />
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h3>Accessible Science</h3>
+      <p>Design intuitive, professional-grade interfaces that make sophisticated statistical methods accessible to researchers and data professionals of all levels.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+          <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+        </svg>
+      </div>
+      <h3>The Power of R</h3>
+      <p>Built by and for the R community. Leverage your existing R skills to create high-performance native modules effortlessly.</p>
+    </div>
+  </div>
+
+  <section class="community-section">
+    <div class="community-content">
+      <h2>Join the Community</h2>
+      <p>
+        Have questions, or want to showcase a module you're building? The forum is the best place to connect with the core jamovi team and other developers. You can also join our Slack channel for real-time developer discussions.
+      </p>
+      <div class="community-links">
+        <a href="https://forum.jamovi.org" class="btn btn-secondary community-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Visit the Forums
+        </a>
+        <a href="https://jamovi.slack.com/" class="btn btn-secondary community-btn" target="_blank" rel="noopener noreferrer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="9" x2="20" y2="9"></line>
+            <line x1="4" y1="15" x2="20" y2="15"></line>
+            <line x1="10" y1="3" x2="8" y2="21"></line>
+            <line x1="16" y1="3" x2="14" y2="21"></line>
+          </svg>
+          Join us on Slack
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-wrapper {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .hero-section {
+    padding: 2rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .hero-content {
+    max-width: 800px;
+  }
+  
+  .hero-visual {
+    width: 100%;
+    max-width: 1000px; /* Keep it from becoming absurdly wide on ultrawide monitors */
+    margin: 0 auto;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .gradient-text {
+    background: var(--brand-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0 auto 2.5rem;
+    max-width: 650px;
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .feature-grid {
+    max-width: 900px;
+    margin: 3rem auto 6rem; /* Restrict width so 2 cards don't stretch */
+  }
+
+  /* Community Section Enhancement */
+  .community-section {
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    position: relative;
+    padding: 5rem 1.5rem;
+    background-color: var(--card-bg); /* Soft contrasting box */
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+  }
+
+  .community-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .community-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+  }
+
+  .community-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .community-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .community-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    padding: 0.8rem 1.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-section {
+      gap: 2rem;
+    }
+    .hero-content {
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-wrapper {
+      margin-bottom: 0;
+    }
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    .hero-subtitle {
+      font-size: 1.1rem;
+    }
+    .hero-cta {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn {
+      width: 100%;
+    }
+    .feature-grid {
+      margin-bottom: 4rem;
+    }
+    .community-section {
+      padding: 4rem 1.5rem;
+    }
+    .community-content h2 {
+      font-size: 1.8rem;
+    }
+    .community-links {
+      flex-direction: column;
+      width: 100%;
+    }
+    .community-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

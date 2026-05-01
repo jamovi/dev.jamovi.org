@@ -1,0 +1,121 @@
+---
+---
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-links">
+      <div class="footer-group">
+        <span class="footer-label">Discover more at</span>
+        <a href="https://www.jamovi.org/" target="_blank" rel="noopener noreferrer" aria-label="jamovi homepage">
+          jamovi.org
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      </div>
+      
+      <span class="footer-separator" aria-hidden="true">|</span>
+      
+      <div class="footer-group">
+        <span class="footer-label">Try</span>
+        <a href="https://cloud.jamovi.org/" target="_blank" rel="noopener noreferrer" class="cloud-link" aria-label="jamovi cloud">
+          cloud.jamovi.org
+          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="external-icon"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 4rem;
+    padding: 3rem 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .footer-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-label {
+    opacity: 0.8;
+  }
+
+  .footer-separator {
+    opacity: 0.3;
+  }
+  
+  .footer-content a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    white-space: nowrap;
+  }
+  
+  .footer-content a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline !important;
+  }
+  
+  .external-icon {
+    opacity: 0.6;
+    transition: transform 0.2s ease;
+  }
+  
+  .footer-content a:hover .external-icon {
+    transform: translate(1px, -1px);
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .site-footer {
+      margin-top: 2rem;
+      padding: 2rem 1rem;
+    }
+
+    .footer-links {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-group {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .footer-separator {
+      display: none;
+    }
+
+    .footer-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      opacity: 0.6;
+    }
+
+    .footer-content a {
+      font-size: 1rem;
+      padding: 0;
+      background: transparent;
+      border: none;
+      width: auto;
+      max-width: none;
+    }
+  }
+</style>

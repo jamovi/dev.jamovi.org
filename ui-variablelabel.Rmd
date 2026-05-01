@@ -1,5 +1,0 @@
----
-title: "VariableLabel"
-output: html_document
----
-Cooming soon!

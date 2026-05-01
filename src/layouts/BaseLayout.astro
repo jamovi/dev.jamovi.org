@@ -1,0 +1,61 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import PageNav from '../components/PageNav.astro';
+import Footer from '../components/Footer.astro';
+import TOC from '../components/TOC.astro';
+
+interface Props {
+  title?: string;
+  frontmatter?: any;
+  headings?: { depth: number; slug: string; text: string }[];
+  section?: string;
+}
+
+const { title, frontmatter, headings = [], section } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/' || currentPath === '';
+const hasSidebar = !isHome;
+---
+<html lang="en">
+  <head>
+    <BaseHead title={title} frontmatter={frontmatter} />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <Header section={section} transition:persist />
+    <div class={`layout-container ${!hasSidebar ? 'no-sidebar is-home' : ''}`}>
+      <Sidebar section={section} transition:persist />
+      <main id="main-content" class={`content-area markdown-content ${!hasSidebar ? 'full-width' : ''}`} data-pagefind-body>
+        {frontmatter?.title && (
+          <h1 class="page-header">{frontmatter.title}</h1>
+        )}
+        <slot />
+        <PageNav />
+        <Footer />
+      </main>
+      
+      <TOC headings={headings} />
+    </div>
+    
+    <!-- Backdrop for mobile sidebar -->
+    <div id="sidebar-backdrop" class="sidebar-backdrop" transition:persist></div>
+
+    <script>
+      import { setupCopyButtons } from '../scripts/copy-code';
+      import { setupTOC } from '../scripts/toc';
+      import { initGlobalMobileMenu, resetMobileMenu } from '../scripts/mobile-menu';
+
+      // This only runs ONCE on the initial full page load
+      initGlobalMobileMenu();
+
+      document.addEventListener('astro:page-load', () => {
+        setupCopyButtons();
+        setupTOC();
+        resetMobileMenu();
+      });
+    </script>
+  </body>
+</html>

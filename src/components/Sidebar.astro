@@ -1,0 +1,201 @@
+---
+import { menu } from '../data/menu';
+import { getSectionFromPath } from '../utils/navigation';
+import SidebarSection from './SidebarSection.astro';
+import MobileSectionSwitcher from './MobileSectionSwitcher.astro';
+
+interface Props {
+  section?: string;
+}
+
+const { section: propSection } = Astro.props;
+const currentPath = Astro.url.pathname;
+
+// Determine initial section
+let currentSection = propSection || getSectionFromPath(currentPath) || 'learn';
+
+// Determine if sidebar should only be visible on mobile (e.g. landing page)
+const isMobileOnly = currentPath === '/' || currentPath === '';
+---
+<aside class={`sidebar ${isMobileOnly ? 'mobile-only-sidebar' : ''}`} id="sidebar" data-active-section={currentSection}>
+  <MobileSectionSwitcher currentSection={currentSection} />
+
+  <nav class="sidebar-nav">
+    {menu.map((section, index) => {
+      const isFirstInSectionGroup = menu.findIndex(s => s.section === section.section) === index;
+      return (
+        <SidebarSection 
+          category={section.category}
+          section={section.section}
+          currentSection={currentSection}
+          items={section.items}
+          currentPath={currentPath}
+          isFirstInSectionGroup={isFirstInSectionGroup}
+        />
+      );
+    })}
+  </nav>
+</aside>
+
+<script>
+  import { getSectionFromPath } from '../utils/navigation';
+
+  function saveSidebarState() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+    
+    const collapsedSections = Array.from(sidebar.querySelectorAll('.sidebar-section:not(.active)'))
+      .map(s => s.getAttribute('data-category'))
+      .filter(Boolean);
+    
+    sessionStorage.setItem('sidebar-collapsed-sections', JSON.stringify(collapsedSections));
+  }
+
+  function handleHeaderClick(this: HTMLElement) {
+    const section = this.parentElement;
+    if (!section) return;
+    section.classList.toggle('active');
+    saveSidebarState();
+  }
+
+  function setupSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    const currentPath = window.location.pathname;
+    const isHome = currentPath === '/' || currentPath === '';
+
+    // Update visibility class for client-side navigation
+    if (isHome) {
+      sidebar.classList.add('mobile-only-sidebar');
+    } else {
+      sidebar.classList.remove('mobile-only-sidebar');
+    }
+
+    // Update active section based on path for persisted sidebar
+    const currentSection = getSectionFromPath(currentPath) || 'learn';
+    
+    sidebar.setAttribute('data-active-section', currentSection);
+    const tabs = sidebar.querySelectorAll('.mobile-section-tab');
+    tabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-section-tab') === currentSection));
+
+    // 1. Mobile Section Switching Logic
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const section = tab.getAttribute('data-section-tab');
+        if (section) {
+          sidebar.setAttribute('data-active-section', section);
+          tabs.forEach(t => t.classList.toggle('active', t === tab));
+        }
+      });
+    });
+
+    // 2. Update active link and ensure parent section is expanded
+    const links = sidebar.querySelectorAll('.sidebar-link');
+    let activeLink: HTMLElement | null = null;
+    
+    links.forEach(link => {
+      const href = link.getAttribute('href') || '/';
+      const normalizedPath = currentPath.replace(/\/$/, '') || '/';
+      const normalizedHref = href.replace(/\/$/, '') || '/';
+
+      if (normalizedPath === normalizedHref) {
+        link.classList.add('active');
+        activeLink = link as HTMLElement;
+        
+        const section = link.closest('.sidebar-section');
+        if (section) {
+          section.classList.add('active');
+        }
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    // 3. Expand all sections by default, and collapse only the explicitly saved ones
+    const sections = sidebar.querySelectorAll('.sidebar-section');
+    const savedState = sessionStorage.getItem('sidebar-collapsed-sections');
+    
+    // Default state: all expanded
+    sections.forEach(section => section.classList.add('active'));
+
+    if (savedState) {
+      try {
+        const collapsedCategories = JSON.parse(savedState);
+        sections.forEach(section => {
+          const category = section.getAttribute('data-category');
+          if (category && collapsedCategories.includes(category)) {
+            section.classList.remove('active');
+          }
+        });
+      } catch (e) {
+        console.error('Failed to parse sidebar state', e);
+      }
+    }
+
+    // 4. Section toggling logic
+    const headers = sidebar.querySelectorAll('.section-header');
+    headers.forEach(header => {
+      header.removeEventListener('click', handleHeaderClick);
+      header.addEventListener('click', handleHeaderClick);
+    });
+
+    // 5. Restore scroll position or scroll active link into view
+    const savedScroll = sessionStorage.getItem('sidebar-scroll');
+    if (savedScroll !== null && !isHome) {
+      sidebar.scrollTop = parseInt(savedScroll, 10);
+      sessionStorage.removeItem('sidebar-scroll');
+    } else if (activeLink && !isHome) {
+      const rect = (activeLink as HTMLElement).getBoundingClientRect();
+      const sidebarRect = sidebar.getBoundingClientRect();
+      if (rect.top < sidebarRect.top || rect.bottom > sidebarRect.bottom) {
+        (activeLink as HTMLElement).scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }
+
+  // Save scroll position before navigation starts
+  document.addEventListener('astro:before-preparation', () => {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+      sessionStorage.setItem('sidebar-scroll', sidebar.scrollTop.toString());
+    }
+  });
+
+  document.addEventListener('astro:page-load', setupSidebar);
+</script>
+
+<style>
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+  }
+  /* Desktop Visibility */
+  @media (min-width: 769px) {
+    :global(.desktop-hidden) {
+      display: none !important;
+    }
+  }
+  /* Mobile: hide sections that don't match the selected tab */
+  @media (max-width: 768px) {
+    :global(.sidebar-section) {
+      display: none !important;
+    }
+    
+    .sidebar[data-active-section="learn"] :global(.sidebar-section[data-section="learn"]),
+    .sidebar[data-active-section="reference"] :global(.sidebar-section[data-section="reference"]),
+    .sidebar[data-active-section="resources"] :global(.sidebar-section[data-section="resources"]) {
+      display: block !important;
+    }
+    .sidebar-nav {
+      padding: 1.25rem 1.5rem 2rem;
+    }
+  }
+  /* Hide switcher on desktop */
+  @media (min-width: 769px) {
+    .mobile-only-sidebar {
+      display: none !important;
+    }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+import SEO from './SEO.astro';
+import ThemeScript from './ThemeScript.astro';
+import { ClientRouter } from 'astro:transitions';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  frontmatter?: any;
+}
+
+const { title, description, image, frontmatter } = Astro.props;
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/assets/icon-logo.svg" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<SEO title={title} description={description} image={image} frontmatter={frontmatter} />
+
+<ClientRouter />
+<ThemeScript />

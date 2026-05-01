@@ -1,0 +1,125 @@
+---
+import { isActive } from '../utils/navigation';
+
+interface Props {
+  category: string;
+  section: string;
+  currentSection: string;
+  items: { text: string; href: string }[];
+  currentPath: string;
+  isFirstInSectionGroup?: boolean;
+}
+
+const { category, section, currentSection, items, currentPath, isFirstInSectionGroup = false } = Astro.props;
+const isVisibleOnDesktop = section === currentSection;
+---
+<div 
+  class={`sidebar-section active ${isVisibleOnDesktop ? 'desktop-visible' : 'desktop-hidden'} ${isFirstInSectionGroup ? 'first-in-section' : ''}`} 
+  data-category={category}
+  data-section={section}
+>
+  <button class="section-header" title="Toggle section">
+    <span class="section-title">{category}</span>
+    <svg class="chevron" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+  <ul class="section-list">
+    {items.map(item => (
+      <li>
+        <a 
+          href={item.href} 
+          class={`sidebar-link ${isActive(currentPath, item.href) ? 'active' : ''}`}
+        >
+          {item.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .sidebar-section {
+    width: 100%;
+  }
+  .section-header {
+    width: calc(100% + 1.5rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25rem 0.75rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    margin: 1.5rem -0.75rem 0.6rem -0.75rem;
+  }
+  .sidebar-section:first-child .section-header,
+  .first-in-section .section-header {
+    margin-top: 0;
+  }
+  .section-title {
+    flex: 1;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin: 0;
+    transition: color 0.2s ease;
+  }
+  .section-header:hover .section-title {
+    color: var(--text-color);
+  }
+  .sidebar-section.active .section-title {
+    color: var(--text-color);
+  }
+  .chevron {
+    display: block;
+    color: var(--text-muted);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+    opacity: 0.3;
+  }
+  .section-header:hover .chevron {
+    opacity: 0.6;
+  }
+  .sidebar-section.active .chevron {
+    transform: rotate(180deg);
+    opacity: 0.5;
+  }
+  .section-list {
+    list-style: none;
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .sidebar-section.active .section-list {
+    display: block;
+  }
+  .sidebar-link {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    color: var(--text-muted);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    margin: 0 -0.75rem;
+    font-weight: 500;
+    text-decoration: none !important;
+  }
+  .sidebar-link:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+    color: var(--text-color);
+    transform: translateX(2px);
+  }
+  .sidebar-link.active {
+    background-color: rgba(59, 130, 246, 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+  @media (min-width: 769px) {
+    .desktop-hidden {
+      display: none !important;
+    }
+  }
+</style>

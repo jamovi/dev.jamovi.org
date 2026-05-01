@@ -1,0 +1,54 @@
+---
+import { getSectionFromPath } from '../utils/navigation';
+
+interface Props {
+  section?: string;
+}
+
+const { section: propSection } = Astro.props;
+const currentPath = Astro.url.pathname;
+const section = propSection || getSectionFromPath(currentPath);
+---
+<nav class="nav-links hide-on-mobile">
+  <a href="/tutorial/tuts0101-getting-started" class={`nav-link ${section === 'learn' ? 'active' : ''}`}>Learn</a>
+  <a href="/api/module-definition" class={`nav-link ${section === 'reference' ? 'active' : ''}`}>Reference</a>
+  <a href="/showcase" class={`nav-link ${section === 'resources' ? 'active' : ''}`}>Resources</a>
+</nav>
+
+<style>
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    height: 100%;
+    align-items: center;
+  }
+  .nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none !important;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-link:hover { color: var(--text-color); }
+  .nav-link.active { color: var(--primary-color); }
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+  }
+  @media (max-width: 1024px) {
+    .nav-links { gap: 0.5rem; }
+    .nav-link { font-size: 0.85rem; }
+  }
+  @media (max-width: 768px) {
+    .hide-on-mobile { display: none !important; }
+  }
+</style>

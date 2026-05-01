@@ -1,0 +1,269 @@
+---
+// A pure CSS/HTML animated single terminal showcasing jamovi module creation
+---
+
+<div class="hero-animation-container play-animation" aria-hidden="true" transition:persist="hero-animation">
+  
+  <div class="terminal-window">
+    <div class="terminal-header">
+      <div class="terminal-title">R Console</div>
+    </div>
+    
+    <div class="terminal-body">
+      <!-- Step 1: create module -->
+      <div class="term-line type-step-1">
+        <span class="prompt">&gt;</span> <span class="typing type-1">jmvtools::create("NewMod")</span><span class="cursor cursor-1"></span>
+      </div>
+      <div class="term-line output out-step-1">
+        <div class="process-line">Creating module<span class="dots dots-1"></span></div>
+        <div class="done-line done-1">Done!</div>
+      </div>
+      
+      <!-- Step 2: setwd -->
+      <div class="term-line type-step-2">
+        <span class="prompt">&gt;</span> <span class="typing type-2">setwd("./NewMod")</span><span class="cursor cursor-2"></span>
+      </div>
+
+      <!-- Step 3: add analysis -->
+      <div class="term-line type-step-3">
+        <span class="prompt">&gt;</span> <span class="typing type-3">jmvtools::addAnalysis(name="NewTest", title="My Test")</span><span class="cursor cursor-3"></span>
+      </div>
+      <div class="term-line output out-step-3">
+        <div class="process-line">Adding analysis<span class="dots dots-3"></span></div>
+        <div class="done-line done-3">Please implement your analysis in R/newtest.b.R<br/>Done!</div>
+      </div>
+
+      <!-- Step 4: install module -->
+      <div class="term-line type-step-4">
+        <span class="prompt">&gt;</span> <span class="typing type-4">jmvtools::install()</span><span class="cursor cursor-4"></span>
+      </div>
+      <div class="term-line output out-step-4">
+        <div class="process-line">Installing NewMod<span class="dots dots-4"></span></div>
+        <div class="done-line done-4">Successfully installed NewMod into jamovi</div>
+      </div>
+      
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setupTerminalAnimation() {
+    const container = document.querySelector('.hero-animation-container') as HTMLElement | null;
+    if (!container) return;
+    
+    // Clear any existing intervals to prevent multiple loops on navigation
+    const win = window as any;
+    if (win.heroAnimInterval) {
+      clearInterval(win.heroAnimInterval);
+    }
+
+    function restart() {
+      if (container) {
+        container.classList.remove('play-animation');
+        void container.offsetWidth; // force reflow
+        container.classList.add('play-animation');
+      }
+    }
+
+    // Loop every 20 seconds
+    win.heroAnimInterval = setInterval(restart, 20000);
+  }
+
+  // Setup on initial load and upon navigation (for View Transitions)
+  document.addEventListener('astro:page-load', setupTerminalAnimation);
+  
+  // Fallback for direct load
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setupTerminalAnimation();
+  } else {
+    document.addEventListener('DOMContentLoaded', setupTerminalAnimation);
+  }
+</script>
+
+<style>
+  .hero-animation-container {
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .terminal-window {
+    width: 100%;
+    max-width: 800px;
+    height: 420px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--hairline);
+    background-color: var(--code-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  :global(html.dark) .terminal-window {
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  }
+
+  .terminal-header {
+    height: 38px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--hairline);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+  }
+
+  .terminal-title {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    font-family: var(--font-sans);
+  }
+
+  .terminal-body {
+    flex-grow: 1;
+    overflow: hidden;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    text-align: left;
+  }
+
+
+  .term-line {
+    margin-bottom: 0.2rem;
+    display: block;
+  }
+
+  .prompt { 
+    color: var(--brand);
+    font-weight: bold; 
+    margin-right: 0.5rem; 
+  }
+
+  .comment {
+    color: #10b981;
+  }
+
+  .output { 
+    color: var(--text-muted); 
+    margin-bottom: 1.25rem; 
+    margin-top: 0.25rem; 
+    padding-left: 1.2rem;
+  }
+
+  .process-line { margin-bottom: 0.1rem; }
+  .done-line { color: var(--text-main); }
+
+
+  /* --- CSS Animation Timings --- */
+  
+  /* Hidden by default */
+  .out-step-1, .done-1,
+  .type-step-2, .out-step-2, .done-2,
+  .type-step-3, .out-step-3, .done-3,
+  .type-step-4, .out-step-4, .done-4 {
+    opacity: 0;
+  }
+
+  /* Reveal line containers */
+  .play-animation .out-step-1  { animation: keepVisible 20s step-end forwards; animation-delay: 1.5s; }
+  .play-animation .done-1      { animation: keepVisible 20s step-end forwards; animation-delay: 2.5s; }
+
+  .play-animation .type-step-2 { animation: keepVisible 20s step-end forwards; animation-delay: 3.5s; }
+
+  .play-animation .type-step-3 { animation: keepVisible 20s step-end forwards; animation-delay: 5.0s; }
+  .play-animation .out-step-3  { animation: keepVisible 20s step-end forwards; animation-delay: 7.0s; }
+  .play-animation .done-3      { animation: keepVisible 20s step-end forwards; animation-delay: 8.0s; }
+
+  .play-animation .type-step-4 { animation: keepVisible 20s step-end forwards; animation-delay: 9.5s; }
+  .play-animation .out-step-4  { animation: keepVisible 20s step-end forwards; animation-delay: 10.5s; }
+  .play-animation .done-4      { animation: keepVisible 20s step-end forwards; animation-delay: 12.5s; }
+
+  @keyframes keepVisible { 0%, 100% { opacity: 1; } }
+
+
+  /* Typing effects */
+  .typing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: pre;
+    width: 0;
+    vertical-align: bottom;
+  }
+
+  .play-animation .type-1 { animation: typeText1 1s steps(26, end) forwards; animation-delay: 0.5s; }
+  .play-animation .type-2 { animation: typeText2 0.8s steps(17, end) forwards; animation-delay: 3.5s; }
+  .play-animation .type-3 { animation: typeText3 2s steps(54, end) forwards; animation-delay: 5.0s; }
+  .play-animation .type-4 { animation: typeText4 1s steps(19, end) forwards; animation-delay: 9.5s; }
+
+  @keyframes typeText1 { 0% { width: 0; } 100% { width: 26ch; } }
+  @keyframes typeText2 { 0% { width: 0; } 100% { width: 17ch; } }
+  @keyframes typeText3 { 0% { width: 0; } 100% { width: 54ch; } }
+  @keyframes typeText4 { 0% { width: 0; } 100% { width: 19ch; } }
+
+
+  /* Processing Dots: '...' */
+  .dots {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    white-space: nowrap;
+    width: 0;
+  }
+  
+  .dots::after { content: '...'; }
+
+  .play-animation .dots-1 { animation: typeDots 1s steps(4, end) forwards; animation-delay: 1.5s; }
+  .play-animation .dots-3 { animation: typeDots 1s steps(4, end) forwards; animation-delay: 7.0s; }
+  .play-animation .dots-4 { animation: typeDots 2s steps(4, end) forwards; animation-delay: 10.5s; }
+
+  @keyframes typeDots { 0% { width: 0; } 100% { width: 1.25em; } }
+
+
+  /* Cursors */
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.1em;
+    background-color: var(--text-main);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    opacity: 0;
+  }
+
+  .play-animation .cursor-1 { animation: blinkOut 0.5s step-end 3 forwards; animation-delay: 0s; }
+  .play-animation .cursor-2 { animation: blinkOut 0.5s step-end 2 forwards; animation-delay: 3.5s; }
+  .play-animation .cursor-3 { animation: blinkOut 0.5s step-end 4 forwards; animation-delay: 5.0s; }
+  .play-animation .cursor-4 { animation: blinkOut 0.5s step-end 2 forwards; animation-delay: 9.5s; }
+
+  @keyframes blinkOut {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; } 
+  }
+
+  /* --- Responsive adjustments --- */
+  @media (max-width: 900px) {
+    .terminal-window {
+      height: 350px;
+    }
+    .terminal-body {
+      font-size: 0.85rem;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-animation-container {
+      display: none;
+    }
+  }
+</style>

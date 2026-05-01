@@ -1,0 +1,202 @@
+---
+import Search from './Search.astro';
+import NavLinks from './NavLinks.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  section?: string;
+}
+
+const { section: propSection } = Astro.props;
+---
+<header class="navbar">
+  <div class="navbar-container">
+    <div class="header-left">
+      <!-- Mobile hamburger button -->
+      <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="sidebar" id="mobile-menu-btn">
+        <svg class="hamburger-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg class="close-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <a href="/" class="logo">
+        <img src="/assets/header-logo.svg" alt="jamovi logo" class="logo-img" />
+        <span class="logo-text">dev</span>
+      </a>
+    </div>
+
+    <!-- Centered Search for Desktop -->
+    <div class="search-column">
+      <Search variant="box" />
+    </div>
+
+    <div class="header-right">
+      <NavLinks section={propSection} />
+
+      <!-- Mobile Search Trigger -->
+      <Search variant="icon" />
+
+      <div class="header-actions">
+        <ThemeToggle />
+
+        <a href="https://github.com/jamovi" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- The single dialog instance for the entire page -->
+  <Search variant="none" includeDialog={true} />
+</header>
+
+<script>
+  import { getSectionFromPath } from '../utils/navigation';
+
+  function setupHeader() {
+    // Update active nav links for persisted header
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('.nav-links .nav-link');
+    const section = getSectionFromPath(currentPath);
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      let isActive = false;
+      if (section === 'learn' && href?.includes('/tutorial/')) isActive = true;
+      else if (section === 'reference' && href?.includes('/api/')) isActive = true;
+      else if (section === 'resources' && href?.includes('/showcase')) isActive = true;
+      
+      link.classList.toggle('active', isActive);
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupHeader);
+</script>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--header-border);
+    height: 64px;
+  }
+  .navbar-container {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 1.5rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 800px) 1fr;
+    align-items: center;
+    gap: 1rem;
+  }
+  .header-left {
+    justify-self: start;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    text-decoration: none !important;
+  }
+  .logo-img {
+    height: 32px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .logo-text {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    align-self: flex-end;
+    margin-bottom: 4px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .search-column {
+    grid-column: 2;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 0;
+  }
+  .header-right {
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-self: end;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-left: 1px solid var(--border-color);
+    padding-left: 0.75rem;
+  }
+  .social-link {
+    color: var(--text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+  .social-link:hover {
+    color: var(--text-color);
+    background-color: rgba(148, 163, 184, 0.1);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-left: -0.5rem; /* pull left to align with edge */
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(html.mobile-menu-open) .hamburger-icon { display: none !important; }
+  :global(html.mobile-menu-open) .close-icon { display: block !important; }
+  
+  @media (max-width: 768px) {
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+    .search-column { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .logo-img { height: 28px; }
+    .header-actions {
+      border-left: none;
+      padding-left: 0;
+      gap: 0;
+    }
+    .header-right { gap: 0; }
+  }
+</style>
