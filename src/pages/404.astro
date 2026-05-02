@@ -15,16 +15,16 @@ const frontmatter = {
       The content you're looking for might be under a new URL.
     </p>
 
+    <div id="smart-redirect" class="smart-redirect" style="display: none;">
+      <p>Were you looking for the <span id="redirect-name"></span> page?</p>
+      <a id="redirect-link" href="#" class="redirect-button">Go to <span id="redirect-button-text">page</span></a>
+    </div>
+
     <div class="search-section">
       <p>Try searching for the topic you're looking for:</p>
       <div class="search-wrapper-404">
         <Search includeDialog={true} />
       </div>
-    </div>
-
-    <div id="smart-redirect" class="smart-redirect" style="display: none;">
-      <p>Were you looking for this page?</p>
-      <a id="redirect-link" href="#" class="redirect-button">Go to suggested page</a>
     </div>
 
     <div class="suggested-sections">
@@ -122,29 +122,69 @@ const frontmatter = {
     function handleLegacyRedirects() {
       const path = window.location.pathname;
       const redirectEl = document.getElementById('smart-redirect');
+      const nameEl = document.getElementById('redirect-name');
       const linkEl = document.getElementById('redirect-link');
+      const buttonTextEl = document.getElementById('redirect-button-text');
       
-      if (!redirectEl || !linkEl) return;
+      if (!redirectEl || !nameEl || !linkEl || !buttonTextEl) return;
 
       // Clean the path (remove .html and leading slash)
       let cleanPath = path.replace(/^\//, '').replace(/\.html$/, '');
       
       const legacyMappings = {
-        'tuts0101-getting-started': '/tutorial/tuts0101-getting-started',
-        'tuts0102-creating-a-module': '/tutorial/tuts0102-building-your-first-analysis',
-        'tuts0201-dynamic-tables': '/tutorial/tuts0201-dynamic-tables',
-        'tuts0202-handling-data': '/tutorial/tuts0202-handling-data',
-        'tuts0203-state': '/tutorial/tuts0203-state',
-        'api_actions': '/api/option-action',
-        'api_i18n': '/tutorial/tuts0204-translation',
-        'api_results-definition': '/api/results-definition',
-        'api_results-elements': '/api/results-elements',
-        'api_table': '/api/table',
-        'ui-basecontrol': '/ui/basecontrol'
+        'tuts0101-getting-started': { url: '/tutorial/tuts0101-getting-started', title: 'Getting Started' },
+        'tuts0102-creating-a-module': { url: '/tutorial/tuts0102-building-your-first-analysis', title: 'Building your first analysis' },
+        'tuts0103-creating-an-analysis': { url: '/tutorial/tuts0102-building-your-first-analysis', title: 'Building your first analysis' },
+        'tuts0104-implementing-an-analysis': { url: '/tutorial/tuts0103-implementing-an-analysis', title: 'Implementing an analysis' },
+        'tuts0105-creating-rich-results': { url: '/tutorial/tuts0106-creating-rich-results', title: 'Creating rich results' },
+        'tuts0105-debugging-an-analysis': { url: '/tutorial/tuts0104-input-checks', title: 'Input Checks (Debugging)' },
+        'tuts0106-adding-plots': { url: '/tutorial/tuts0107-adding-plots', title: 'Adding plots' },
+        'tuts0107-distributing-modules': { url: '/tutorial/tuts0110-distributing-modules', title: 'Distributing modules' },
+        'tuts0108-additional-notes': { url: '/tutorial/tuts0111-additional-notes', title: 'Additional notes' },
+        'tuts0201-data-binding': { url: '/tutorial/tuts0201-dynamic-tables', title: 'Dynamic Tables' },
+        'tuts0201-dynamic-tables': { url: '/tutorial/tuts0201-dynamic-tables', title: 'Dynamic Tables' },
+        'tuts0202-handling-data': { url: '/tutorial/tuts0202-handling-data', title: 'Handling Data' },
+        'tuts0203-state': { url: '/tutorial/tuts0203-state', title: 'State' },
+        'api_actions': { url: '/api/option-action', title: 'Action Option' },
+        'api_analysis-definition': { url: '/api/analysis-definition', title: 'Analysis Definition' },
+        'api_i18n': { url: '/tutorial/tuts0204-translation', title: 'Module Translation' },
+        'api_image-sizing': { url: '/tutorial/tuts0303-responsive-image-sizing', title: 'Responsive Image Sizing' },
+        'api_module-definition': { url: '/api/module-definition', title: 'Module Definition' },
+        'api_notices': { url: '/api/notice', title: 'Notice' },
+        'api_results-definition': { url: '/api/results-definition', title: 'Results Definition' },
+        'api_results-elements': { url: '/api/results-elements', title: 'Results Elements' },
+        'api_table': { url: '/api/table', title: 'Table API' },
+        'api_ui-definition': { url: '/api/ui-definition', title: 'UI Definition' },
+        'info_project-structure': { url: '/misc/project-structure', title: 'Project Structure' },
+        'ui-advanced-customisation': { url: '/ui/advanced-customisation', title: 'Advanced Customisation' },
+        'ui-advanced-design': { url: '/ui/advanced-design', title: 'Advanced Design' },
+        'ui-basecontrol': { url: '/ui/basecontrol', title: 'BaseControl' },
+        'ui-basic-design': { url: '/ui/basic-design', title: 'Basic UI Design' },
+        'ui-checkbox': { url: '/ui/checkbox', title: 'CheckBox' },
+        'ui-collapsebox': { url: '/ui/collapsebox', title: 'CollapseBox' },
+        'ui-combobox': { url: '/ui/combobox', title: 'ComboBox' },
+        'ui-custom-format': { url: '/ui/custom-format', title: 'Custom Format' },
+        'ui-label': { url: '/ui/label', title: 'Label' },
+        'ui-layoutbox': { url: '/ui/layoutbox', title: 'LayoutBox' },
+        'ui-listbox': { url: '/ui/listbox', title: 'ListBox' },
+        'ui-optioncontrol': { url: '/ui/optioncontrol', title: 'OptionControl' },
+        'ui-parentcontrol': { url: '/ui/parentcontrol', title: 'ParentControl' },
+        'ui-radiobutton': { url: '/ui/radiobutton', title: 'RadioButton' },
+        'ui-standard-formats': { url: '/ui/standard-formats', title: 'Standard Formats' },
+        'ui-supplier': { url: '/ui/supplier', title: 'Supplier' },
+        'ui-targetlayoutbox': { url: '/ui/targetlayoutbox', title: 'TargetLayoutBox' },
+        'ui-termlabel': { url: '/ui/termlabel', title: 'TermLabel' },
+        'ui-textbox': { url: '/ui/textbox', title: 'TextBox' },
+        'ui-variablelabel': { url: '/ui/variablelabel', title: 'VariableLabel' },
+        'ui-variablesupplier': { url: '/ui/variablesupplier', title: 'VariableSupplier' }
       };
 
-      if (legacyMappings[cleanPath]) {
-        linkEl.href = legacyMappings[cleanPath];
+      const suggestion = legacyMappings[cleanPath];
+
+      if (suggestion) {
+        nameEl.textContent = suggestion.title;
+        linkEl.href = suggestion.url;
+        buttonTextEl.textContent = suggestion.title;
         redirectEl.style.display = 'block';
       }
     }
