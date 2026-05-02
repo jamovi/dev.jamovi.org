@@ -6,7 +6,7 @@ description: "Learn the fundamentals of designing user interfaces for jamovi ana
 output: html_document
 ---
 
-UIs for jamovi analyses are defined in the .u.yaml file (A refresher on the files and the relationship between them is described [here](/tutorial/tuts0103-creating-an-analysis)). This describes what sort of control each option is represented by (i.e. a dropdown list, or some radio buttons), and the order and the layout in which they will appear.
+UIs for jamovi analyses are defined in the .u.yaml file (A refresher on the files and the relationship between them is described [here](/tutorial/tuts0102-building-your-first-analysis)). This describes what sort of control each option is represented by (i.e. a dropdown list, or some radio buttons), and the order and the layout in which they will appear.
 
 ### `aggressive` vs `tame` compiler mode
 
