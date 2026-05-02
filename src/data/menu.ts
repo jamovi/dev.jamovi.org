@@ -23,6 +23,7 @@ export const menu = [
       { text: '3 - Advanced Table Techniques', href: '/tutorial/tuts0201a-advanced-table-techniques' },
       { text: '4 - Handling Data', href: '/tutorial/tuts0202-handling-data' },
       { text: '5 - State', href: '/tutorial/tuts0203-state' },
+      { text: '6 - Module Translation', href: '/tutorial/tuts0204-translation' },
     ]
   },
   {
@@ -64,13 +65,33 @@ export const menu = [
   },
   {
     section: 'reference',
-    category: 'API (R)',
+    category: 'Options API (R)',
+    items: [
+      { text: 'Options API', href: '/api/options-api' },
+      { text: 'Data', href: '/api/option-data' },
+      { text: 'Bool', href: '/api/option-bool' },
+      { text: 'Integer', href: '/api/option-integer' },
+      { text: 'Number', href: '/api/option-number' },
+      { text: 'List', href: '/api/option-list' },
+      { text: 'Variable', href: '/api/option-variable' },
+      { text: 'Variables', href: '/api/option-variables' },
+      { text: 'Terms', href: '/api/option-terms' },
+      { text: 'Group', href: '/api/option-group' },
+      { text: 'Action', href: '/api/option-action' },
+    ]
+  },
+  {
+    section: 'reference',
+    category: 'Results API (R)',
     items: [
       { text: 'Results Elements', href: '/api/results-elements' },
       { text: 'Table', href: '/api/table' },
-      { text: 'Notices', href: '/api/notices' },
-      { text: 'Actions', href: '/api/actions' },
-      { text: 'Module Translation', href: '/api/i18n' },
+      { text: 'Image', href: '/api/image' },
+      { text: 'Group', href: '/api/group' },
+      { text: 'Array', href: '/api/array' },
+      { text: 'Preformatted', href: '/api/preformatted' },
+      { text: 'Html', href: '/api/html' },
+      { text: 'Notice', href: '/api/notice' },
     ]
   },
   {
