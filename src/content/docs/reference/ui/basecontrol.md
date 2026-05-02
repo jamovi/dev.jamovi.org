@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "BaseControl"
+type: article
+description: "Technical reference for the BaseControl abstract class, the foundation for all jamovi UI controls."
 output: html_document
 ---
 

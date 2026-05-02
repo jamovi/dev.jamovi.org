@@ -1,9 +1,11 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Dynamic Tables"
+type: article
+description: "Learn how to create jamovi tables with a dynamic number of rows using data-binding to user options."
 ---
 
-In the previous tutorial series, we looked at [constructing and populating tables](/tutorial/tuts0105-creating-rich-results). The .r.yaml file contained:
+In the previous tutorial series, we looked at [constructing and populating tables](/tutorial/tuts0106-creating-rich-results). The .r.yaml file contained:
 
 ```yaml
 ...

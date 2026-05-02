@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Advanced Table Techniques"
+type: article
 description: "Master complex results using the Three Levels of Table Initialization, Grouped Results, and Table Folding."
 ---
 

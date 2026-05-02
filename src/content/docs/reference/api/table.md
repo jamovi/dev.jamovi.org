@@ -1,21 +1,11 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Table
+description: "Comprehensive reference for jamovi Table objects, including column definitions, row management, and formatting."
+type: article
 ---
 
 This document describes the properties and methods of a jamovi table object.
-
-The values of properties can be accessed using the `$` operator, followed by the name. For example, to retrieve the title of a table, one can go:
-
-```
-table$title
-```
-
-The methods of a table object are called using the `$` operator as well. For example:
-
-```r
-table$setRow(rowKey=1, values=list(t=2.3, df=2, p=0.45))
-```
 
 ## Properties
 
@@ -151,3 +141,52 @@ In practice, when an analysis is changed or re-run, `init` notes are not restore
 
 > [!TIP]
 > If the text of the note will always be the same, it is recommended to set the note in the `.r.yaml` file instead.
+
+## Examples
+
+### 1. Define the Table in YAML
+
+A `Table` is defined in the `.r.yaml` file. It typically includes a list of `columns`, but can also be defined with no columns if they are to be added dynamically in the R implementation.
+
+#### Static Columns
+Defining a table with a fixed set of columns:
+
+```yaml
+- name: statsTable
+  title: Descriptive Statistics
+  type: Table
+  rows: 1
+  columns:
+    - name: var
+      title: Variable
+      type: text
+    - name: mean
+      title: Mean
+      type: number
+    - name: sd
+      title: SD
+      type: number
+```
+
+#### Dynamic Columns
+Defining a table that will have its columns added at runtime using the [`addColumn()`](#addcolumnname-) method:
+
+```yaml
+- name: dynamicTable
+  title: Results Table
+  type: Table
+```
+
+### 2. Implementation in R
+
+The values of properties can be accessed using the `$` operator, followed by the name. For example, to retrieve the title of a table, one can go:
+
+```
+table$title
+```
+
+The methods of a table object are called using the `$` operator as well. For example:
+
+```r
+table$setRow(rowKey=1, values=list(t=2.3, df=2, p=0.45))
+```

@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Creating Rich Results"
+type: article
 description: "Learn how to define and populate APA-formatted tables in your jamovi analysis results."
 ---
 

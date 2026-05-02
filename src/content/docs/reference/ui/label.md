@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Label"
+type: article
+description: "Technical reference for the jamovi UI Label control, used for displaying static text or read-only option values."
 ---
 
 A `Label` is a simple control that displays text. It can take two inheritance forms depending on how it is setup. The first is a *static label* and the second is an *option label*.

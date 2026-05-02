@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Responsive Image Sizing
+type: article
 description: Master the "Fixed vs. Stretchable" mental model to create plots that scale beautifully in jamovi.
 ---
 
@@ -95,4 +96,4 @@ if ( ! is.null(image[["setSize2"]])) {
 - [ ] **Is my math dynamic?** Base your `heightM` or `widthM` on the number of variables or groups selected.
 - [ ] **Did I account for both axes?** Remember that both width and height usually have fixed components.
 
-**Next Step:** Once your analysis is visual and responsive, it's time to ensure it is robust with **[Unit Testing](/tutorial/tuts0108-unit-testing)**.
+**Next Step:** Once your analysis is visual and responsive, it's time to ensure it is robust with **[Unit Testing](/tutorial/tuts0109-unit-testing)**.

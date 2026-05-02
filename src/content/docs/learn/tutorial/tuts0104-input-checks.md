@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Input Checks"
+type: article
 description: "Learn how to prevent errors when users haven't finished setting up their analysis using guard clauses."
 ---
 

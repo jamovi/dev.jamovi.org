@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "The jamovi Results Model"
+type: article
 description: "Understand the hierarchical relationship between your R code and the jamovi results panel."
 ---
 

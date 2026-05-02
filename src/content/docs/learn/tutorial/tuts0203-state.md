@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: State
+type: article
+description: "Learn how to use state and the clearWith property in jamovi to improve performance by avoiding redundant calculations."
 ---
 
 The analyses demonstrated in the tutorial series so far, have been completely *state*-less. This means that each time an analysis is run, (for example, in response to a user checking a checkbox) it runs the analysis from beginning to end. In many cases, this isn't very efficient. A user may run a t-test, and then select a checkbox requesting descriptives. Without *state*, an analysis will recalculate the t-test results every time the analysis is changed, even when the changed option has no impact on the t-test results.

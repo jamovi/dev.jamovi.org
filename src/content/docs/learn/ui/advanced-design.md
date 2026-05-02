@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Advanced UI Design"
+type: article
+description: "Explore advanced UI design in jamovi, including detailed mappings between option types and their corresponding UI controls."
 output: html_document
 ---
 

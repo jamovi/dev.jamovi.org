@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "LayoutBox"
+type: article
+description: "Technical reference for the jamovi UI LayoutBox control, used for organizing and positioning child controls."
 output: html_document
 ---
 

@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "VariableLabel"
+type: article
+description: "Technical reference for the jamovi UI VariableLabel control, used for displaying variable names with their respective icons."
 output: html_document
 ---
 The `VariableLabel` control is used to represent a single variable within a `TargetLayoutBox`. It provides the visual representation of a "dropped" variable.

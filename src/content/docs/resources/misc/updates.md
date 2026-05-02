@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: API Updates
+type: article
+description: "Stay informed about the latest changes, ecosystem improvements, and API updates for jamovi developers."
 ---
 
 Welcome to the jamovi developer updates page. Here we track important changes to the jamovi API and ecosystem improvements.
@@ -52,4 +54,4 @@ Significant improvements to the development workflow:
 - **Compiler Modes**: Introduced `aggressive` (default) and `tame` modes for UI generation.
 
 ### Dev Mode & Debugging (02-04-2017)
-jamovi 0.7.2.7 adds **dev mode**, providing a stack trace when an analysis errors. Read more in [Debugging an Analysis](/tutorial/tuts0204-debugging-an-analysis).
+jamovi 0.7.2.7 adds **dev mode**, providing a stack trace when an analysis errors. Read more in [Debugging an Analysis](/tutorial/tuts0104-input-checks).

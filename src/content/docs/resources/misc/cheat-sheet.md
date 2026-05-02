@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Development Cheat Sheet"
+type: article
 description: "A quick reference guide for building jamovi modules, analyses, and results."
 ---
 

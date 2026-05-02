@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "ComboBox"
+type: article
 ---
 
 **Inherits from [`OptionControl`](/ui/optioncontrol)**

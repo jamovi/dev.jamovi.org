@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Implementing an Analysis"
+type: article
 description: "Write the R logic for your jamovi analysis using R6 classes and the jmvcore package."
 ---
 

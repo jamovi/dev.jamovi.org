@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Summary & Next Steps"
+type: article
 description: "Review what you've learned in the Getting Started series and discover your next steps for building jamovi modules."
 ---
 

@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "TargetLayoutBox"
+type: article
+description: "Technical reference for the jamovi UI TargetLayoutBox control, used to create drop targets for variables."
 ---
 
 The `TargetLayoutBox` is a container that acts as a destination for items dragged from a `Supplier` or `VariableSupplier`. It is used to define areas where users drop variables to assign them to analysis options.

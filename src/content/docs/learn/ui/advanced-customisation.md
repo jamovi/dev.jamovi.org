@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Advanced customisation of the options UI"
+type: article
+description: "Learn how to use JavaScript to create dynamic and complex user interfaces for jamovi analyses, including custom event handlers and DOM manipulation."
 output: html_document
 ---
 

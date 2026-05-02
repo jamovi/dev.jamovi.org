@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "ListBox"
+type: article
+description: "Technical reference for the jamovi UI ListBox control, used for managing lists of items such as variables or terms."
 output: html_document
 ---
 

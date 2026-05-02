@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Getting Started"
+type: article
 description: "Learn how to set up your environment and install your first jamovi module using jmvtools."
 ---
 

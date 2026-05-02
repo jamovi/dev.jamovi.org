@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Search from '../components/Search.astro';
+
+const frontmatter = {
+  title: '404 - Page Not Found',
+  description: 'The page you are looking for has moved or does not exist.'
+};
+---
+
+<BaseLayout frontmatter={frontmatter}>
+  <div class="error-container">
+    <p class="error-intro">
+      We've recently updated our documentation and some pages have moved. 
+      The content you're looking for might be under a new URL.
+    </p>
+
+    <div class="search-section">
+      <p>Try searching for the topic you're looking for:</p>
+      <div class="search-wrapper-404">
+        <Search includeDialog={true} />
+      </div>
+    </div>
+
+    <div id="smart-redirect" class="smart-redirect" style="display: none;">
+      <p>Were you looking for this page?</p>
+      <a id="redirect-link" href="#" class="redirect-button">Go to suggested page</a>
+    </div>
+
+    <div class="suggested-sections">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="/tutorial/tuts0101-getting-started">Getting Started Tutorial</a></li>
+        <li><a href="/api/results-elements">Results API Reference</a></li>
+        <li><a href="/api/options-api">Options API Reference</a></li>
+        <li><a href="/ui/basic-design">UI Design Guide</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    .error-container {
+      max-width: 600px;
+      margin: 2rem 0;
+    }
+    .error-intro {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+    .search-section {
+      background-color: var(--bg-color-alt);
+      padding: 2rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 2.5rem;
+    }
+    .search-section p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .search-wrapper-404 {
+      max-width: 400px;
+    }
+    .smart-redirect {
+      background-color: var(--primary-color-transparent, rgba(59, 130, 246, 0.1));
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 2px solid var(--primary-color);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .smart-redirect p {
+      margin-top: 0;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+    .redirect-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: white !important;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+    .redirect-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+    .suggested-sections h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .suggested-sections ul {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .suggested-sections li a {
+      display: block;
+      padding: 1rem;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .suggested-sections li a:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+
+  <script is:inline>
+    function handleLegacyRedirects() {
+      const path = window.location.pathname;
+      const redirectEl = document.getElementById('smart-redirect');
+      const linkEl = document.getElementById('redirect-link');
+      
+      if (!redirectEl || !linkEl) return;
+
+      // Clean the path (remove .html and leading slash)
+      let cleanPath = path.replace(/^\//, '').replace(/\.html$/, '');
+      
+      const legacyMappings = {
+        'tuts0101-getting-started': '/tutorial/tuts0101-getting-started',
+        'tuts0102-creating-a-module': '/tutorial/tuts0102-building-your-first-analysis',
+        'tuts0201-dynamic-tables': '/tutorial/tuts0201-dynamic-tables',
+        'tuts0202-handling-data': '/tutorial/tuts0202-handling-data',
+        'tuts0203-state': '/tutorial/tuts0203-state',
+        'api_actions': '/api/option-action',
+        'api_i18n': '/tutorial/tuts0204-translation',
+        'api_results-definition': '/api/results-definition',
+        'api_results-elements': '/api/results-elements',
+        'api_table': '/api/table',
+        'ui-basecontrol': '/ui/basecontrol'
+      };
+
+      if (legacyMappings[cleanPath]) {
+        linkEl.href = legacyMappings[cleanPath];
+        redirectEl.style.display = 'block';
+      }
+    }
+
+    // Run on load
+    handleLegacyRedirects();
+    // Also run on view transitions
+    document.addEventListener('astro:page-load', handleLegacyRedirects);
+  </script>
+</BaseLayout>
