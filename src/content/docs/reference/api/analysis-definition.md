@@ -3,11 +3,11 @@ layout: ../layouts/BaseLayout.astro
 title: "Analysis Definition"
 ---
 
-.a.yaml files
+The analysis definition is a YAML file in the `jamovi/` directory with the extension `.a.yaml`. It describes the analysis metadata, how it appears in the jamovi menus, and the options (parameters) it requires.
 
 ## Header
 
-the analysis definition is a yaml file in the `jamovi/` directory, with the extension `.a.yaml`. the analysis definition describes the analysis, the way it appears in menus, and the options it requires. the file is named to match the name of the analysis it describes, but converted to lowercase. an example is `ttestis.a.yaml`:
+The header section of the `.a.yaml` file defines the analysis identity and its placement in the UI. The file must be named to match the name of the analysis, but converted to lowercase (e.g., `ttestis.a.yaml`).
 
 ```yaml
 ---
@@ -38,137 +38,25 @@ options      | an array of options that the analysis requires. these are describ
 
 ## Options
 
-options represent the options that an analysis requires in order to run. when a jamovi module is used as an R package, they represent the arguments to the function. when used in jamovi itself, they represent the user interface (UI) options presented to the user.
+Options represent the parameters that an analysis requires in order to run. When a jamovi module is used as an R package, they represent the arguments to the function. When used in jamovi itself, they represent the user interface (UI) options presented to the user.
 
-each option has a name, a type, and some additional properties which are described in greater detail below.
+Each option has a `name`, a `type`, and some additional properties. When a value is specified by the user, the option checks the value and produces an error if the value is not suitable.
 
-when a value is specified by the user (either through the jamovi user interface, or through a function argument), the option checks the value and produces an error if the value is not suitable. the checks performed by each option are also detailed below.
+### Option Types
 
-the different option types are as follows:
+The following option types are available in jamovi:
 
-### Data
+| Type | Description |
+| :--- | :--- |
+| [**Data**](/api/option-data) | The primary dataset for the analysis. |
+| [**Bool**](/api/option-bool) | A true/false toggle (UI: Checkbox). |
+| [**Integer**](/api/option-integer) | A whole number input. |
+| [**Number**](/api/option-number) | A decimal number input. |
+| [**List**](/api/option-list) | A selection from a predefined set of values. |
+| [**Variable**](/api/option-variable) | A single variable selection from the dataset. |
+| [**Variables**](/api/option-variables) | Multiple variable selections from the dataset. |
+| [**Terms**](/api/option-terms) | Model terms, including main effects and interactions. |
+| [**Group**](/api/option-group) | A container for organizing other options. |
+| [**Action**](/api/option-action) | A button that triggers a specific task. |
 
-`Data` is used for analyses which require data (almost all of them). if used, it should be the first of the options, and should always be called `data`. it has no additional properties.
-
-#### example
-
-```yaml
-    - name: data
-      type: Data
-```
-
-### Bool
-
-`Bool` is used for true/false values, and is typically represented in the UI as a checkbox.
-
-#### properties
-
- - title
- - default: `false`
- 
-#### example
-```yaml
-    - name: bf
-      type: Bool
-      title: Bayes factor
-      default: false
-```
-#### checks
-
- - the value must be `true` or `false`
-
-### Integer
-
-`Integer` is used for values which need to be whole numbers. For 'floating point' numbers, use `Number` instead.
-
-#### properties
-
- - title
- - default: `0`
- - min: `-Inf`
- - max: `Inf`
-
-#### checks
-
- - the value must be a whole number
- - the value must fall between the `min` and the `max`
-
-### Number
-
-`Number` is used for values which need to be numeric. For whole numbers, use `Integer` instead.
-
-#### properties
-
- - title
- - default: `0.0`
- - min: `-Inf`
- - max: `Inf`
-
-#### example
-```yaml
-    - name: ciWidth
-      type: Number
-      title: Confidence level
-      min: 50
-      max: 99.9
-      default: 95
-```
-#### checks
-
- - the value must be a number
- - the value must fall between the `min` and the `max`
-
-### List
-
-`List` is used where only one of several values may be specified, and only one at a time. In the UI, these are typically represented as either a listbox, or a set of radio buttons.
-
-#### properties
-
- - title
- - options
- - default: `<the first of options>`
- 
-`options` must be specified as an array of strings
-
-#### checks
-
- - the value must be one of the options
-
-### Variable
-
-`Variable` is used where a variable/column from the data set needs to be specified. In the UI, these are typically represented as a 'drop box', where variables can be dragged and dropped.
-
- - title
- - suggested: `[]`
- - permitted: `[continuous, ordinal, nominal, nominaltext]`
- - rejectInf: `true`
- - rejectMissing: `false`
-
-The value of `Variable` is a string (in R, a character vector of length 1) containing the assigned variable name. If nothing is assigned it has a value of `null`.
-
-#### checks
-
- - whether the value is a string
- - whether the variable exists in the data set
- - whether the variable type is permitted
- - whether the variable contains non-finite values (if `rejectInf` is true)
- - whether the variable contains missing values (if `rejectMissing` is true)
-
-### Variables
-
-`Variables` is used where multiple variables/columns from the data set need to be specified. In the UI, these are typically represented as a 'drop box', where variables can be dragged and dropped.
-
- - title
- - suggested: `[]`
- - permitted: `[continuous, ordinal, nominal, nominaltext]`
- - rejectInf: `true`
- - rejectMissing: `false`
-
-The value is an array of strings (in R, a character vector). If nothing is assigned to `Variables` it's value is an empty array (in R, a character vector of length 0).
-
-#### checks
-
- - whether the variable exists in the data set
- - whether the variable type is permitted
- - whether the variable contains non-finite values (if `rejectInf` is true)
- - whether the variable contains missing values (if `rejectMissing` is true)
+For a detailed look at how to interact with these options in your R code, see the [Options API (R)](/api/options-api) documentation.
