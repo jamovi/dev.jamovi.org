@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Group
+description: "Learn how to use the Group results element to organize and hierarchicalize your jamovi analysis output."
+type: article
 ---
 
 The `Group` element is a container used to organize other results elements (like tables, images, or other groups) into a logical hierarchy.

@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Handling Data
+type: article
 description: "Master the Dual Nature of jamovi variables and learn how to correctly convert data for your R analyses."
 ---
 

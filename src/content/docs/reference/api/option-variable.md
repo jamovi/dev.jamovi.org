@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Variable Option
-description: The Variable option represents a single column selection from the dataset.
+description: "Learn how to use the Variable option for single column selection from the jamovi dataset."
+type: article
 ---
 
 The `Variable` option allows the user to select a single variable (column) from the dataset.

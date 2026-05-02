@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Variables Option
-description: The Variables option represents multiple column selections from the dataset.
+description: "Reference for the Variables option, used for multiple column selection from the jamovi dataset."
+type: article
 ---
 
 The `Variables` option allows the user to select multiple variables (columns) from the dataset.

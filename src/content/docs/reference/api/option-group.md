@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Group Option
-description: The Group option is used to organize other options into logical sections in the UI.
+description: "Documentation for the Group option, used to organize analysis parameters into logical UI sections."
+type: article
 ---
 
 The `Group` option is a container used to organize related options into logical sections within the jamovi analysis panel.

@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: List Option
-description: The List option allows the user to select one value from a predefined set of strings.
+description: "Learn how to use the List option for selecting from predefined values in jamovi."
+type: article
 ---
 
 The `List` option allows the user to select one value from a predefined set of strings.

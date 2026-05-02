@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Results Definition"
+description: "Detailed reference for the jamovi results definition (.r.yaml), defining the structure of analysis output."
+type: article
 ---
 
 The results definition is a YAML file in the `jamovi/` directory with the extension `.r.yaml`. It describes the structure and organization of the results produced by your analysis.

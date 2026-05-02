@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Notice
+description: "Documentation for the Notice results element, used for informational messages, warnings, and errors in jamovi."
+type: article
 ---
 
 The `Notice` element is used to display informational messages, warnings, or errors to the user within the jamovi results panel. They are particularly useful for alerting users to issues with their data, violations of assumptions, or providing additional context about the analysis.

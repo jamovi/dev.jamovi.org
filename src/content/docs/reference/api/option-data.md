@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Data Option
-description: The Data option represents the dataset used for the analysis.
+description: "Learn how to define the primary dataset for a jamovi analysis using the Data option."
+type: article
 ---
 
 The `Data` option is used to specify the dataset that the analysis will operate on. Almost every analysis in jamovi begins with a `Data` option.

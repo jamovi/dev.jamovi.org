@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "UI Design"
+type: article
+description: "Learn the fundamentals of designing user interfaces for jamovi analyses, including compiler modes, best practices, and layout controls."
 output: html_document
 ---
 

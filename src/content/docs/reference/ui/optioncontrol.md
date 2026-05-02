@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "OptionControl"
+type: article
 output: html_document
 ---
 

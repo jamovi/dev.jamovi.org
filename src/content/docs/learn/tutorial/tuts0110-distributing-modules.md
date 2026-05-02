@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Distributing Modules"
+type: article
 description: "Share your jamovi module with others by side-loading .jmo files or submitting to the jamovi library."
 ---
 

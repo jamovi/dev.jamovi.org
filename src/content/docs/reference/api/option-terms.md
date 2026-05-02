@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Terms Option
-description: The Terms option represents model terms, such as main effects and interactions.
+description: "Technical reference for the Terms option, used for model building, main effects, and interactions."
+type: article
 ---
 
 The `Terms` option is used to define model structures, including main effects and interactions between variables.

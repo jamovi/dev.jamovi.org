@@ -2,6 +2,7 @@
 layout: ../layouts/BaseLayout.astro
 title: Options API (R)
 description: Learn how to access and interact with analysis options in your R code using the self$options object.
+type: article
 ---
 
 In jamovi, the `self$options` object is the **single source of truth** for your analysis. It acts as the bridge between the user interface (defined in your `.a.yaml` file) and your R execution logic.

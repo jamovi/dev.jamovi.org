@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Number Option
-description: The Number option represents a decimal number, typically a text box in the UI.
+description: "Documentation for the Number option, used for decimal and floating-point numeric inputs."
+type: article
 ---
 
 The `Number` option represents a decimal (floating-point) number.

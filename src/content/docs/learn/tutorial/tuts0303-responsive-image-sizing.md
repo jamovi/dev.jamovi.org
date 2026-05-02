@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Responsive Image Sizing
+type: article
 description: Master the "Fixed vs. Stretchable" mental model to create plots that scale beautifully in jamovi.
 ---
 

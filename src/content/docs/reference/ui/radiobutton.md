@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "RadioButton"
+type: article
 ---
 
 **Inherits from [`OptionControl`](/ui/optioncontrol), [`ParentControl`](/ui/parentcontrol)**

@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Additional Notes"
+type: article
 description: "Advanced tips on dependency management, performance optimization, and R namespace best practices."
 ---
 

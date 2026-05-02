@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "CollapseBox"
+type: article
+description: "Technical reference for the jamovi UI CollapseBox control, which allows for grouping options in an expandable/collapsible section."
 output: html_document
 ---
 

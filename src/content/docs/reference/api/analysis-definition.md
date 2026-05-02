@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Analysis Definition"
+description: "Comprehensive guide to the jamovi analysis definition (.a.yaml), covering metadata, menu placement, and options."
+type: article
 ---
 
 The analysis definition is a YAML file in the `jamovi/` directory with the extension `.a.yaml`. It describes the analysis metadata, how it appears in the jamovi menus, and the options (parameters) it requires.

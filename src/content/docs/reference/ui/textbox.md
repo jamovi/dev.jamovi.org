@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "TextBox"
+type: article
+description: "Technical reference for the jamovi UI TextBox control, used for entering text, numbers, and other formatted data."
 ---
 
 **Inherits from [`OptionControl`](/ui/optioncontrol)**

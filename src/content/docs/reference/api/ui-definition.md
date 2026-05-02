@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "User-interface Definition"
+description: "Guide to customizing the jamovi user interface using the UI definition (.u.yaml), including controls and layout."
+type: article
 ---
 
 The user-interface definition is a YAML file in the `jamovi/` directory with the extension `.u.yaml`. While jamovi can automatically generate a UI from your analysis definition, the `.u.yaml` file allows you to customize the layout and appearance of the analysis options panel.

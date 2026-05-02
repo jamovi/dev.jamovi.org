@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Unit Testing your Analysis"
+type: article
 description: "Ensure your jamovi analysis is robust and accurate by writing automated tests using testthat."
 ---
 

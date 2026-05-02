@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Adding Plots"
+type: article
 description: "Learn how to integrate ggplot2 into your jamovi analysis using the State/Render model."
 ---
 

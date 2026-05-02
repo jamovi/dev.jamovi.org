@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Array
+description: "Detailed reference for the jamovi Array results element, used for repeating output elements like tables or plots."
+type: article
 ---
 
 The `Array` element is a dynamic container used for repeating elements. It is particularly useful when you need to generate a set of results (like a table or a plot) for each level of a factor or for each variable in a list.

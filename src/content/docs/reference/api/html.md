@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Html
+description: "Reference for the Html results element, allowing for rich, custom HTML output in jamovi analyses."
+type: article
 ---
 
 The `Html` element is used for displaying rich HTML output. This allows for custom formatting, links, and other HTML features that are not available in standard jamovi tables or text elements.

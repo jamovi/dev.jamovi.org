@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Image
+description: "Technical reference for the jamovi Image results element, used for plots, charts, and graphical output."
+type: article
 ---
 
 The `Image` element is used for displaying graphical output, such as plots and charts, within jamovi results.

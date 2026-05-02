@@ -2,6 +2,7 @@
 layout: ../layouts/BaseLayout.astro
 title: Module Translation
 description: Learn how to enable multi-language support in your jamovi module.
+type: article
 ---
 
 jamovi supports the translation of modules. Although R does provide a rudimentary translation system, it's unfortunately limited in several significant ways. Perhaps the most significant limitation is that an R process cannot change the language it is using 'on the fly'. As a result, jamovi has had to provide its own translation system.

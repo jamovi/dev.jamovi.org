@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Bool Option
-description: The Bool option represents a true/false value, typically a checkbox in the UI.
+description: "Reference for the Bool option, represented as a checkbox in the jamovi user interface."
+type: article
 ---
 
 The `Bool` option represents a boolean (true/false) value.

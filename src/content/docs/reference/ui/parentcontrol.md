@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "ParentControl"
+type: article
+description: "Technical reference for the ParentControl class, which provides common functionality for controls that can contain others."
 output: html_document
 ---
 

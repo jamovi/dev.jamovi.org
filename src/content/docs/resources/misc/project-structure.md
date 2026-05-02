@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "project structure"
+type: article
+description: "Overview of the jamovi source code structure, including build components, assembly process, and directory layout."
 ---
 
 the jamovi source structure contains the following components:

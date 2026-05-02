@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Building Your First Analysis"
+type: article
 description: "Scaffold a jamovi module and define your first statistical analysis UI using YAML."
 ---
 

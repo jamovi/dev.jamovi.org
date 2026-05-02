@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Preformatted
+description: "Learn how to use the Preformatted results element for raw, monospaced text and R console output."
+type: article
 ---
 
 The `Preformatted` element is used for displaying raw, monospaced text. This is useful for showing R console output, model summaries, or any text where whitespace and alignment are important.

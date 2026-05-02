@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "CheckBox"
+type: article
 ---
 
 **Inherits from [`OptionControl`](/ui/optioncontrol), [`ParentControl`](/ui/parentcontrol)**

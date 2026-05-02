@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Table
+description: "Comprehensive reference for jamovi Table objects, including column definitions, row management, and formatting."
+type: article
 ---
 
 This document describes the properties and methods of a jamovi table object.

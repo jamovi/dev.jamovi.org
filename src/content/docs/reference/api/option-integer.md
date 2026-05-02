@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Integer Option
-description: The Integer option represents a whole number, typically a text box in the UI.
+description: "Reference for the Integer option, used for whole number inputs in jamovi analyses."
+type: article
 ---
 
 The `Integer` option represents a whole number.

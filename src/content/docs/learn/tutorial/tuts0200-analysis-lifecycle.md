@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "The Analysis Lifecycle"
+type: article
 description: "Master the two-stage execution model of jamovi: .init() and .run()."
 ---
 

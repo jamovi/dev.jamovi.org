@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Plot Themes"
+type: article
 description: "Learn how jamovi automatically applies themes to your plots for a native look and feel."
 ---
 

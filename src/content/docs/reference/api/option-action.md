@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Action Option
+description: "Documentation for the Action option, allowing analyses to trigger UI events like opening new datasets."
+type: article
 ---
 
 Actions allow an analysis to trigger specific events, such as opening a new data set in a new jamovi window. This functionality requires jamovi 2.7.12 or newer.

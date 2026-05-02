@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Standard UI Formats"
+type: article
+description: "Reference for standard UI formats available in jamovi, such as variable, term, number, and bool."
 output: html_document
 ---
 

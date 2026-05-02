@@ -1,6 +1,8 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: Results Elements
+description: Overview of jamovi Results Elements, the building blocks of an analysis output, including the Results Tree and dynamic creation in R.
+type: article
 ---
 
 Results Elements are the building blocks of a jamovi analysis output. They are R6 objects that jamovi automatically instantiates based on the [Results Definition](/api/results-definition) (`.r.yaml`) of your module.

@@ -1,6 +1,7 @@
 ---
 layout: ../layouts/BaseLayout.astro
 title: "Image State Performance"
+type: article
 description: "Optimize your jamovi module by avoiding the \"State\" anti-pattern and using data-driven rendering correctly."
 ---
 
