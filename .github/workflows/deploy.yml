@@ -6,6 +6,7 @@ on:
 
 jobs:
   deploy:
+    if: github.repository == 'jamovi/dev.jamovi.org'
     name: Build & Deploy
     runs-on: ubuntu-latest
     steps:
