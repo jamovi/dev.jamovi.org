@@ -32,10 +32,11 @@ name         | the name of the analysis. camel case. underscores are discouraged
 title        | the title of the analysis in title case.
 version      | the version of the analysis. should make use of [semantic versioning](https://semver.org/).
 jas          | the `jamovi analysis spec`. should be '1.0'. must be wrapped in quotes to prevent it being interpretted as a number.
-menuGroup    | the name of the top level menu where the analysis should appear.
+menuGroup    | the name of the top level menu where the analysis should appear. for plot modules, use `.` to place the analysis at the root of the Plots tab.
 menuSubgroup | (optional) places the menu entry under a subheading.
 menuTitle    | (optional) the title to be used in the menu. if unspecified, then the `title` is used.
 menuSubtitle | (optional) additional text placed to the lower right of the menu entry.
+category     | (optional) `analyses` (default) or `plots`. Determines which jamovi tab the analysis appears in. See [Plot Modules](/tutorial/tuts0304-plot-modules) before using `plots`.
 options      | an array of options that the analysis requires. these are described in greater detail below.
 
 ## Options

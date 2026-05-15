@@ -15,6 +15,7 @@ The `0000.yaml` file is the master descriptor for a jamovi module. It is located
 | `jms` | The jamovi module spec version (typically `'1.0'`). |
 | `authors` | A list of authors of the module. |
 | `description` | A short description of what the module does. |
+| `category` | (optional) `analyses` (default) or `plots`. Use `plots` only if the module's primary purpose is producing plots — see [Plot Modules](/tutorial/tuts0304-plot-modules) for guidance. |
 
 ## Example
 

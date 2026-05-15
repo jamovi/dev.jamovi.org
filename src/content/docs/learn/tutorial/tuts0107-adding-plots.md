@@ -7,6 +7,9 @@ description: "Learn how to integrate ggplot2 into your jamovi analysis using the
 
 In this section, we'll add a visual representation of our data. jamovi makes it easy to integrate `ggplot2` to create beautiful plots.
 
+> [!NOTE]
+> Building a module whose **primary** output is a plot? It may belong in the Plots tab instead of the Analyses tab. See [Plot Modules](/tutorial/tuts0304-plot-modules) before deciding.
+
 ## 1. Define the Image in YAML
 
 Plots are items in your results, so we need to add an `Image` entry to `jamovi/ttest.r.yaml`.
