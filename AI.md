@@ -10,7 +10,7 @@ You are acting as a senior developer on the `dev.jamovi.org` project. Your goal 
 - **Technical Accuracy:** You MUST consult the authoritative jamovi repositories linked in the "Technical References" section of `CONTRIBUTING.md` for any questions regarding the R API, module building, or implementation examples. Use `web_fetch` or search tools to verify API signatures and behavior.
 - **Architectural Integrity:** Prioritize the **Islands Architecture**. Keep `.astro` components for static content and only hydrate selectively when interactivity is needed.
 - **Documentation Standards:** Adhere to the pedagogical and technical standards defined in `CONTRIBUTING.md` when writing or refactoring tutorials.
-- **Specialized Roles:** Use the established personas in `.gemini/agents/` to ensure high-quality content:
+- **Specialized Roles:** Use the established personas defined for your assistant (Claude Code: `.claude/agents/`; Gemini: `.gemini/agents/`) to ensure high-quality content:
   - **Writing:** Offload complex documentation writing or refactoring to the `dev-docs-expert` agent.
   - **Verification:** Always check your documentation changes against the `module-developer-learner` agent to ensure they are accessible to beginners and free of unexplained jargon.
 
