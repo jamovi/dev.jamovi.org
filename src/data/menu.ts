@@ -33,6 +33,7 @@ export const menu = [
       { text: '1 - Image State Performance', href: '/tutorial/tuts0301-image-state-performance' },
       { text: '2 - Plot Themes', href: '/tutorial/tuts0302-plot-themes' },
       { text: '3 - Responsive Image Sizing', href: '/tutorial/tuts0303-responsive-image-sizing' },
+      { text: '4 - Plot Modules', href: '/tutorial/tuts0304-plot-modules' },
     ]
   },
   {
