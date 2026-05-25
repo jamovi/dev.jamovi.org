@@ -41,8 +41,9 @@ export const menu = [
     category: 'Advanced & Distribution',
     items: [
       { text: '1 - Unit Testing your Analysis', href: '/tutorial/tuts0109-unit-testing' },
-      { text: '2 - Distributing Modules', href: '/tutorial/tuts0110-distributing-modules' },
-      { text: '3 - Additional Notes', href: '/tutorial/tuts0111-additional-notes' },
+      { text: '2 - Module Datasets', href: '/tutorial/tuts0110-module-datasets' },
+      { text: '3 - Distributing Modules', href: '/tutorial/tuts0111-distributing-modules' },
+      { text: '4 - Additional Notes', href: '/tutorial/tuts0112-additional-notes' },
     ]
   },
   {

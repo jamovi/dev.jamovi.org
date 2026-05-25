@@ -43,7 +43,7 @@ While it's common in standard R packages to use `import()` in the `NAMESPACE` fi
 1.  **Lazy Loading:** Dependencies are only loaded into memory at the exact moment they are needed.
 2.  **Reduced RAM:** Only the necessary parts of a package are loaded, keeping jamovi's memory footprint small.
 
-## 3. Understanding Your Tools
+## 4. Understanding Your Tools
 
 | Tool | Primary Role | Used For... |
 | :--- | :--- | :--- |
