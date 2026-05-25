@@ -87,5 +87,4 @@ As you continue to improve your module, you will want to push updates to the lib
 2. **Push to Source Control:** Push your latest code changes to your GitHub repository (or whichever source control platform you use).
 3. **Notify the Team:** Send a quick follow-up email to the jamovi team, or drop a message in the jamovi Slack, letting them know a new version is ready to be built.
 3. **New Version is Published:** The jamovi team will update the module in the library. Updates are typically pushed once a week (i.e. Mondays).
-
-**Next Step:** You've completed the core tutorial series! For some final technical tips, check out the **[Additional Notes](/tutorial/tuts0111-additional-notes)**.
+**Next Step:** You've completed the core tutorial series! For some final technical tips, check out the **[Additional Notes](/tutorial/tuts0112-additional-notes)**.
