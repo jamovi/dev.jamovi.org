@@ -8,6 +8,7 @@ You are acting as a senior developer on the `dev.jamovi.org` project. The shared
 ## Claude Code Specifics
 
 ### Workflow
+- **Always work on a feature branch.** Never commit directly to `main`. Create a branch (e.g. `feature/<short-description>`) before making any changes, and keep `main` in sync with `origin/main`.
 - Use **Plan Mode** (or the `Plan` subagent) for any non-trivial change before editing.
 - Always run `npm run build` and `npx astro check` after structural changes — both are validation gates per `CONTRIBUTING.md`.
 - Propose a draft commit message and wait for explicit approval before committing. Never mention AI assistants in commit messages.
