@@ -22,8 +22,9 @@ export const menu = [
       { text: '2 - Dynamic Tables', href: '/tutorial/tuts0201-dynamic-tables' },
       { text: '3 - Advanced Table Techniques', href: '/tutorial/tuts0201a-advanced-table-techniques' },
       { text: '4 - Handling Data', href: '/tutorial/tuts0202-handling-data' },
-      { text: '5 - State', href: '/tutorial/tuts0203-state' },
-      { text: '6 - Module Translation', href: '/tutorial/tuts0204-translation' },
+      { text: '5 - Computed Columns', href: '/tutorial/tuts0202a-computed-columns' },
+      { text: '6 - State', href: '/tutorial/tuts0203-state' },
+      { text: '7 - Module Translation', href: '/tutorial/tuts0204-translation' },
     ]
   },
   {
@@ -80,6 +81,7 @@ export const menu = [
       { text: 'Terms', href: '/api/option-terms' },
       { text: 'Group', href: '/api/option-group' },
       { text: 'Action', href: '/api/option-action' },
+      { text: 'Output', href: '/api/option-output' },
     ]
   },
   {
@@ -94,6 +96,7 @@ export const menu = [
       { text: 'Preformatted', href: '/api/preformatted' },
       { text: 'Html', href: '/api/html' },
       { text: 'Notice', href: '/api/notice' },
+      { text: 'Output', href: '/api/output' },
     ]
   },
   {
