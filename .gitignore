@@ -129,6 +129,9 @@ public/pagefind/
 # Gemini CLI configuration and local skills/agents
 # .gemini/ is now tracked to share project-specific skills and agents
 
+# Superpowers specs and planning docs
+docs/superpowers/
+
 # Existing R-specific configuration (from legacy dev.jamovi.org context)
 .Rproj.user
 .Rhistory
