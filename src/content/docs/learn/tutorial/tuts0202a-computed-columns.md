@@ -21,9 +21,9 @@ Computed columns follow the same three-file structure as the rest of a jamovi an
 
 | File | Role |
 | :--- | :--- |
-| `.a.yaml` | Declares an `Output` option — jamovi automatically creates a Save checkbox in the UI |
+| `.a.yaml` | Declares an `Output` option — jamovi creates a checkbox in the UI |
 | `.r.yaml` | Defines the column metadata: title, description, variable type, and which options invalidate it |
-| `.b.R` | Populates the column at runtime by calling `setRowNums()` and `setValues()` |
+| `.b.R` | Populates the column at runtime by writing the computed values into the Output element |
 
 The option in `.a.yaml` captures the user's intent (did they tick the checkbox?). The element in `.r.yaml` describes the column. The code in `.b.R` does the writing.
 
@@ -41,7 +41,7 @@ The following example adds a single `residsOV` residuals column to a hypothetica
   title: Residuals
 ```
 
-That is all that is needed here. Because `type` is `Output`, jamovi recognises it as a save-to-spreadsheet option and automatically places a Save section with a "Residuals" checkbox into the analysis UI — no extra UI YAML is required. In R, `self$options$residsOV` will be `TRUE` when the user has ticked the box and `FALSE` otherwise.
+That is all that is needed here. jamovi recognises `type: Output` and creates a checkbox for saving residuals to the spreadsheet. In R, `self$options$residsOV` will be `TRUE` when the user has ticked the box and `FALSE` otherwise.
 
 ### 2. Define the column in `.r.yaml`
 
@@ -68,32 +68,42 @@ A few details worth noting:
 
 ### 3. Populate the column in `.b.R`
 
-**Add** a dedicated private helper method called `.populateOutputs()` and **call** it from `.run()` after the main computation is complete:
-
-In R6, `private$` is used for internal methods that aren't part of the public API — it's good practice to keep populate logic private.
-
-`self$cleanData` and `self$residuals` are private fields that your main analysis code in `.run()` computes and stores before calling `private$.populateOutputs()`. Keeping output population in its own helper method makes `.run()` easier to read and test.
+**Add** the output population code to your `.run()` method, after the main computation:
 
 ```r
 .run = function() {
-    # ... main analysis code, storing results in private fields ...
-    private$.populateOutputs()
-},
+    dep  <- self$options$dep
+    covs <- self$options$covs
+    data <- self$data
 
-.populateOutputs = function() {
+    # convert variables to numeric (see Handling Data tutorial)
+    data[[dep]] <- jmvcore::toNumeric(data[[dep]])
+    for (cov in covs)
+        data[[cov]] <- jmvcore::toNumeric(data[[cov]])
+
+    # remove rows with missing values — row names are preserved by na.omit()
+    data <- na.omit(data)
+
+    # fit the model
+    formula <- jmvcore::constructFormula(dep, covs)
+    model   <- lm(formula, data = data)
+
+    # ... populate tables and other results here ...
+
+    # write residuals to the spreadsheet
     if (self$options$residsOV && self$results$residsOV$isNotFilled()) {
-        self$results$residsOV$setRowNums(rownames(self$cleanData))
-        self$results$residsOV$setValues(self$residuals)
+        self$results$residsOV$setRowNums(rownames(data))
+        self$results$residsOV$setValues(residuals(model))
     }
 }
 ```
 
-Walking through each line inside `.populateOutputs()`:
+Walking through the output section at the bottom:
 
-- `self$options$residsOV` — checks that the user has actually ticked the Save checkbox. There is no point computing or writing anything if they have not.
-- `self$results$residsOV$isNotFilled()` — checks that the column has not already been filled in this run (see the `isNotFilled()` guard section below).
-- `setRowNums(rownames(self$cleanData))` — tells jamovi which spreadsheet rows to write to. The argument **must** be `rownames()`, not `1:nrow()` — this is covered in detail in the next section.
-- `setValues(self$residuals)` — pushes the vector of residual values into the column.
+- `self$options$residsOV` — checks the user has ticked the Save checkbox; no point computing anything if they haven't.
+- `self$results$residsOV$isNotFilled()` — checks the column hasn't already been filled in this run (see the `isNotFilled()` guard section below).
+- `setRowNums(rownames(data))` — passes the **original** row indices after cleaning; this is the critical detail covered in the next section.
+- `setValues(residuals(model))` — pushes the residuals vector into the column.
 
 ## Row Numbers Matter
 
@@ -110,19 +120,17 @@ When a user applies a row filter or jamovi excludes rows containing missing valu
 
 ```r
 # Correct — preserves original row indices through filtering
-self$results$residsOV$setRowNums(rownames(self$cleanData))
+self$results$residsOV$setRowNums(rownames(data))
 
 # Wrong — breaks silently when any rows are excluded
-self$results$residsOV$setRowNums(1:nrow(self$cleanData))
+self$results$residsOV$setRowNums(1:nrow(data))
 ```
 
-The fix is straightforward: always call `na.omit()` (or your equivalent cleaning step) **before** storing your cleaned data frame, and then always pass `rownames()` of that frame to `setRowNums()`. The row names survive `na.omit()` correctly.
-
-Note: `self$cleanData` is simply the name used in this example for a private field the developer defines themselves in `.run()` to hold the cleaned data frame — it is not a field provided by jmvcore. You can name it whatever you like.
+The fix is straightforward: call `na.omit()` **before** passing `rownames()` to `setRowNums()`. Row names survive `na.omit()` intact, so `rownames(data)` after cleaning gives you the correct original indices.
 
 ## The `isNotFilled()` Guard
 
-The `isNotFilled()` check in `.populateOutputs()` is a deliberate performance guard. Because the `Output` element participates in the same `clearWith` system as tables and images, jamovi will have already cleared the output if any of the listed options changed. If nothing in `clearWith` changed, the column is still filled from the previous run — there is no need to recompute the residuals or call `setValues()` again.
+The `isNotFilled()` check in the output section of `.run()` is a deliberate performance guard. Because the `Output` element participates in the same `clearWith` system as tables and images, jamovi will have already cleared the output if any of the listed options changed. If nothing in `clearWith` changed, the column is still filled from the previous run — there is no need to recompute the residuals or call `setValues()` again.
 
 The guard therefore works in tandem with `clearWith`:
 
