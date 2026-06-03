@@ -61,6 +61,6 @@ The following option types are available in jamovi:
 | [**Terms**](/api/option-terms) | Model terms, including main effects and interactions. |
 | [**Group**](/api/option-group) | A container for organizing other options. |
 | [**Action**](/api/option-action) | A button that triggers a specific task. |
-| [**Output**](/api/option-output) | A computed column written back to the spreadsheet. |
+| [**Output**](/api/option-output) | An output variable written back to the spreadsheet. |
 
 For a detailed look at how to interact with these options in your R code, see the [Options API (R)](/api/options-api) documentation.

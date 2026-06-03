@@ -36,7 +36,7 @@ jamovi provides several types of results elements, each designed for a specific 
 | [Notice](/api/notice) | Used for displaying informational messages, warnings, or errors. |
 | [Preformatted](/api/preformatted) | Used for displaying raw text output, often from other R packages. |
 | [Html](/api/html) | Used for displaying custom HTML content. |
-| [Output](/api/output) | Writes computed values back to the user's spreadsheet as a new column. |
+| [Output](/api/output) | Writes values from the analysis back to the user's spreadsheet as a new column. |
 
 ## Common API
 

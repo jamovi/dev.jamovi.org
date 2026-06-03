@@ -42,7 +42,7 @@ The `items` property contains a collection of results elements. Each element typ
 | [**Group**](/api/group) | A container for organizing other elements into sections. |
 | [**Array**](/api/array) | A dynamic container for repeating elements (e.g., a table per factor level). |
 | [**Notice**](/api/notice) | Informational messages, warnings, or errors. |
-| [**Output**](/api/output) | A computed column written back to the spreadsheet. |
+| [**Output**](/api/output) | An output variable written back to the spreadsheet. |
 | [**Preformatted**](/api/preformatted) | Raw, monospaced text output. |
 | [**Html**](/api/html) | Custom, rich HTML content. |
 

@@ -1,17 +1,17 @@
 ---
 layout: ../layouts/BaseLayout.astro
-title: Computed Columns
+title: Output Variables
 type: article
-description: "Learn how to write computed values from your analysis back to the jamovi spreadsheet as new columns using the Output element."
+description: "Learn how to write values from your R analysis back to the jamovi spreadsheet as new columns using the Output element."
 ---
 
-Every result you have produced in this tutorial series so far has gone to the **results panel** — tables and plots that appear on the right-hand side of the jamovi interface. The `Output` element lets you go in a different direction: instead of displaying a value in the results panel, you write it back to the **spreadsheet** as a new column. Concrete examples include ordinary residuals, standardised residuals, predicted values, factor scores, and Mahalanobis distances. In jamovi terminology, a column produced this way is called a **computed column**.
+Every result you have produced in this tutorial series so far has gone to the **results panel** — tables and plots that appear on the right-hand side of the jamovi interface. The `Output` element lets you go in a different direction: instead of displaying a value in the results panel, you write it back to the **spreadsheet** as a new column. Concrete examples include ordinary residuals, standardised residuals, predicted values, factor scores, and Mahalanobis distances. In jamovi terminology, a column produced this way is called an **output variable**.
 
-Computed columns are most useful when the user wants to continue working with the values downstream — for example, plotting residuals in another analysis, or exporting the dataset with predicted values already attached. The mechanism is deliberately simple to wire up, but it has one critical detail around row numbering that is easy to get wrong. This tutorial covers both the happy path and that gotcha.
+Output variables are most useful when the user wants to continue working with the values downstream — for example, plotting residuals in another analysis, or exporting the dataset with predicted values already attached. The mechanism is deliberately simple to wire up, but it has one critical detail around row numbering that is easy to get wrong. This tutorial covers both the happy path and that gotcha.
 
-## What is a Computed Column?
+## What is an Output Variable?
 
-When a user enables a computed column (by ticking its Save checkbox), jamovi appends a new column to their open dataset. The column is tied to the analysis: if the user changes an option that affects the underlying computation, jamovi clears the column and re-populates it on the next run. If the relevant options have not changed, the existing values are left untouched (you control which options are relevant via `clearWith`, covered in the step-by-step example below). The column persists in the dataset for the life of the session and can be saved with the file.
+When a user enables an output variable (by ticking its checkbox), jamovi appends a new column to their open dataset. The column is tied to the analysis: if the user changes an option that affects the underlying computation, jamovi clears the column and re-populates it on the next run. If the relevant options have not changed, the existing values are left untouched (you control which options are relevant via `clearWith`, covered in the step-by-step example below). The column persists in the dataset for the life of the session and can be saved with the file.
 
 From the developer's perspective, you declare what the column looks like (its title, description, and variable type) and then write a small amount of R code that pushes a vector of values into it.
 
@@ -107,7 +107,7 @@ Walking through the output section at the bottom:
 
 ## Row Numbers Matter
 
-This is the most common source of bugs with computed columns, and it is entirely silent — jamovi will not warn you if you get it wrong.
+This is the most common source of bugs with output variables, and it is entirely silent — jamovi will not warn you if you get it wrong.
 
 When a user applies a row filter or jamovi excludes rows containing missing values, those rows are removed from the data frame passed to your R code. However, the remaining rows keep their **original row names** from the full dataset. A data frame with 90 rows after filtering will have row names like `"1"`, `"3"`, `"5"`, ... (skipping the excluded rows), not `"1"`, `"2"`, `"3"`, ....
 
