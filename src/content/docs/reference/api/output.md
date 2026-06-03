@@ -48,45 +48,27 @@ All methods are accessed via `self$results$name`, where `name` matches the `name
 
 ## Examples
 
-### 0. Declare the option in `.a.yaml`
-
-```yaml
-- name: residsOV
-  title: Residuals
-  type: Output
-```
-
 ### 1. Define in `.r.yaml`
 
 ```yaml
-results:
-    - name: residsOV
-      type: Output
-      title: Residuals
-      varTitle: Residuals
-      varDescription: Ordinary residuals from the fitted model
-      measureType: continuous
-      clearWith:
-          - dep
-          - factors
+- name: residsOV
+  type: Output
+  title: Residuals
+  varTitle: Residuals
+  varDescription: Ordinary residuals from the fitted model
+  measureType: continuous
+  clearWith:
+    - dep
+    - factors
 ```
 
 ### 2. Populate in `.b.R`
 
-Call a dedicated helper from `.run()` to keep the implementation clean.
-
 ```r
-.run = function() {
-    # ... main analysis logic, storing results in private fields ...
-    private$.populateOutputs()
-},
-
-.populateOutputs = function() {
-    if (self$options$residsOV && self$results$residsOV$isNotFilled()) {
-        # self$cleanData and self$residuals are private fields
-        # computed and stored during the main analysis in .run()
-        self$results$residsOV$setRowNums(rownames(self$cleanData))
-        self$results$residsOV$setValues(self$residuals)
-    }
+if (self$options$residsOV && self$results$residsOV$isNotFilled()) {
+    self$results$residsOV$setRowNums(rownames(data))
+    self$results$residsOV$setValues(residuals(model))
 }
 ```
+
+Here `data` is the cleaned data frame (after `na.omit()`) and `model` is the fitted model — both computed earlier in `.run()`. See the [Output Variables tutorial](/tutorial/tuts0202a-output-variables) for a full worked example.
