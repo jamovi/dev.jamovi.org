@@ -37,6 +37,7 @@ menuSubgroup | (optional) places the menu entry under a subheading.
 menuTitle    | (optional) the title to be used in the menu. if unspecified, then the `title` is used.
 menuSubtitle | (optional) additional text placed to the lower right of the menu entry.
 category     | (optional) `analyses` (default) or `plots`. Determines which jamovi tab the analysis appears in. See [Plot Modules](/tutorial/tuts0304-plot-modules) before using `plots`.
+weightsSupport | (optional) controls how the analysis handles a weighted dataset: `auto` (default; jamovi replicates rows), `full`, `integerOnly`, or `none`. See the [Weighted Data tutorial](/tutorial/tuts0202b-weighted-data) for what each mode does and when to use it.
 options      | an array of options that the analysis requires. these are described in greater detail below.
 
 ## Options

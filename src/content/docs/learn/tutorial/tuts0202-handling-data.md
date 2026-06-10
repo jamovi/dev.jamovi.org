@@ -85,4 +85,4 @@ If you are building an ANCOVA that requires a numeric dependent variable, factor
 - **Safe:** If the variable is already numeric, it does nothing.
 - **Smart:** It correctly extracts the underlying numeric values from jamovi's "Dual Nature" variables, where standard `as.numeric(as.character(x))` might fail or be inefficient.
 
-**Next Step:** Now that you can handle data safely, let's learn how to write values back to the spreadsheet with [Output Variables](/tutorial/tuts0202a-output-variables).
+**Next Step:** Now that you can handle data safely, let's look at one situation that quietly changes its shape — [Weighted Data](/tutorial/tuts0202b-weighted-data).

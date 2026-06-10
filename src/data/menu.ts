@@ -22,9 +22,10 @@ export const menu = [
       { text: '2 - Dynamic Tables', href: '/tutorial/tuts0201-dynamic-tables' },
       { text: '3 - Advanced Table Techniques', href: '/tutorial/tuts0201a-advanced-table-techniques' },
       { text: '4 - Handling Data', href: '/tutorial/tuts0202-handling-data' },
-      { text: '5 - Output Variables', href: '/tutorial/tuts0202a-output-variables' },
-      { text: '6 - State', href: '/tutorial/tuts0203-state' },
-      { text: '7 - Module Translation', href: '/tutorial/tuts0204-translation' },
+      { text: '5 - Weighted Data', href: '/tutorial/tuts0202b-weighted-data' },
+      { text: '6 - Output Variables', href: '/tutorial/tuts0202a-output-variables' },
+      { text: '7 - State', href: '/tutorial/tuts0203-state' },
+      { text: '8 - Module Translation', href: '/tutorial/tuts0204-translation' },
     ]
   },
   {
