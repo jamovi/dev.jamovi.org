@@ -49,6 +49,7 @@ Most importantly, listing your module in the library means that the jamovi proje
 
 Before you share your module, make sure you meet the following requirements:
 
+-   **Module Name:** Give your module a distinctive, memorable name (e.g. `esci`, `walrus`, `jpower`) rather than a generic description of its function (e.g. `Statistics`, `Regression`) or one that embeds "jamovi" — generic names read as a feature rather than a product and are a common reason submissions get sent back. The name must not contain a dot (jamovi will fail to load it), and renaming later is costly since it touches `0000.yaml`, `DESCRIPTION`, and your file names, so get it right before submitting.
 -   **Documentation:** Ensure your analyses have clear titles and descriptions.
 -   **Example Data:** If your analyses use data, bundle one or more datasets that demonstrate them as a **[module dataset](/tutorial/tuts0110-module-datasets)**, and include instructions on how to use them in your `README.md` or submission email.
 -   **Stability & Testing:** Thoroughly test your module against different types of datasets to ensure it doesn't crash. This includes datasets with missing data, variable names with special characters, and entirely empty datasets (using [Input Checks](/tutorial/tuts0104-input-checks)).
