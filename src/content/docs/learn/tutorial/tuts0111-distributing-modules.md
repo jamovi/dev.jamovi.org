@@ -50,6 +50,7 @@ Most importantly, listing your module in the library means that the jamovi proje
 Before you share your module, make sure you meet the following requirements:
 
 -   **Documentation:** Ensure your analyses have clear titles and descriptions.
+-   **Example Data:** If your analyses use data, bundle one or more datasets that demonstrate them as a **[module dataset](/tutorial/tuts0110-module-datasets)**, and include instructions on how to use them in your `README.md` or submission email.
 -   **Stability & Testing:** Thoroughly test your module against different types of datasets to ensure it doesn't crash. This includes datasets with missing data, variable names with special characters, and entirely empty datasets (using [Input Checks](/tutorial/tuts0104-input-checks)).
 -   **Build Success:** Make sure your module builds successfully (e.g., using `jmvtools::install()`) without any errors.
 -   **Metadata:** Check your `DESCRIPTION` file for an accurate summary and author information.
