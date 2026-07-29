@@ -79,7 +79,7 @@ If you are satisfied that your module is ready, please send an email to the jamo
 **Always provide a link to your source code** (e.g., a GitHub repository). This allows us to perform the multi-platform builds. You may also attach the `.jmo` file for initial testing.
 
 **The Review Process:**
-Once submitted, the jamovi team or a community member will review your module. After the review, there are usually some comments or minor issues that need to be addressed before it can be accepted. This feedback is typically provided via an email thread or as an issue on your GitHub repository. Once everything looks good, your module will be built across all platforms and listed in the jamovi library!
+Once submitted, the jamovi team or a community member will review your module. This can take 1-2 weeks, so please be patient. After the review, there are usually some comments or minor issues that need to be addressed before it can be accepted. This feedback is typically provided via an email thread or as an issue on your GitHub repository. Once everything looks good, your module will be built across all platforms and listed in the jamovi library!
 
 ### Step 3: Submitting an Update
 
