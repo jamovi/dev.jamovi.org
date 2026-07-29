@@ -9,7 +9,7 @@ description: "Learn how to set up your environment and install your first jamovi
 > ### Prerequisites
 > 
 > To follow this tutorial and build the module, you will need:
-> - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/) installed.
+> - **jamovi**: Make sure you have the [latest version of jamovi](https://www.jamovi.org/) installed. **Windows users:** install using the **.exe** installer, not the Microsoft Store **.msix** package — `jmvtools` cannot locate an msix installation.
 > - **R**: You need [R installed](https://cloud.r-project.org/) on your system.
 > - **R knowledge**: Analyses in jamovi are written in the **R programming language**. This tutorial assumes you have a basic understanding of R logic.
 > - **An IDE**: We highly recommend using an IDE such as [RStudio](https://posit.co/download/rstudio-desktop) or [VS Code](https://code.visualstudio.com/) for writing your R code.
