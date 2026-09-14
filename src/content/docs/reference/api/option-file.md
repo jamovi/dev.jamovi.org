@@ -7,6 +7,12 @@ type: article
 
 The `File` option lets the user select one or more files from their computer for the analysis to read, such as a stimulus list, a custom lexicon, etc.
 
+Available in jamovi 28.3 and newer. Declare this in your module's `0000.yaml` using `minApp`, so jamovi prevents installation on older versions that don't support it:
+
+```yaml
+minApp: 28.3.0
+```
+
 ## Description
 
 In the jamovi UI, a `File` option is represented by a **Browse…** button and a list of the file(s) currently selected. In the desktop app, the analysis reads the file directly from the path the user chose. In the cloud, the chosen file is uploaded into the user's session so the R process can read it.
