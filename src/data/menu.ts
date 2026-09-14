@@ -83,6 +83,7 @@ export const menu = [
       { text: 'Group', href: '/api/option-group' },
       { text: 'Action', href: '/api/option-action' },
       { text: 'Output', href: '/api/option-output' },
+      { text: 'File', href: '/api/option-file' },
     ]
   },
   {
