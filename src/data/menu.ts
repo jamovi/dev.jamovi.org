@@ -95,6 +95,7 @@ export const menu = [
       { text: 'Group', href: '/api/group' },
       { text: 'Array', href: '/api/array' },
       { text: 'Preformatted', href: '/api/preformatted' },
+      { text: 'Text', href: '/api/text' },
       { text: 'Html', href: '/api/html' },
       { text: 'Notice', href: '/api/notice' },
       { text: 'Output', href: '/api/output' },

@@ -35,6 +35,7 @@ jamovi provides several types of results elements, each designed for a specific 
 | [Array](/api/array) | A dynamic container that can hold multiple instances of the same element type (e.g., a table for each level of a factor). |
 | [Notice](/api/notice) | Used for displaying informational messages, warnings, or errors. |
 | [Preformatted](/api/preformatted) | Used for displaying raw text output, often from other R packages. |
+| [Text](/api/text) | Used for displaying wrapped, paragraph-style text output. |
 | [Html](/api/html) | Used for displaying custom HTML content. |
 | [Output](/api/output) | Writes values from the analysis back to the user's spreadsheet as a new column. |
 
