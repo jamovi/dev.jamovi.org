@@ -44,6 +44,7 @@ The `items` property contains a collection of results elements. Each element typ
 | [**Notice**](/api/notice) | Informational messages, warnings, or errors. |
 | [**Output**](/api/output) | An output variable written back to the spreadsheet. |
 | [**Preformatted**](/api/preformatted) | Raw, monospaced text output. |
+| [**Text**](/api/text) | Wrapped, paragraph-style text output. |
 | [**Html**](/api/html) | Custom, rich HTML content. |
 
 ## Common Element Properties

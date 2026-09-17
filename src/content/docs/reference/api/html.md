@@ -8,7 +8,7 @@ type: article
 The `Html` element is used for displaying rich HTML output. This allows for custom formatting, links, and other HTML features that are not available in standard jamovi tables or text elements.
 
 > [!WARNING]
-> While `Html` elements provide great flexibility, they should be used sparingly to maintain a consistent look and feel across jamovi analyses. For standard statistical results, `Table` and `Image` elements are preferred.
+> While `Html` elements provide great flexibility, they should be used sparingly to maintain a consistent look and feel across jamovi analyses. For standard statistical results, `Table` and `Image` elements are preferred. For narrative or explanatory text, prefer [Text](/api/text), which supports basic inline formatting without the overhead and inconsistency of hand-rolled HTML.
 
 ## Methods
 
