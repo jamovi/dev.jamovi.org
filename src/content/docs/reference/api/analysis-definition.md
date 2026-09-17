@@ -63,5 +63,6 @@ The following option types are available in jamovi:
 | [**Group**](/api/option-group) | A container for organizing other options. |
 | [**Action**](/api/option-action) | A button that triggers a specific task. |
 | [**Output**](/api/option-output) | An output variable written back to the spreadsheet. |
+| [**File**](/api/option-file) | One or more files selected from disk. |
 
 For a detailed look at how to interact with these options in your R code, see the [Options API (R)](/api/options-api) documentation.
