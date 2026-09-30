@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// public; POST /submit is handled by the cf-jamovi-dev-worker Cloudflare Worker
+const HCAPTCHA_SITE_KEY = 'ef18a9aa-dd3e-4afa-9772-269a8498f678';
+
+const frontmatter = {
+  title: 'Submit a Module',
+  description: 'Submit your jamovi module for review and inclusion in the jamovi library.',
+};
+---
+
+<BaseLayout title="Submit a Module | dev.jamovi.org" frontmatter={frontmatter} section="resources">
+  <p>
+    Submit your module for review and inclusion in the jamovi library. Before submitting, check that your
+    module meets the <a href="/tutorial/tuts0111-distributing-modules#step-1-preparing-for-submission">library requirements</a>.
+  </p>
+  <p>
+    The module's maintainer, as listed in its <code>jamovi/0000.yaml</code>, will receive an email asking them to
+    confirm the submission, and will be emailed again with the outcome.
+  </p>
+
+  <form id="submit-form" class="submit-form" method="post" action="/submit">
+    <label for="repo_url">GitHub repository URL</label>
+    <input id="repo_url" name="repo_url" type="url" placeholder="https://github.com/owner/module" required />
+
+    <label for="subdir">Subdirectory <span class="hint">(optional, if the module isn't at the root of the repository)</span></label>
+    <input
+      id="subdir"
+      name="subdir"
+      type="text"
+      placeholder="e.g. jpower"
+      pattern="[A-Za-z0-9._\-]+(/[A-Za-z0-9._\-]+)*/?"
+      autocomplete="off"
+      spellcheck="false"
+    />
+
+    <div class="captcha" data-sitekey={HCAPTCHA_SITE_KEY}></div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <p class="status" role="status"></p>
+  </form>
+</BaseLayout>
+
+<script>
+  interface HCaptcha {
+    render(container: HTMLElement, params: { sitekey: string; theme: string }): string;
+    reset(widgetId?: string): void;
+  }
+
+  interface HCaptchaWindow extends Window {
+    hcaptcha: HCaptcha;
+    onHCaptchaLoad?: () => void;
+  }
+
+  const w = window as unknown as HCaptchaWindow;
+
+  let hcaptchaLoaded: Promise<void> | null = null;
+
+  // loaded on demand and rendered explicitly, since view transitions mean
+  // the page can be arrived at without a full load
+  function loadHCaptcha(): Promise<void> {
+    hcaptchaLoaded ??= new Promise((resolve, reject) => {
+      w.onHCaptchaLoad = () => resolve();
+      const script = document.createElement('script');
+      script.src = 'https://js.hcaptcha.com/1/api.js?render=explicit&onload=onHCaptchaLoad';
+      script.async = true;
+      script.onerror = () => {
+        hcaptchaLoaded = null;
+        reject(new Error('Could not load hCaptcha'));
+      };
+      document.head.appendChild(script);
+    });
+    return hcaptchaLoaded;
+  }
+
+  async function setupSubmitForm() {
+    const form = document.getElementById('submit-form') as HTMLFormElement | null;
+    if (!form)
+      return;
+
+    const captcha = form.querySelector<HTMLElement>('.captcha')!;
+    const button = form.querySelector<HTMLButtonElement>('button')!;
+    const status = form.querySelector<HTMLElement>('.status')!;
+
+    const showStatus = (kind: 'ok' | 'error' | '', message: string) => {
+      status.className = `status ${ kind }`;
+      status.textContent = message;
+    };
+
+    let widgetId: string;
+    try {
+      await loadHCaptcha();
+      const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      widgetId = w.hcaptcha.render(captcha, { sitekey: captcha.dataset.sitekey!, theme });
+    }
+    catch {
+      showStatus('error', 'The captcha could not be loaded. Please reload the page and try again.');
+      button.disabled = true;
+      return;
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      button.disabled = true;
+      button.textContent = 'Submitting…';
+      showStatus('', '');
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const body = await response.json() as { ok: boolean; message?: string; error?: string };
+        showStatus(body.ok ? 'ok' : 'error', (body.ok ? body.message : body.error) ?? '');
+        if (body.ok)
+          form.reset();
+      }
+      catch {
+        showStatus('error', 'Something went wrong. Please try again later.');
+      }
+      // tokens are single use
+      w.hcaptcha.reset(widgetId);
+      button.disabled = false;
+      button.textContent = 'Submit';
+    });
+  }
+
+  document.addEventListener('astro:page-load', setupSubmitForm);
+</script>
+
+<style>
+  .submit-form {
+    max-width: 36rem;
+    margin-top: 2rem;
+  }
+
+  label {
+    display: block;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+
+  .hint {
+    font-weight: normal;
+    color: var(--text-muted);
+  }
+
+  input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    font: inherit;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+  }
+
+  .captcha {
+    margin-top: 1.5rem;
+    min-height: 78px;
+  }
+
+  button {
+    margin-top: 1.25rem;
+  }
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: progress;
+    transform: none;
+  }
+
+  .status {
+    margin-top: 1rem;
+  }
+
+  .status.ok {
+    color: var(--alert-tip);
+  }
+
+  .status.error {
+    color: var(--alert-caution);
+  }
+</style>
