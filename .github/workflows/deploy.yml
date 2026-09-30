@@ -1,4 +1,4 @@
-name: Deploy to Bunny.net
+name: Deploy to Cloudflare R2
 
 on:
   push:
@@ -25,14 +25,13 @@ jobs:
       - name: Build site
         run: npm run build
 
-      - name: Deploy to Bunny.net
-        uses: ayeressian/bunnycdn-storage-deploy@251c77f4b9e7e683ad00086de2bef5770c3386b2
-        with:
-          source: "dist"
-          storageZoneName: "${{ secrets.BUNNY_STORAGE_ZONE }}"
-          storagePassword: "${{ secrets.BUNNY_STORAGE_PASSWORD }}"
-          accessKey: "${{ secrets.BUNNY_API_KEY }}"
-          pullZoneId: "${{ secrets.BUNNY_PULL_ZONE_ID }}"
-          upload: "true"
-          remove: "true"
-          purgePullZone: "true"
+      # served by the cf-jamovi-dev-worker Cloudflare Worker (cf-library-worker)
+      - name: Deploy to Cloudflare R2
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          AWS_ENDPOINT_URL: ${{ secrets.R2_ENDPOINT_URL }}
+          AWS_DEFAULT_REGION: auto
+          # R2 doesn't support all of the AWS CLI's default checksums
+          AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+        run: aws s3 sync dist s3://dev-jamovi-org --delete --no-progress
