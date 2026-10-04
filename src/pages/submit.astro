@@ -35,6 +35,9 @@ const frontmatter = {
       spellcheck="false"
     />
 
+    <label for="comments">Comments <span class="hint">(optional; an introduction to the module, or anything the reviewers should know)</span></label>
+    <textarea id="comments" name="comments" rows="6" maxlength="5000"></textarea>
+
     <div class="captcha" data-sitekey={HCAPTCHA_SITE_KEY}></div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
@@ -143,7 +146,8 @@ const frontmatter = {
     color: var(--text-muted);
   }
 
-  input {
+  input,
+  textarea {
     box-sizing: border-box;
     width: 100%;
     padding: 0.6rem 0.75rem;
@@ -154,7 +158,12 @@ const frontmatter = {
     border-radius: 8px;
   }
 
-  input:focus {
+  textarea {
+    resize: vertical;
+  }
+
+  input:focus,
+  textarea:focus {
     outline: none;
     border-color: var(--primary-color);
   }
