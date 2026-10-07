@@ -51,7 +51,7 @@ Before you share your module, make sure you meet the following requirements:
 
 -   **Module Name:** Give your module a distinctive, memorable name (e.g. `esci`, `walrus`, `jpower`) rather than a generic description of its function (e.g. `Statistics`, `Regression`) or one that embeds "jamovi" — generic names read as a feature rather than a product and are a common reason submissions get sent back. The name must not contain a dot (jamovi will fail to load it), and renaming later is costly since it touches `0000.yaml`, `DESCRIPTION`, and your file names, so get it right before submitting.
 -   **Documentation:** Ensure your analyses have clear titles and descriptions.
--   **Example Data:** If your analyses use data, bundle one or more datasets that demonstrate them as a **[module dataset](/tutorial/tuts0110-module-datasets)**, and include instructions on how to use them in your `README.md` or submission email.
+-   **Example Data:** If your analyses use data, bundle one or more datasets that demonstrate them as a **[module dataset](/tutorial/tuts0110-module-datasets)**, and include instructions on how to use them in your `README.md` or in the comments box of the submission form.
 -   **Stability & Testing:** Thoroughly test your module against different types of datasets to ensure it doesn't crash. This includes datasets with missing data, variable names with special characters, and entirely empty datasets (using [Input Checks](/tutorial/tuts0104-input-checks)).
 -   **Build Success:** Make sure your module builds successfully (e.g., using `jmvtools::install()`) without any errors.
 -   **Metadata:** Check your `DESCRIPTION` file for an accurate summary and author information.
@@ -74,12 +74,14 @@ dist/
 
 ### Step 2: The Submission & Review Process
 
-If you are satisfied that your module is ready, please send an email to the jamovi team at **[contact@jamovi.org](mailto:contact@jamovi.org)**.
+If you are satisfied that your module is ready, **submit** it through the **[module submission form](/submit)**.
 
-**Always provide a link to your source code** (e.g., a GitHub repository). This allows us to perform the multi-platform builds. You may also attach the `.jmo` file for initial testing.
+The form asks for the URL of your module's GitHub repository, which allows us to perform the multi-platform builds. If your module isn't at the root of the repository, you can also specify the subdirectory it lives in. Use the comments box to introduce your module and to tell the reviewers anything they should know.
+
+After you submit, the module's maintainer (as listed in `jamovi/0000.yaml`) will receive an email asking them to confirm the submission.
 
 **The Review Process:**
-Once submitted, the jamovi team or a community member will review your module. This can take 1-2 weeks, so please be patient. After the review, there are usually some comments or minor issues that need to be addressed before it can be accepted. This feedback is typically provided via an email thread or as an issue on your GitHub repository. Once everything looks good, your module will be built across all platforms and listed in the jamovi library!
+Once the submission is confirmed, the jamovi team or a community member will review your module. This can take 1-2 weeks, so please be patient. After the review, there are usually some comments or minor issues that need to be addressed before it can be accepted. This feedback is typically provided via an email thread or as an issue on your GitHub repository. The maintainer will be emailed with the outcome of the review, and once everything looks good, your module will be built across all platforms and listed in the jamovi library!
 
 ### Step 3: Submitting an Update
 
@@ -88,5 +90,5 @@ As you continue to improve your module, you will want to push updates to the lib
 1. **Update the Version:** Increment the version number in both your `0000.yaml` and your `DESCRIPTION` file using standard [Semantic Versioning](https://semver.org/) (e.g., change `1.0.1` to `1.0.2`). jamovi uses these version numbers to notify users when an update is available.
 2. **Push to Source Control:** Push your latest code changes to your GitHub repository (or whichever source control platform you use).
 3. **Notify the Team:** Send a quick follow-up email to the jamovi team, or drop a message in the jamovi Slack, letting them know a new version is ready to be built.
-3. **New Version is Published:** The jamovi team will update the module in the library. Updates are typically pushed once a week (i.e. Mondays).
+4. **New Version is Published:** The jamovi team will update the module in the library. Updates are typically pushed once a week (i.e. Mondays).
 **Next Step:** You've completed the core tutorial series! For some final technical tips, check out the **[Additional Notes](/tutorial/tuts0112-additional-notes)**.

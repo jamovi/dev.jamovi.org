@@ -129,6 +129,7 @@ export const menu = [
     category: 'Resources',
     items: [
       { text: 'Module Showcase', href: '/showcase' },
+      { text: 'Submit a Module', href: '/submit' },
       { text: 'Cheat Sheet', href: '/misc/cheat-sheet' },
     ]
   },
