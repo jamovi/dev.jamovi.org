@@ -647,7 +647,7 @@ html.dark .astro-code span {
     max-width: 100vw;
     box-shadow: none;
     background-color: var(--card-bg); /* ensure solid over content */
-    height: calc(100vh - 64px);
+    height: auto; /* sized by top/bottom; 100vh extends behind mobile browser toolbars */
     transform: translateX(-100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     visibility: hidden;
