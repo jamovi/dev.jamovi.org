@@ -49,6 +49,12 @@ an integer specifying the width of the image in pixels.
 
 an integer specifying the height of the image in pixels.
 
+### mode
+
+either `'raster'` (the default) or `'vector'`. A `'vector'` image is rendered as an SVG rather than a PNG, so it stays sharp when zoomed or exported. As with the [Svg](/api/svg) element, keep an eye on file size: plots with one point per observation (such as scatterplots of large datasets) are better left as raster.
+
+Older versions of jamovi ignore `mode`, and render the image as raster, so using it doesn't require a `minApp`.
+
 ### renderFun
 
 a string specifying the name of the private method in the analysis class used for rendering the image.
@@ -83,6 +89,10 @@ sets the state object on the image.
 
 sets the width and height of the image.
 
+### setMode(mode)
+
+sets the image's mode, either `'raster'` or `'vector'`.
+
 ## Examples
 
 ### 1. Define the Image in YAML
@@ -97,6 +107,8 @@ First, you must define the image in your `.r.yaml` file and specify the `renderF
   height: 300
   renderFun: .plot
 ```
+
+To render the image as an SVG, add `mode: vector`.
 
 ### 2. Implementation in R
 
