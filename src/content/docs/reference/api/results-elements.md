@@ -37,6 +37,7 @@ jamovi provides several types of results elements, each designed for a specific 
 | [Preformatted](/api/preformatted) | Used for displaying raw text output, often from other R packages. |
 | [Text](/api/text) | Used for displaying wrapped, paragraph-style text output. |
 | [Html](/api/html) | Used for displaying custom HTML content. |
+| [Svg](/api/svg) | Used for displaying interactive SVG graphics, which the user can copy and export like an image. |
 | [Output](/api/output) | Writes values from the analysis back to the user's spreadsheet as a new column. |
 
 ## Common API

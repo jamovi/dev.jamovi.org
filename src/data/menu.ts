@@ -98,6 +98,7 @@ export const menu = [
       { text: 'Preformatted', href: '/api/preformatted' },
       { text: 'Text', href: '/api/text' },
       { text: 'Html', href: '/api/html' },
+      { text: 'Svg', href: '/api/svg' },
       { text: 'Notice', href: '/api/notice' },
       { text: 'Output', href: '/api/output' },
     ]
