@@ -46,6 +46,7 @@ The `items` property contains a collection of results elements. Each element typ
 | [**Preformatted**](/api/preformatted) | Raw, monospaced text output. |
 | [**Text**](/api/text) | Wrapped, paragraph-style text output. |
 | [**Html**](/api/html) | Custom, rich HTML content. |
+| [**Svg**](/api/svg) | Interactive SVG graphics, copied and exported like an image. |
 
 ## Common Element Properties
 
