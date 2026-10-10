@@ -89,6 +89,7 @@ As you continue to improve your module, you will want to push updates to the lib
 
 1. **Update the Version:** Increment the version number in both your `0000.yaml` and your `DESCRIPTION` file using standard [Semantic Versioning](https://semver.org/) (e.g., change `1.0.1` to `1.0.2`). jamovi uses these version numbers to notify users when an update is available.
 2. **Push to Source Control:** Push your latest code changes to your GitHub repository (or whichever source control platform you use).
-3. **Notify the Team:** Send a quick follow-up email to the jamovi team, or drop a message in the jamovi Slack, letting them know a new version is ready to be built.
+3. **Resubmit:** Submit the module again through the **[module submission form](/submit)**. As with the first submission, the maintainer will be asked to confirm it by email.
 4. **New Version is Published:** The jamovi team will update the module in the library. Updates are typically pushed once a week (i.e. Mondays).
+
 **Next Step:** You've completed the core tutorial series! For some final technical tips, check out the **[Additional Notes](/tutorial/tuts0112-additional-notes)**.
