@@ -29,10 +29,10 @@ text$setContent("Effect size: 5.2\\*\\* (p < .001)")
 > [!WARNING]
 > HTML character entities (e.g. `&mdash;`, `&nbsp;`, `&#8212;`) are deliberately **not** decoded, even though the content is parsed as Markdown — they render literally (e.g. as `&mdash;`) rather than as the character they represent. Use the actual character (e.g. —) in your content instead. If you're writing that character directly into an `.R` file and intend to submit your module to CRAN, use a Unicode escape (e.g. `"\u2014"`) rather than a literal non-ASCII character in your source, since CRAN checks flag those.
 
-Available in jamovi 28.3 and newer. Declare this in your module's `0000.yaml` using `minApp`, so jamovi prevents installation on older versions that don't support it:
+Available in jamovi 28.11 and newer. Declare this in your module's `0000.yaml` using `minApp`, so jamovi prevents installation on older versions that don't support it:
 
 ```yaml
-minApp: 28.3.0
+minApp: 28.11.0
 ```
 
 ## YAML Properties
