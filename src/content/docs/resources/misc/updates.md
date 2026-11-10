@@ -7,6 +7,13 @@ description: "Stay informed about the latest changes, ecosystem improvements, an
 
 Welcome to the jamovi developer updates page. Here we track important changes to the jamovi API and ecosystem improvements.
 
+## November 2026
+
+### 🖌️ Color Option (10-11-2026)
+The 28.14 version of jamovi adds the [**Color**](/api/option-color) option, which lets the user pick a colour for your analysis to use, such as the fill of a plot. In R, its value is a `#rrggbb` hex code that can be passed straight to R's plotting functions. Compiling a module that uses it requires jmvtools 28.17 or newer.
+
+---
+
 ## October 2026
 
 ### 💾 Export Action (03-10-2026)
